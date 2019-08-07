@@ -1,0 +1,41 @@
+.main-background{
+  height: 100vh;
+  width: 100%;
+  background-image:url('/assets/background.png');
+  background-size: cover;
+  color: white;
+}
+
+.welcome-text {
+  font-size: 72px;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.language-box {
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  border: 1px solid lightgray;
+  border-radius: 20px;
+}
+
+.choose-language-text {
+  font-size: 36px;
+  color: #333333;
+  font-weight: 500;
+}
+
+.language {
+  font-size: 24px;
+  color: #2962ff;
+  font-weight: 400;
+}
+
+.language-image {
+  height: 30px;
+}
+
+.start-button {
+  background: #f25950;
+  font-size: 25px;
+  color: #ffffff;
+}
