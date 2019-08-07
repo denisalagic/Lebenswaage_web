@@ -1,0 +1,17 @@
+{
+  "language": {
+    "english": "Engleski",
+    "german": "Njemački",
+    "croatian": "Hrvatski"
+  },
+  "home": {
+    "title": "LebensWaage",
+    "title-split": {
+      "first": "Lebens",
+      "second": "Waage"
+    },
+    "welcome": "Dobrodošli u LebensWaage",
+    "choose-language": "Izaberite jezik",
+    "press-to-start": "Kliknite za nastavak"
+  }
+}

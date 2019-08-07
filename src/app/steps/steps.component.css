@@ -1,0 +1,7 @@
+.steps-background{
+  height: 100vh;
+  width: 100%;
+  background-image:url('/assets/steps-background.png');
+  background-size: cover;
+  color: white;
+}
