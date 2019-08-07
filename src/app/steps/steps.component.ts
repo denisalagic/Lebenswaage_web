@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-steps',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepsComponent implements OnInit {
 
-  constructor() { }
+  public activeStep = 1;
+
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.router.events.subscribe((val) => {
+      // see also
+      if (val instanceof NavigationEnd) {
+        let stepActive = val.url.split('/')[val.url.split('/').length-1].split('-')[1];
+        this.activeStep = parseInt(stepActive, 10);
+      }
+    });
+
+    this.router.navigate(['step-1'], {relativeTo: this.activatedRoute});
+
   }
 
 }

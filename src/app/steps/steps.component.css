@@ -4,19 +4,60 @@
   background-image:url('/assets/steps-background.png');
   background-size: cover;
   color: white;
+  z-index: -2;
 }
 
-.progress-button {
-  border-radius: 22px;
-  width: 44px;
-  height: 44px;
-  background-color: #999999;
-  border: grey 5px solid;
+.progressbar {
+  counter-reset: step;
 }
-.progress-button-active {
+.progressbar li {
+  list-style-type: none;
+  width: 25%;
+  float: left;
+  font-size: 20px;
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+.progressbar li:before {
+  width: 60px;
+  height: 60px;
+  content: counter(step);
+  counter-increment: step;
+  line-height: 30px;
+  font-size: 30px;
+  border: 5px solid #999999;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  padding-top: 8px;
+  border-radius: 50%;
+  background-color: #999999;
+}
+.progressbar li:after {
+  width: 100%;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: #999999;
+  top: 30px;
+  left: -37%;
+  z-index: -1;
+}
+
+
+.progressbar li:first-child:after {
+  content: none;
+}
+.progressbar li.active {
+  color: white;
+}
+.progressbar li.active:before {
+  border-color: #999999;
+  color: white;
   background-color: #f25950;
 }
-
-.progress-button-inactive {
-  background-color: #999999;
+.progressbar li.active + li:after {
+  background-color: #f25950;
 }

@@ -4,8 +4,10 @@
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/grid";
-@import "~bootstrap/scss/utilities"; // add css utilities
+@import "~bootstrap/scss/utilities";
+// add css utilities
 @import "reset";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
 /* You can add global styles to this file, and also import other style files */
@@ -17,3 +19,8 @@
 html {
   height: 100%
 }
+
+//.mat-step-header .mat-step-icon-selected {
+//  background-color: #f25950 !important;
+//  color: #fff;
+//}

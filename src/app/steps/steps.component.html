@@ -5,9 +5,15 @@
       <span [innerHTML]="'home.title-split.second' | translate" class="font-weight-bold"></span>
     </div>
     <div class="offset-2 col-sm-6">
-      <div class="col-sm-1">
-          <div class="progress-button progress-button-active text-center">1</div>
+      <div class="container">
+        <ul class="progressbar">
+          <li [ngClass]="activeStep >= 1 ? 'active' : ''">Step 1</li>
+          <li [ngClass]="activeStep >= 2 ? 'active' : ''">Step 2</li>
+          <li [ngClass]="activeStep >= 3 ? 'active' : ''">Step 3</li>
+          <li [ngClass]="activeStep >= 4 ? 'active' : ''">Step 4</li>
+        </ul>
       </div>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>
