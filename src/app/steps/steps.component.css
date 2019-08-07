@@ -5,3 +5,18 @@
   background-size: cover;
   color: white;
 }
+
+.progress-button {
+  border-radius: 22px;
+  width: 44px;
+  height: 44px;
+  background-color: #999999;
+  border: grey 5px solid;
+}
+.progress-button-active {
+  background-color: #f25950;
+}
+
+.progress-button-inactive {
+  background-color: #999999;
+}

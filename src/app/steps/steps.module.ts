@@ -4,20 +4,20 @@ import {StepsComponent} from './steps.component';
 import {Step1Component} from './step1/step1.component';
 import {stepsAppRoutes} from './steps-routing.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {MatStepperModule} from '@angular/material';
+import {MatButtonModule, MatStepperModule} from '@angular/material';
 
 
 
 @NgModule({
   declarations: [
     StepsComponent,
-    Step1Component
+    Step1Component,
   ],
   imports: [
     CommonModule,
     stepsAppRoutes,
     TranslateModule.forChild(),
-    MatStepperModule
+    MatButtonModule
   ],
   bootstrap: [StepsComponent]
 
