@@ -1,0 +1,42 @@
+.title {
+  font-size: 60px;
+  color: #333333;
+  font-weight: 400;
+}
+
+.female-image {
+  width: 200px;
+  height: 200px;
+  margin-top: 30px;
+  margin-left: 4px;
+}
+
+.male-image {
+  width: 200px;
+  height: 200px;
+  margin-top: 21px;
+  margin-left: 15px;
+}
+
+.gender-images-background {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+.gender-images-not-selected {
+  border: solid 4px #d5d5d5;
+}
+.gender-images-selected {
+  border: solid 4px green;
+}
+
+.gradient-scale {
+  background-image: linear-gradient(to right, #00b7ff , #f25950);
+}
+
+.age-text {
+  font-size: 18px;
+  color: #555555;
+  font-weight: 500;
+}

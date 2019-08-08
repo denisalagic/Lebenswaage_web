@@ -7,7 +7,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material';
+import {MatButtonModule, MatIconModule} from '@angular/material';
 import { StepsComponent } from './steps/steps.component';
 import { Step1Component } from './steps/step1/step1.component';
 
@@ -25,6 +25,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     appRoutes,
     HttpClientModule,
     MatButtonModule,
+    MatIconModule,
     TranslateModule.forRoot(
       {
         loader: {

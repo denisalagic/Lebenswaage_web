@@ -18,12 +18,13 @@ export class StepsComponent implements OnInit {
     this.router.events.subscribe((val) => {
       // see also
       if (val instanceof NavigationEnd) {
-        let stepActive = val.url.split('/')[val.url.split('/').length-1].split('-')[1];
+        const stepActive = val.url.split('/')[val.url.split('/').length-1].split('-')[1];
         this.activeStep = parseInt(stepActive, 10);
       }
     });
 
-    this.router.navigate(['step-1'], {relativeTo: this.activatedRoute});
+    // TODO: uncoment this
+    // this.router.navigate(['step-1'], {relativeTo: this.activatedRoute});
 
   }
 
