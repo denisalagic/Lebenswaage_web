@@ -4,10 +4,22 @@
       <span [innerHTML]="'home.title-split.first' | translate"></span>
       <span [innerHTML]="'home.title-split.second' | translate" class="font-weight-bold"></span>
     </div>
-    <div class="offset-4 col-sm-4">VIDEOS</div>
+    <div class="col-sm-1 offset-sm-2 text-right">
+      <mat-icon class="navigation-icons" [ngClass]="currentPage == 0 ? 'disabled-navigation' : ''" (click)="previousPage()">chevron_left</mat-icon>
+    </div>
+    <div class="col-sm-2" *ngFor="let video of filteredVideoList">
+      <video width="200" height="130" controls controlsList="nodownload"  [poster]="video.posterUrl">
+        <source [src]="video.videoUrl" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+    </div>
+    <div class="col-sm-1">
+      <mat-icon class="navigation-icons" [ngClass]="currentPage + 1 == totalPages ? 'disabled-navigation' : ''" (click)="nextPage()">chevron_right</mat-icon>
+    </div>
   </div>
 
-  <div class="row justify-content-center text-white" style="margin-top: 14%">
+  <div class="row justify-content-center text-white" style="margin-top: 6%">
     <span [innerHTML]="'home.welcome' | translate" class="welcome-text"></span>
   </div>
 

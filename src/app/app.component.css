@@ -38,3 +38,13 @@
   font-size: 25px;
   color: #ffffff;
 }
+
+.navigation-icons {
+  margin-top: 51px;
+  color: black;
+  font-size: 50px;
+}
+
+.disabled-navigation {
+  color: lightgray;
+}
