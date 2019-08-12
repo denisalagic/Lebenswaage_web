@@ -11,7 +11,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class Step2Component implements OnInit {
 
   private videoList: VideoListModel[] = [];
-  private previouslySelectedVideo: VideoListModel = null;
+  // tslint:disable-next-line:variable-name
+  private _previouslySelectedVideo: VideoListModel = null;
   public filteredVideoList: VideoListModel[] = [];
   public currentPage = 0;
   public totalPages = 0;
@@ -41,11 +42,11 @@ export class Step2Component implements OnInit {
   }
 
   public markVideoSelected(video: VideoListModel): void {
-    if (this.previouslySelectedVideo != null) {
-      this.previouslySelectedVideo.selected = false;
+    if (this._previouslySelectedVideo != null) {
+      this._previouslySelectedVideo.selected = false;
     }
     video.selected = true;
-    this.previouslySelectedVideo = video;
+    this._previouslySelectedVideo = video;
   }
 
   public previousPage(): void {
@@ -69,10 +70,15 @@ export class Step2Component implements OnInit {
   }
 
   public nextStep(): void {
-    if (this.previouslySelectedVideo != null) {
-      this.stepsService.selectedVideo = this.previouslySelectedVideo;
+    if (this._previouslySelectedVideo != null) {
+      this.stepsService.selectedVideo = this._previouslySelectedVideo;
       this.router.navigate(['../step-3'], {relativeTo: this.activatedRoute});
     }
   }
+
+  // methods used only for unit tests
+  public get previouslySelectedVideo() { return this._previouslySelectedVideo; }
+
+  public set previouslySelectedVideo(previouslySelectedVideo: VideoListModel) { this._previouslySelectedVideo = previouslySelectedVideo; }
 
 }

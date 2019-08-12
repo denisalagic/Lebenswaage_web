@@ -15,6 +15,6 @@
 </div>
 <div class="row justify-content-end">
   <div class="col-sm-2">
-    <button mat-raised-button class="next-button" [disabled]="previouslySelectedVideo == null" (click)="nextStep()">{{'next' | translate}}</button>
+    <button mat-raised-button class="next-button" [disabled]="_previouslySelectedVideo == null" (click)="nextStep()">{{'next' | translate}}</button>
   </div>
 </div>

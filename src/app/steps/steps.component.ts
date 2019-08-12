@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-steps',
@@ -18,14 +18,11 @@ export class StepsComponent implements OnInit {
     this.router.events.subscribe((val) => {
       // see also
       if (val instanceof NavigationEnd) {
-        const stepActive = val.url.split('/')[val.url.split('/').length-1].split('-')[1];
+        const stepActive = val.url.split('/')[val.url.split('/').length - 1].split('-')[1];
         this.activeStep = parseInt(stepActive, 10);
       }
     });
-
-    // TODO: uncoment this
-    // this.router.navigate(['step-1'], {relativeTo: this.activatedRoute});
-
+    this.router.navigate(['step-1'], {relativeTo: this.activatedRoute});
   }
 
 }

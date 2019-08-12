@@ -1,13 +1,22 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {MatIconModule} from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule, TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useClass: TranslateFakeLoader
+          }
+        }),
+        MatIconModule
       ],
+      providers: [ TranslateService ],
       declarations: [
         AppComponent
       ],
@@ -26,10 +35,40 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('lebens-waage');
   });
 
-  it('should render title in a h1 tag', () => {
+  it('should call next page function', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to lebens-waage!');
+    const component = fixture.componentInstance;
+    component.totalPages = 4;
+    component.currentPage = 1;
+
+    spyOn(component, 'nextPage').and.callThrough();
+    component.nextPage();
+
+    expect(component.nextPage).toHaveBeenCalled();
+    expect(component.currentPage).toBe(2);
   });
+
+  it('should call previous page function', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.componentInstance;
+    component.currentPage = 2;
+
+    spyOn(component, 'previousPage').and.callThrough();
+    component.previousPage();
+
+    expect(component.previousPage).toHaveBeenCalled();
+    expect(component.currentPage).toBe(1);
+  });
+
+  it('should call setLanguage function', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.componentInstance;
+    component.currentPage = 2;
+
+    spyOn(component, 'setLanguage').and.callThrough();
+    component.setLanguage('en');
+
+    expect(component.setLanguage).toHaveBeenCalled();
+  });
+
 });
