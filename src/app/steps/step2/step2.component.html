@@ -1,4 +1,4 @@
-<div class="row justify-content-center" *ngIf="videoList.length > 0">
+<div class="row justify-content-center" *ngIf="filteredVideoList.length > 0">
   <div class="col-sm-1">
     <mat-icon class="navigation-icons" [ngClass]="currentPage == 0 ? 'disabled-navigation' : ''" (click)="previousPage()">chevron_left</mat-icon>
   </div>
@@ -15,6 +15,6 @@
 </div>
 <div class="row justify-content-end">
   <div class="col-sm-2">
-    <button mat-raised-button class="next-button" [disabled]="_previouslySelectedVideo == null" (click)="nextStep()">{{'next' | translate}}</button>
+    <button mat-raised-button class="next-button" [disabled]="previouslySelectedVideo == null" (click)="nextStep()">{{'next' | translate}}</button>
   </div>
 </div>

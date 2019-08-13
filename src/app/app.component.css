@@ -1,6 +1,6 @@
 .main-background{
   height: 100vh;
-  background-image:url('/assets/background.png');
+  background-image:url('../assets/background.png');
   background-size: cover;
   color: white;
 }
