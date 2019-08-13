@@ -1,0 +1,19 @@
+{
+  "language": {
+    "english": "Engleski",
+    "german": "Njemački",
+    "croatian": "Hrvatski"
+  },
+  "next": "Nastavi",
+  "sex": "Spol",
+  "home": {
+    "title": "LebensWaage",
+    "title-split": {
+      "first": "Lebens",
+      "second": "Waage"
+    },
+    "welcome": "Dobrodošli u LebensWaage",
+    "choose-language": "Izaberite jezik",
+    "press-to-start": "Kliknite za nastavak"
+  }
+}
