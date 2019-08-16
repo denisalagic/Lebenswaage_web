@@ -1,0 +1,52 @@
+<div class="row justify-content-center" style="margin-top: -7%">
+  <div class="col-sm-8">
+    <span [innerHTML]="'step-4.biometrics' | translate" class="biometrics"></span>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-sm-4 box-style" >
+    <div class="row" style="margin-left: 45px">
+      <span class="box-title" [innerHTML]="'step-4.recommendations' | translate"></span>
+    </div>
+    <div class="row" style="margin-bottom: 10px; margin-left: 45px">
+      <div class="col-sm-8 recommendations">
+        <span [innerHTML]="'step-4.mass' | translate" class="text-style"></span>
+      </div>
+      <div class="col-sm-3" style="background-color: #00b7ff;">
+        57 - 77 kg
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px; margin-left: 45px">
+      <div class="col-sm-8 recommendations">
+        <span [innerHTML]="'step-4.energy-input' | translate" class="text-style"></span>
+      </div>
+      <div class="col-sm-3" style="background-color: #61bb57;">
+        2982 kcal
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px; margin-left: 45px">
+      <div class="col-sm-8 recommendations">
+        <span [innerHTML]="'step-4.additional-energy' | translate" class="text-style"></span>
+      </div>
+      <div class="col-sm-3" style="background-color: #f1594f;">
+        200 kcal
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4 offset-sm-1 box-style" >
+    <div class="row" style="margin-left: 45px">
+      <span class="box-title" [innerHTML]="'step-4.foods-not-included' | translate"></span>
+    </div>
+    <div class="row justify-content-center">
+      <div *ngFor="let number of [1,2,3,4]" class="food-picker" [ngClass]="foodsNotIncluded == number ? 'food-picker-selected':''" (click)="pickFood(number)">
+        <span class="text-style"> {{('step-4.foods-not-included-' + number) | translate}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-end">
+  <div class="col-sm-2">
+    <button mat-raised-button class="next-button" [disabled]="foodsNotIncluded == null" (click)="nextStep()">{{'next' | translate}}</button>
+  </div>
+</div>

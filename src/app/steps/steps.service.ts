@@ -1,10 +1,34 @@
 import { Injectable } from '@angular/core';
 import {VideoListModel} from '../model/video-list.model';
+import {Observable} from "rxjs";
+import {LebensWaageCommand} from "../model/lebens-waage.command";
+import "rxjs-compat/add/observable/of";
 
 @Injectable({
   providedIn: 'root'
 })
 export class StepsService {
+
+  public sendEmail(): Observable<LebensWaageCommand> {
+    let command: LebensWaageCommand = new LebensWaageCommand(this._selectedVideo, this.selectedGender, this.selectedAge, this.height, this.weight, this.waist, this.hips, this.target, this.foodsNotIncluded, this.gdprAgreement);
+
+    console.log("THIS IS RECEIVED COMMAND");
+    console.log(command);
+    return Observable.of(command);
+  }
+
+  public resetProperties(): void {
+    this._selectedVideo = null;
+    this._selectedGender = null;
+    this._selectedAge = null;
+    this._height = null;
+    this._weight = null;
+    this._waist = null;
+    this._hips = null;
+    this._target = null;
+    this._foodsNotIncluded = null;
+    this._gdprAgreement = false;
+  }
 
   // tslint:disable-next-line:variable-name
   private _selectedVideo: VideoListModel = null;
@@ -12,7 +36,7 @@ export class StepsService {
   private _selectedGender: string = null;
 
   // tslint:disable-next-line:variable-name
-  private _selectedWeight: number = null;
+  private _selectedAge: number = null;
 
   // tslint:disable-next-line:variable-name
   private _height: number = null;
@@ -28,6 +52,10 @@ export class StepsService {
 
   // tslint:disable-next-line:variable-name
   private _target: number = null;
+
+  private _foodsNotIncluded: number = null;
+
+  private _gdprAgreement: boolean = false;
 
   set selectedVideo(selectedVideo: VideoListModel) {
     this._selectedVideo = selectedVideo;
@@ -45,12 +73,12 @@ export class StepsService {
     return this._selectedGender;
   }
 
-  get selectedWeight(): number {
-    return this._selectedWeight;
+  get selectedAge(): number {
+    return this._selectedAge;
   }
 
-  set selectedWeight(value: number) {
-    this._selectedWeight = value;
+  set selectedAge(value: number) {
+    this._selectedAge = value;
   }
 
   get height(): number {
@@ -89,6 +117,21 @@ export class StepsService {
     this._target = value;
   }
 
+  get foodsNotIncluded(): number {
+    return this._foodsNotIncluded;
+  }
+
+  set foodsNotIncluded(value: number) {
+    this._foodsNotIncluded = value;
+  }
+
+  get gdprAgreement(): boolean {
+    return this._gdprAgreement;
+  }
+
+  set gdprAgreement(value: boolean) {
+    this._gdprAgreement = value;
+  }
 
   constructor() { }
 }

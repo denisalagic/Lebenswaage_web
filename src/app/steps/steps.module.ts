@@ -4,7 +4,7 @@ import {StepsComponent} from './steps.component';
 import {stepsAppRoutes} from './steps-routing.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {
-  MatButtonModule,
+  MatButtonModule, MatCheckboxModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -15,7 +15,10 @@ import {
 import { Step2Component } from './step2/step2.component';
 import {Step1Component} from './step1/step1.component';
 import { Step3Component } from './step3/step3.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { Step4Component } from './step4/step4.component';
+import { Step5Component } from './step5/step5.component';
+import { Step6Component } from './step6/step6.component';
 
 
 
@@ -25,19 +28,24 @@ import {FormsModule} from '@angular/forms';
     Step1Component,
     Step2Component,
     Step3Component,
+    Step4Component,
+    Step5Component,
+    Step6Component,
   ],
   imports: [
     CommonModule,
     stepsAppRoutes,
     TranslateModule.forChild(),
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatStepperModule,
     MatIconModule,
     MatSliderModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule
   ],
   bootstrap: [StepsComponent]
 

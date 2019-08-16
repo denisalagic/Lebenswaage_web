@@ -51,7 +51,7 @@ describe('Step3Component', () => {
     component.onInputChange(event);
 
     expect(component.onInputChange).toHaveBeenCalled();
-    expect(component.selectedWeight).toBe(45);
+    expect(component.selectedAge).toBe(45);
 
   });
 

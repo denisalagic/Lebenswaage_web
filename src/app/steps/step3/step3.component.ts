@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatRadioChange, MatSliderChange} from '@angular/material';
 import {StepsService} from '../steps.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-step3',
@@ -15,7 +16,10 @@ export class Step3Component implements OnInit {
   public hips = 0;
   public target = null;
 
-  constructor(private stepsService: StepsService) { }
+
+  constructor(private stepsService: StepsService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -44,4 +48,13 @@ export class Step3Component implements OnInit {
     this.stepsService.target = event.value;
   }
 
+  public nextStep(): void {
+    if (this.height > 0 && this.weight > 0 && this.waist > 0 && this.hips > 0 && this.target != null) {
+      this.router.navigate(['../step-4'], {relativeTo: this.activatedRoute});
+    }
+  }
+
+  public nextButtonDisabled(): boolean {
+    return this.height == 0 || this.weight == 0 || this.waist == 0 || this.hips == 0 || this.target == null
+  }
 }

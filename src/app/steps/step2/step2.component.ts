@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class Step2Component implements OnInit {
 
   public selectedGender: string = null;
-  public selectedWeight: number = null;
+  public selectedAge: number = null;
 
   constructor(private stepsService: StepsService,
               private router: Router,
@@ -26,13 +26,13 @@ export class Step2Component implements OnInit {
   }
 
   onInputChange(event: MatSliderChange) {
-    this.selectedWeight = event.value;
-    this.stepsService.selectedWeight = event.value;
+    this.selectedAge = event.value;
+    this.stepsService.selectedAge = event.value;
   }
 
   public nextStep(): void {
-    if (this.selectedGender != null && this.selectedWeight) {
-      this.stepsService.selectedWeight = this.selectedWeight;
+    if (this.selectedGender != null && this.selectedAge) {
+      this.stepsService.selectedAge = this.selectedAge;
       this.stepsService.selectedGender = this.selectedGender;
       this.router.navigate(['../step-3'], {relativeTo: this.activatedRoute});
     }
