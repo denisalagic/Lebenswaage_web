@@ -1,33 +1,78 @@
-<div class="row justify-content-center" style="margin-top: -10%;">
+<div class="row justify-content-center" style="margin-top: -7%">
+  <div class="col-sm-8">
+    <span [innerHTML]="'step-3.biometrics' | translate" class="biometrics"></span>
+  </div>
+</div>
+<div class="row justify-content-center">
   <div class="col-sm-3">
-    <span [innerHTML]="'sex' | translate" class="title"></span>
+    <div class="row">
+      <span [innerHTML]="'step-3.your-measures' | translate" class="your-measures"></span>
+    </div>
+    <div class="row">
+      <div class="col-sm-7">
+        <mat-form-field class="input-font-color">
+          <input matInput [(ngModel)]="height" ngDefaultControl placeholder="{{ 'step-3.height' | translate }}" type="number" class="example-right-align">
+          <span matSuffix>cm</span>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+          <mat-slider thumbLabel tickInterval="1" (input)="onHeightChange($event)"
+                      min="0" max="99" style="width: 100%"></mat-slider>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-7">
+        <mat-form-field class="input-font-color">
+          <input matInput [(ngModel)]="weight" ngDefaultControl placeholder="{{ 'step-3.weight' | translate }}" type="number" class="example-right-align">
+          <span matSuffix>kg</span>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-slider thumbLabel tickInterval="1" (input)="onWeightChange($event)"
+                    min="0" max="99" style="width: 100%"></mat-slider>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-7">
+        <mat-form-field class="input-font-color">
+          <input matInput [(ngModel)]="waist" ngDefaultControl placeholder="{{ 'step-3.waist' | translate }}" type="number" class="example-right-align">
+          <span matSuffix>cm</span>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-slider thumbLabel tickInterval="1" (input)="onWaistChange($event)"
+                    min="0" max="99" style="width: 100%"></mat-slider>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-7">
+        <mat-form-field class="input-font-color" >
+          <input matInput [(ngModel)]="hips" ngDefaultControl placeholder="{{ 'step-3.hips' | translate }}" type="number" class="example-right-align">
+          <span matSuffix>cm</span>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-slider thumbLabel tickInterval="1" (input)="onHipsChange($event)"
+                    min="0" max="99" style="width: 100%"></mat-slider>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row justify-content-center">
-  <div class="gender-images-background" style="margin-right: 10px; background: #2962ff;"
-       (click)="selectGender('male')" [ngClass]="selectedGender == 'male' ? 'gender-images-selected' : 'gender-images-not-selected'">
-    <img src="assets/male-sign.png" class="male-image"/>
+  <div class="col-sm-2" style="height: 316px !important;">
+    <img class="language-image" src="assets/human-image.png" style="height: 91% !important;">
   </div>
-  <div class="gender-images-background" style="margin-left: 30px;"
-       (click)="selectGender('female')" [ngClass]="selectedGender == 'female' ? 'gender-images-selected' : 'gender-images-not-selected'">
-    <img src="assets/female-sign.png" class="female-image"/>
-  </div>
-</div>
-<div class="row justify-content-center" style="margin-top: 10px;">
-  <div class="col-sm-1 age-text text-right">Age: 0</div>
-  <div class="col-sm-8">
-    <div class="gradient-scale" style="width: 100%;">&nbsp;</div>
-  </div>
-  <div class="col-sm-1 age-text text-left">99</div>
-</div>
-<div class="row justify-content-center">
-  <div class="col-sm-8">
-    <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1"
-      min="0" max="99" style="width: 100%" (input)="onInputChange($event)"></mat-slider>
-  </div>
-</div>
-<div class="row justify-content-end">
-  <div class="col-sm-2">
-    <button mat-raised-button class="next-button" [disabled]="selectedGender == null || selectedWeight == null" (click)="nextStep()">{{'next' | translate}}</button>
+  <div class="col-sm-3">
+    <div class="row" id="step-3-target-label">
+      <span [innerHTML]="'step-3.target' | translate" class="your-measures"></span>
+    </div>
+    <div class="row">
+      <mat-radio-group
+        aria-labelledby="step-3-target-label"
+        class="step-3-target-radio-group"
+        [(ngModel)]="target" (change)="onTargetChange($event)">
+        <mat-radio-button class="step-3-target-radio-button" *ngFor="let number of [1,2,3,4]" [value]="number">
+          {{('step-3.target-' + number) | translate}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
   </div>
 </div>

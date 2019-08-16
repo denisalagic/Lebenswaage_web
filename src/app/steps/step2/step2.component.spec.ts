@@ -2,11 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Step2Component } from './step2.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {MatIconModule} from '@angular/material';
 import {TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
-import {VideoListModel} from '../../model/video-list.model';
+import {MatButtonModule, MatSliderChange, MatSliderModule} from '@angular/material';
 
-describe('Step2Component', () => {
+describe('Step3Component', () => {
   let component: Step2Component;
   let fixture: ComponentFixture<Step2Component>;
 
@@ -17,7 +16,7 @@ describe('Step2Component', () => {
           provide: TranslateLoader,
           useClass: TranslateFakeLoader
         }
-      }), MatIconModule],
+      }), MatButtonModule, MatSliderModule],
       providers: [ TranslateService ],
       declarations: [ Step2Component ]
     })
@@ -34,49 +33,34 @@ describe('Step2Component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call next page function', () => {
-    component.totalPages = 4;
-    component.currentPage = 1;
+  it('should call select gender method', () => {
 
-    spyOn(component, 'nextPage').and.callThrough();
-    component.nextPage();
+    spyOn(component, 'selectGender').and.callThrough();
+    component.selectGender('male');
 
-    expect(component.nextPage).toHaveBeenCalled();
-    expect(component.currentPage).toBe(2);
+    expect(component.selectGender).toHaveBeenCalled();
+    expect(component.selectedGender).toBe('male');
   });
 
-  it('should call previous page function', () => {
-    component.currentPage = 2;
+  it('should call onInputChange method', () => {
+    const event: MatSliderChange = new MatSliderChange();
+    event.value = 45;
 
-    spyOn(component, 'previousPage').and.callThrough();
-    component.previousPage();
+    spyOn(component, 'onInputChange').and.callThrough();
 
-    expect(component.previousPage).toHaveBeenCalled();
-    expect(component.currentPage).toBe(1);
-  });
+    component.onInputChange(event);
 
-  it('should call markVideoSelected method', () => {
-    // tslint:disable-next-line:max-line-length
-    const videoListModel = new VideoListModel(5, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'video 5', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-
-    // tslint:disable-next-line:max-line-length
-    component.previouslySelectedVideo = new VideoListModel(5, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'video 5', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png', true);
-
-    spyOn(component, 'markVideoSelected').and.callThrough();
-    component.markVideoSelected(videoListModel);
-
-    expect(component.markVideoSelected).toHaveBeenCalled();
-    expect(videoListModel.selected).toBeTruthy();
-  });
-
-  it('should call next step function', () => {
-    // tslint:disable-next-line:max-line-length
-    component.previouslySelectedVideo = new VideoListModel(5, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'video 5', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png', true);
-
-    spyOn(component, 'nextStep').and.callThrough();
-    component.nextStep();
-
-    expect(component.nextStep).toHaveBeenCalled();
+    expect(component.onInputChange).toHaveBeenCalled();
+    expect(component.selectedWeight).toBe(45);
 
   });
+
+  it('should call formatLabel method', () => {
+    spyOn(component, 'formatLabel').and.callThrough();
+
+    component.formatLabel(44);
+
+    expect(component.formatLabel).toHaveBeenCalled();
+  });
+
 });

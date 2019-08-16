@@ -15,5 +15,21 @@
     "welcome": "Welcome to LebensWaage",
     "choose-language": "Choose language",
     "press-to-start": "Press to start"
+  },
+  "step-1": {
+    "select-training": "Select training"
+  },
+  "step-3": {
+    "biometrics":"Bio-metrics by LebensWaage",
+    "your-measures": "Your measures",
+    "height": "Height",
+    "weight": "Weight",
+    "waist": "Waist",
+    "hips": "Hips",
+    "target": "Target",
+    "target-1": "Reduction of body mass",
+    "target-2": "Retaining the existing bodz mass",
+    "target-3": "Increase body mass",
+    "target-4": "Increase muscle mass"
   }
 }

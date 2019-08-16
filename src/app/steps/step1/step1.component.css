@@ -1,20 +1,25 @@
-.plan-images {
-  width: 200px;
-  height: 200px;
-  margin-top: 40px;
-  margin-left: 15px;
+.navigation-icons {
+  margin-top: 118px;
+  color: black;
+  font-size: 50px;
 }
 
-.plan-images-background {
-  width: 250px;
-  height: 250px;
-  border: solid 4px #d5d5d5;
-  border-radius: 50%;
+.disabled-navigation {
+  color: lightgray;
 }
 
-.plan-text {
-  width: 250px;
-  font-size: 36px;
+.video-title {
+  font-size: 30px;
   color: #555555;
+  font-weight: 400;
+}
+
+.video-selected {
+  border: 1px solid green;
+}
+
+.select-training {
+  font-size: 60px;
+  color: #333333;
   font-weight: 400;
 }

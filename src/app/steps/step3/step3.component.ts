@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatRadioChange, MatSliderChange} from '@angular/material';
 import {StepsService} from '../steps.service';
-import {MatSliderChange} from '@angular/material';
 
 @Component({
   selector: 'app-step3',
@@ -9,34 +9,39 @@ import {MatSliderChange} from '@angular/material';
 })
 export class Step3Component implements OnInit {
 
-  public selectedGender: string = null;
-  public selectedWeight: number = null;
+  public height = 0;
+  public weight = 0;
+  public waist = 0;
+  public hips = 0;
+  public target = null;
 
   constructor(private stepsService: StepsService) { }
 
   ngOnInit() {
   }
 
-  public selectGender(gender: string): void {
-    this.selectedGender = gender;
-    this.stepsService.selectedGender = gender;
+  onHeightChange(event: MatSliderChange) {
+    this.height = event.value;
+    this.stepsService.height = event.value;
   }
 
-  onInputChange(event: MatSliderChange) {
-    this.selectedWeight = event.value;
-    this.stepsService.selectedWeight = event.value;
+  onWeightChange(event: MatSliderChange) {
+    this.weight = event.value;
+    this.stepsService.weight = event.value;
   }
 
-  public nextStep(): void {
-
+  onWaistChange(event: MatSliderChange) {
+    this.waist = event.value;
+    this.stepsService.waist = event.value;
   }
 
-  formatLabel(value: number | null) {
-    if (!value) {
-      return 0;
-    }
+  onHipsChange(event: MatSliderChange) {
+    this.hips = event.value;
+    this.stepsService.hips = event.value;
+  }
 
-    return value;
+  onTargetChange(event: MatRadioChange) {
+    this.stepsService.target = event.value;
   }
 
 }

@@ -1,16 +1,25 @@
-<div class="row justify-content-center">
-  <div class="plan-images-background" style="margin-right: 10px" [routerLink]="['../step-2']">
-    <img src="assets/training-plan-icon.png" class="plan-images"/>
-  </div>
-  <div class="plan-images-background" style="margin-left: 30px;">
-    <img src="assets/diet-plan-icon.png" class="plan-images"/>
+<div class="row justify-content-center" style="margin-top: -7%">
+  <div class="col-sm-6">
+    <span [innerHTML]="'step-1.select-training' | translate" class="select-training"></span>
   </div>
 </div>
-<div class="row justify-content-center">
-  <div class="plan-text" style="margin-right: 10px">
-    <span>Training plan</span>
+<div class="row justify-content-center" *ngIf="filteredVideoList.length > 0">
+  <div class="col-sm-1">
+    <mat-icon class="navigation-icons" [ngClass]="currentPage == 0 ? 'disabled-navigation' : ''" (click)="previousPage()">chevron_left</mat-icon>
   </div>
-  <div class="plan-text" style="margin-left: 30px;">
-    <span>Diet plan</span>
+  <div class="col-sm-2" [ngClass]="video.selected ? 'video-selected': ''" *ngFor="let video of filteredVideoList" (click)="markVideoSelected(video)">
+    <video width="200" height="240" controls>
+      <source [src]="video.videoUrl" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <span class="video-title" [innerHTML]="video.videoTitle"></span>
+  </div>
+  <div class="col-sm-1">
+    <mat-icon class="navigation-icons" [ngClass]="currentPage + 1 == totalPages ? 'disabled-navigation' : ''" (click)="nextPage()">chevron_right</mat-icon>
+  </div>
+</div>
+<div class="row justify-content-end">
+  <div class="col-sm-2">
+    <button mat-raised-button class="next-button" [disabled]="previouslySelectedVideo == null" (click)="nextStep()">{{'next' | translate}}</button>
   </div>
 </div>
