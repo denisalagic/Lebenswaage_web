@@ -19,9 +19,24 @@
     "press-to-start": "Press to start"
   },
   "step-1": {
+    "goal": "What is your goal?",
+    "health": {
+      "title": "Be healthier",
+      "description": "Eat and train for optimum health"
+    },
+    "lose-weight": {
+      "title": "Lose weight",
+      "description": "Get leaner and increase your stamina"
+    },
+    "gain-weight": {
+      "title": "Gain weight",
+      "description": "Build muscle strength"
+    }
+  },
+  "step-2": {
     "select-training": "Select training"
   },
-  "step-3": {
+  "step-4": {
     "biometrics":"Bio-metrics by LebensWaage",
     "your-measures": "Your measures",
     "height": "Height",
@@ -34,7 +49,7 @@
     "target-3": "Increase body mass",
     "target-4": "Increase muscle mass"
   },
-  "step-4": {
+  "step-5": {
     "biometrics":"Bio-metrics by LebensWaage",
     "recommendations": "Recommendations",
     "mass": "Mass",
@@ -46,11 +61,11 @@
     "foods-not-included-3": "Meat",
     "foods-not-included-4": "Nuts"
   },
-  "step-5": {
+  "step-6": {
     "gdpr-title": "GDPR and Terms of Agreements",
     "gdpr-content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ultrices massa a sollicitudin. Vestibulum eu quam rhoncus, eleifend magna eu, maximus tortor. Donec ultricies et arcu id aliquam. Duis ornare tempus scelerisque. Etiam convallis fringilla ex. Phasellus fringilla nunc libero. Ut iaculis, odio faucibus sollicitudin mattis, enim libero aliquam est, vel molestie lectus nunc ut ante. Maecenas convallis mi et molestie luctus. Cras maximus dolor nec ultrices pellentesque. Sed sapien massa, ultricies vitae dui ut, tristique vulputate nulla. Curabitur at pulvinar metus, nec mollis nisi. Duis ac vehicula est, in consectetur mi. Quisque est lacus, laoreet dignissim interdum eu, vehicula eleifend ex. Integer consequat diam quis aliquam molestie."
   },
-  "step-6": {
+  "step-7": {
     "finish": "Finish"
   }
 }
