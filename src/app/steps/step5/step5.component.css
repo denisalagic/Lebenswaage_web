@@ -21,4 +21,6 @@
 .box-style {
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   border-radius: 5px;
+  height: 200px !important;
+  overflow-y: scroll;
 }
