@@ -1,28 +1,18 @@
 <div class="row justify-content-center" style="margin-top: -7%">
   <div class="col-sm-8">
-    <span [innerHTML]="'step-6.finish' | translate" class="finish-title"></span>
+    <span [innerHTML]="'step-6.gdpr-title' | translate" class="gdpr-title"></span>
   </div>
 </div>
 <div class="row justify-content-center">
   <div class="col-sm-6 box-style">
-    <div class="row">
-      <form class="email-form">
-        <mat-form-field class="email-form-full-width">
-          <input matInput placeholder="Email" [formControl]="emailFormControl"
-                 [errorStateMatcher]="matcher">
-          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </form>
-    </div>
-    <div class="row justify-content-center" style="margin-bottom: 32px;">
-      <div class="col-sm-2">
-        <button mat-raised-button class="next-button" [disabled]="emailFormControl.invalid" (click)="sendMail()">{{'send' | translate}}</button>
-      </div>
-    </div>
+    <p [innerHTML]="'step-6.gdpr-content' | translate" class="gdpr-content " scrollable></p>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <mat-checkbox class="text" [(ngModel)]="gdprAccepted">{{'agree' | translate}}</mat-checkbox>
+</div>
+<div class="row justify-content-end">
+  <div class="col-sm-2">
+    <button mat-raised-button class="next-button" [disabled]="gdprAccepted == false" (click)="nextStep()">{{'next' | translate}}</button>
   </div>
 </div>

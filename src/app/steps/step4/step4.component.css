@@ -4,15 +4,10 @@
   font-weight: 400;
 }
 
-.text-style {
-  font-size: 18px;
-  line-height: 24px;
+.your-measures {
+  font-size: 24px;
   color: #555555;
   font-weight: 400;
-}
-
-.recommendations {
-  border: solid 1px grey;
 }
 
 .input-font-color {
@@ -20,30 +15,13 @@
   width: 100% !important;
 }
 
-.box-title {
-  font-size: 30px;
-  color: #333333;
-  font-weight: 500;
+.step-4-target-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
 }
 
-.box-style {
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  border-radius: 5px;
-}
-
-.food-picker {
-  margin-right: 10px;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: solid #00b7ff 6px;
-  line-height: 60px
-}
-
-.food-picker-selected {
-  border: solid green 6px !important;
-}
-
-.food-picker .text-style {
-  vertical-align: middle;
+.step-4-target-radio-button {
+  margin: 5px;
+  color: black !important;
 }

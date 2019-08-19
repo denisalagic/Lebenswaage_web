@@ -1,25 +1,14 @@
-.navigation-icons {
-  margin-top: 118px;
-  color: black;
-  font-size: 50px;
-}
-
-.disabled-navigation {
-  color: lightgray;
-}
-
-.video-title {
-  font-size: 30px;
-  color: #555555;
-  font-weight: 400;
-}
-
-.video-selected {
-  border: 1px solid green;
-}
-
-.select-training {
+.goal {
   font-size: 60px;
   color: #333333;
   font-weight: 400;
+}
+
+.goal-selected {
+  border: 1px solid #00b7ff;
+}
+
+.card-content {
+  text-align: left;
+  margin-left: 18px;
 }

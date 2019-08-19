@@ -1,7 +1,8 @@
-import {VideoListModel} from "./video-list.model";
+import {VideoListModel} from './video-list.model';
 
 export class LebensWaageCommand {
-  constructor(private selectedVideo: VideoListModel,
+  constructor(private goal: number,
+              private selectedVideo: VideoListModel,
               private selectedGender: string,
               private selectedAge: number,
               private height: number,
@@ -10,5 +11,5 @@ export class LebensWaageCommand {
               private hips: number,
               private target: number,
               private foodsNotIncluded: number,
-              private gpdrAgreement: boolean) {}
+              private gdprAgreement: boolean) {}
 }

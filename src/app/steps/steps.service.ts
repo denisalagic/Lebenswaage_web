@@ -1,34 +1,16 @@
 import { Injectable } from '@angular/core';
 import {VideoListModel} from '../model/video-list.model';
-import {Observable} from "rxjs";
-import {LebensWaageCommand} from "../model/lebens-waage.command";
-import "rxjs-compat/add/observable/of";
+import {Observable} from 'rxjs';
+import {LebensWaageCommand} from '../model/lebens-waage.command';
+import 'rxjs-compat/add/observable/of';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StepsService {
 
-  public sendEmail(): Observable<LebensWaageCommand> {
-    let command: LebensWaageCommand = new LebensWaageCommand(this._selectedVideo, this.selectedGender, this.selectedAge, this.height, this.weight, this.waist, this.hips, this.target, this.foodsNotIncluded, this.gdprAgreement);
-
-    console.log("THIS IS RECEIVED COMMAND");
-    console.log(command);
-    return Observable.of(command);
-  }
-
-  public resetProperties(): void {
-    this._selectedVideo = null;
-    this._selectedGender = null;
-    this._selectedAge = null;
-    this._height = null;
-    this._weight = null;
-    this._waist = null;
-    this._hips = null;
-    this._target = null;
-    this._foodsNotIncluded = null;
-    this._gdprAgreement = false;
-  }
+  // tslint:disable-next-line:variable-name
+  private _goal: number = null;
 
   // tslint:disable-next-line:variable-name
   private _selectedVideo: VideoListModel = null;
@@ -53,9 +35,40 @@ export class StepsService {
   // tslint:disable-next-line:variable-name
   private _target: number = null;
 
+  // tslint:disable-next-line:variable-name
   private _foodsNotIncluded: number = null;
 
-  private _gdprAgreement: boolean = false;
+  // tslint:disable-next-line:variable-name
+  private _gdprAgreement = false;
+
+  public sendEmail(): Observable<LebensWaageCommand> {
+    const command: LebensWaageCommand = new LebensWaageCommand(this.goal, this._selectedVideo, this.selectedGender, this.selectedAge, this.height, this.weight, this.waist, this.hips, this.target, this.foodsNotIncluded, this.gdprAgreement);
+
+    console.log('THIS IS RECEIVED COMMAND');
+    console.log(command);
+    return Observable.of(command);
+  }
+
+  public resetProperties(): void {
+    this._selectedVideo = null;
+    this._selectedGender = null;
+    this._selectedAge = null;
+    this._height = null;
+    this._weight = null;
+    this._waist = null;
+    this._hips = null;
+    this._target = null;
+    this._foodsNotIncluded = null;
+    this._gdprAgreement = false;
+  }
+
+  get goal(): number {
+    return this._goal;
+  }
+
+  set goal(value: number) {
+    this._goal = value;
+  }
 
   set selectedVideo(selectedVideo: VideoListModel) {
     this._selectedVideo = selectedVideo;

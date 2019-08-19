@@ -18,10 +18,10 @@
     "choose-language": "Izaberite jezik",
     "press-to-start": "Odaberite za početak"
   },
-  "step-1": {
+  "step-2": {
     "select-training": "Izaberite trening"
   },
-  "step-3": {
+  "step-4": {
     "biometrics":"Bio-metrics by LebensWaage",
     "your-measures": "Vaše mjere",
     "height": "Visina",
@@ -34,7 +34,7 @@
     "target-3": "Povećanje tjelesne mase",
     "target-4": "Povećanje mišićne mase"
   },
-  "step-4": {
+  "step-5": {
     "biometrics":"Bio-metrics by LebensWaage",
     "recommendations": "Preporuke",
     "mass": "Težina",
@@ -46,11 +46,11 @@
     "foods-not-included-3": "Meso",
     "foods-not-included-4": "Orasi"
   },
-  "step-5": {
+  "step-6": {
     "gdpr-title": "GDPR i uvjeti korištenja",
     "gdpr-content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ultrices massa a sollicitudin. Vestibulum eu quam rhoncus, eleifend magna eu, maximus tortor. Donec ultricies et arcu id aliquam. Duis ornare tempus scelerisque. Etiam convallis fringilla ex. Phasellus fringilla nunc libero. Ut iaculis, odio faucibus sollicitudin mattis, enim libero aliquam est, vel molestie lectus nunc ut ante. Maecenas convallis mi et molestie luctus. Cras maximus dolor nec ultrices pellentesque. Sed sapien massa, ultricies vitae dui ut, tristique vulputate nulla. Curabitur at pulvinar metus, nec mollis nisi. Duis ac vehicula est, in consectetur mi. Quisque est lacus, laoreet dignissim interdum eu, vehicula eleifend ex. Integer consequat diam quis aliquam molestie."
   },
-  "step-6": {
+  "step-7": {
     "finish": "Kraj"
   }
 }

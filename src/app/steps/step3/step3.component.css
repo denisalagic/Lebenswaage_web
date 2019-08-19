@@ -1,27 +1,71 @@
-.biometrics {
+.title {
   font-size: 60px;
   color: #333333;
   font-weight: 400;
 }
 
-.your-measures {
-  font-size: 24px;
+.female-image {
+  width: 200px;
+  height: 200px;
+  margin-top: 30px;
+  margin-left: 4px;
+}
+
+.male-image {
+  width: 200px;
+  height: 200px;
+  margin-top: 21px;
+  margin-left: 15px;
+}
+
+.gender-images-background {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.gender-images-not-selected {
+  border: solid 6px #d5d5d5;
+}
+.gender-images-selected {
+  border: solid 6px #00b7ff;
+  opacity: 1.0 !important;
+}
+
+.gradient-scale {
+  background-image: linear-gradient(to right, #00b7ff , #f25950);
+}
+
+.age-text {
+  font-size: 18px;
   color: #555555;
-  font-weight: 400;
+  font-weight: 500;
 }
 
-.input-font-color {
-  color: black !important;
-  width: 100% !important;
+::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-wrapper {
+  top: 18px;
+}
+::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-wrapper {
+  height: 12px;
+  border-radius: 10px
+}
+::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-background,
+::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+  height: 100%;
+}
+::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+  background-image: linear-gradient(to right, #00b7ff , #f25950);
 }
 
-.step-3-target-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
+::ng-deep .mat-accent .mat-slider-thumb {
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border: solid 2px gray;
+  bottom: -20px;
+  right: -20px;
 }
-
-.step-3-target-radio-button {
-  margin: 5px;
-  color: black !important;
+::ng-deep .mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
+  background-color: white;
 }

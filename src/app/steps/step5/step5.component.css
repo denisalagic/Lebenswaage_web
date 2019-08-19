@@ -1,26 +1,49 @@
-.gdpr-title {
+.biometrics {
   font-size: 60px;
   color: #333333;
   font-weight: 400;
 }
 
-.gdpr-content {
-  font-size: 21px;
-  color: #777777;
-  font-weight: 300;
-  margin: 32px;
-  text-align: left;
+.text-style {
+  font-size: 18px;
+  line-height: 24px;
+  color: #555555;
+  font-weight: 400;
 }
 
-.text {
-  font-size: 21px;
-  color: #777777;
-  font-weight: 300;
+.recommendations {
+  border: solid 1px grey;
+}
+
+.input-font-color {
+  color: black !important;
+  width: 100% !important;
+}
+
+.box-title {
+  font-size: 30px;
+  color: #333333;
+  font-weight: 500;
 }
 
 .box-style {
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   border-radius: 5px;
-  height: 200px !important;
-  overflow-y: scroll;
+}
+
+.food-picker {
+  margin-right: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: solid grey 6px;
+  line-height: 60px
+}
+
+.food-picker-selected {
+  border: solid #00b7ff 6px !important;
+}
+
+.food-picker .text-style {
+  vertical-align: middle;
 }

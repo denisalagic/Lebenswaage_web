@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {StepsService} from "../steps.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {StepsService} from '../steps.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-step5',
@@ -9,7 +9,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class Step5Component implements OnInit {
 
-  public gdprAccepted: boolean = false;
+  public foodsNotIncluded = null;
+
 
   constructor(private stepsService: StepsService,
               private router: Router,
@@ -18,9 +19,13 @@ export class Step5Component implements OnInit {
   ngOnInit() {
   }
 
+  public pickFood(foodIndex: number) {
+    this.foodsNotIncluded = foodIndex;
+    this.stepsService.foodsNotIncluded = this.foodsNotIncluded;
+  }
+
   public nextStep(): void {
-    if (this.gdprAccepted) {
-      this.stepsService.gdprAgreement = true;
+    if (this.foodsNotIncluded != null) {
       this.router.navigate(['../step-6'], {relativeTo: this.activatedRoute});
     }
   }

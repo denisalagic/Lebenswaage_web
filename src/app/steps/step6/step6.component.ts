@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
-import {ErrorStateMatcher} from "@angular/material";
-import {StepsService} from "../steps.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {StepsService} from '../steps.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-step6',
@@ -10,13 +8,8 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./step6.component.css']
 })
 export class Step6Component implements OnInit {
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
 
-  matcher = new MyErrorStateMatcher();
-
+  public gdprAccepted = false;
 
   constructor(private stepsService: StepsService,
               private router: Router,
@@ -25,19 +18,11 @@ export class Step6Component implements OnInit {
   ngOnInit() {
   }
 
-  public sendMail() {
-    this.stepsService.sendEmail().subscribe(resp => {
-      alert(JSON.stringify(resp));
-      this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
-    });
+  public nextStep(): void {
+    if (this.gdprAccepted) {
+      this.stepsService.gdprAgreement = true;
+      this.router.navigate(['../step-7'], {relativeTo: this.activatedRoute});
+    }
   }
 
-}
-
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
 }

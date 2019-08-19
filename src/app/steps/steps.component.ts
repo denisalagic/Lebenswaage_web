@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {StepsService} from "./steps.service";
+import {StepsService} from './steps.service';
 
 @Component({
   selector: 'app-steps',

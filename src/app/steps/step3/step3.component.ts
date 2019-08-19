@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatRadioChange, MatSliderChange} from '@angular/material';
 import {StepsService} from '../steps.service';
-import {ActivatedRoute, Router} from "@angular/router";
+import {MatSliderChange} from '@angular/material';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-step3',
@@ -10,12 +10,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class Step3Component implements OnInit {
 
-  public height = 0;
-  public weight = 0;
-  public waist = 0;
-  public hips = 0;
-  public target = null;
-
+  public selectedGender: string = null;
+  public selectedAge: number = null;
 
   constructor(private stepsService: StepsService,
               private router: Router,
@@ -24,37 +20,30 @@ export class Step3Component implements OnInit {
   ngOnInit() {
   }
 
-  onHeightChange(event: MatSliderChange) {
-    this.height = event.value;
-    this.stepsService.height = event.value;
+  public selectGender(gender: string): void {
+    this.selectedGender = gender;
+    this.stepsService.selectedGender = gender;
   }
 
-  onWeightChange(event: MatSliderChange) {
-    this.weight = event.value;
-    this.stepsService.weight = event.value;
-  }
-
-  onWaistChange(event: MatSliderChange) {
-    this.waist = event.value;
-    this.stepsService.waist = event.value;
-  }
-
-  onHipsChange(event: MatSliderChange) {
-    this.hips = event.value;
-    this.stepsService.hips = event.value;
-  }
-
-  onTargetChange(event: MatRadioChange) {
-    this.stepsService.target = event.value;
+  onInputChange(event: MatSliderChange) {
+    this.selectedAge = event.value;
+    this.stepsService.selectedAge = event.value;
   }
 
   public nextStep(): void {
-    if (this.height > 0 && this.weight > 0 && this.waist > 0 && this.hips > 0 && this.target != null) {
+    if (this.selectedGender != null && this.selectedAge) {
+      this.stepsService.selectedAge = this.selectedAge;
+      this.stepsService.selectedGender = this.selectedGender;
       this.router.navigate(['../step-4'], {relativeTo: this.activatedRoute});
     }
   }
 
-  public nextButtonDisabled(): boolean {
-    return this.height == 0 || this.weight == 0 || this.waist == 0 || this.hips == 0 || this.target == null
+  formatLabel(value: number | null) {
+    if (!value) {
+      return 0;
+    }
+
+    return value;
   }
+
 }

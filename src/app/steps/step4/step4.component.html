@@ -4,49 +4,80 @@
   </div>
 </div>
 <div class="row justify-content-center">
-  <div class="col-sm-4 box-style" >
-    <div class="row" style="margin-left: 45px">
-      <span class="box-title" [innerHTML]="'step-4.recommendations' | translate"></span>
+  <div class="col-sm-3">
+    <div class="row">
+      <span [innerHTML]="'step-4.your-measures' | translate" class="your-measures"></span>
     </div>
-    <div class="row" style="margin-bottom: 10px; margin-left: 45px">
-      <div class="col-sm-8 recommendations">
-        <span [innerHTML]="'step-4.mass' | translate" class="text-style"></span>
+    <div class="row">
+      <div class="col-sm-7">
+        <mat-form-field class="input-font-color">
+          <input matInput [(ngModel)]="height" ngDefaultControl placeholder="{{ 'step-4.height' | translate }}" type="number" class="example-right-align">
+          <span matSuffix>cm</span>
+        </mat-form-field>
       </div>
-      <div class="col-sm-3" style="background-color: #00b7ff;">
-        57 - 77 kg
-      </div>
-    </div>
-    <div class="row" style="margin-bottom: 10px; margin-left: 45px">
-      <div class="col-sm-8 recommendations">
-        <span [innerHTML]="'step-4.energy-input' | translate" class="text-style"></span>
-      </div>
-      <div class="col-sm-3" style="background-color: #61bb57;">
-        2982 kcal
+      <div class="col-sm-5">
+          <mat-slider thumbLabel tickInterval="1" (input)="onHeightChange($event)"
+                      min="0" max="99" style="width: 100%"></mat-slider>
       </div>
     </div>
-    <div class="row" style="margin-bottom: 10px; margin-left: 45px">
-      <div class="col-sm-8 recommendations">
-        <span [innerHTML]="'step-4.additional-energy' | translate" class="text-style"></span>
+    <div class="row">
+      <div class="col-sm-7">
+        <mat-form-field class="input-font-color">
+          <input matInput [(ngModel)]="weight" ngDefaultControl placeholder="{{ 'step-4.weight' | translate }}" type="number" class="example-right-align">
+          <span matSuffix>kg</span>
+        </mat-form-field>
       </div>
-      <div class="col-sm-3" style="background-color: #f1594f;">
-        200 kcal
+      <div class="col-sm-5">
+        <mat-slider thumbLabel tickInterval="1" (input)="onWeightChange($event)"
+                    min="0" max="99" style="width: 100%"></mat-slider>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-7">
+        <mat-form-field class="input-font-color">
+          <input matInput [(ngModel)]="waist" ngDefaultControl placeholder="{{ 'step-4.waist' | translate }}" type="number" class="example-right-align">
+          <span matSuffix>cm</span>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-slider thumbLabel tickInterval="1" (input)="onWaistChange($event)"
+                    min="0" max="99" style="width: 100%"></mat-slider>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-7">
+        <mat-form-field class="input-font-color" >
+          <input matInput [(ngModel)]="hips" ngDefaultControl placeholder="{{ 'step-4.hips' | translate }}" type="number" class="example-right-align">
+          <span matSuffix>cm</span>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-slider thumbLabel tickInterval="1" (input)="onHipsChange($event)"
+                    min="0" max="99" style="width: 100%"></mat-slider>
       </div>
     </div>
   </div>
-
-  <div class="col-sm-4 offset-sm-1 box-style" >
-    <div class="row" style="margin-left: 45px">
-      <span class="box-title" [innerHTML]="'step-4.foods-not-included' | translate"></span>
+  <div class="col-sm-2" style="height: 316px !important;">
+    <img class="language-image" src="assets/human-image.png" style="height: 91% !important;">
+  </div>
+  <div class="col-sm-3">
+    <div class="row" id="step-4-target-label">
+      <span [innerHTML]="'step-4.target' | translate" class="your-measures"></span>
     </div>
-    <div class="row justify-content-center">
-      <div *ngFor="let number of [1,2,3,4]" class="food-picker" [ngClass]="foodsNotIncluded == number ? 'food-picker-selected':''" (click)="pickFood(number)">
-        <span class="text-style"> {{('step-4.foods-not-included-' + number) | translate}}</span>
-      </div>
+    <div class="row">
+      <mat-radio-group
+        aria-labelledby="step-4-target-label"
+        class="step-4-target-radio-group"
+        [(ngModel)]="target" (change)="onTargetChange($event)">
+        <mat-radio-button class="step-4-target-radio-button" *ngFor="let number of [1,2,3,4]" [value]="number">
+          {{('step-4.target-' + number) | translate}}
+        </mat-radio-button>
+      </mat-radio-group>
     </div>
   </div>
 </div>
 <div class="row justify-content-end">
   <div class="col-sm-2">
-    <button mat-raised-button class="next-button" [disabled]="foodsNotIncluded == null" (click)="nextStep()">{{'next' | translate}}</button>
+    <button mat-raised-button class="next-button" [disabled]="nextButtonDisabled()" (click)="nextStep()">{{'next' | translate}}</button>
   </div>
 </div>
