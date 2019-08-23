@@ -4,6 +4,7 @@
     "german": "German",
     "croatian": "Croatian"
   },
+  "step": "Step {{step_no}} of 6.",
   "next": "Next",
   "send": "Send",
   "sex": "Sex",
