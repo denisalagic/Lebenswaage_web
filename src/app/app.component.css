@@ -2,6 +2,8 @@
   height: 100vh;
   background-image:url('../assets/background.png');
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
 }
 
@@ -37,6 +39,7 @@
   background: #f25950;
   font-size: 25px;
   color: #ffffff;
+  padding: 0.3% 6%;
 }
 
 .navigation-icons {
@@ -47,4 +50,12 @@
 
 .disabled-navigation {
   color: lightgray;
+}
+
+
+@media only screen and (max-width: 444px) {
+  .welcome-text {
+    font-size: 54px;
+    color: black;
+  }
 }

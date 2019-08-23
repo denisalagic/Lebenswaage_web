@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="row justify-content-center">
-  <div class="col-sm-3" (click)="pickGoal(1)">
+  <div class="col-10 col-sm-3" (click)="pickGoal(1)"  style="margin-bottom: 20px;">
     <mat-card [ngClass]="goalPicked == 1 ? 'goal-selected': ''">
       <mat-card-header>
         <mat-card-title>{{'step-1.health.title' | translate}}</mat-card-title>
@@ -16,7 +16,7 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <div class="col-sm-3" (click)="pickGoal(2)">
+  <div class="col-10 col-sm-3" (click)="pickGoal(2)" style="margin-bottom: 20px;">
     <mat-card [ngClass]="goalPicked == 2 ? 'goal-selected': ''">
       <mat-card-header>
         <mat-card-title>{{'step-1.lose-weight.title' | translate}}</mat-card-title>
@@ -28,7 +28,7 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <div class="col-sm-3" (click)="pickGoal(3)">
+  <div class="col-10 col-sm-3" (click)="pickGoal(3)" style="margin-bottom: 20px;">
     <mat-card [ngClass]="goalPicked == 3 ? 'goal-selected': ''">
       <mat-card-header>
         <mat-card-title>{{'step-1.gain-weight.title' | translate}}</mat-card-title>

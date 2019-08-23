@@ -3,55 +3,55 @@
     <span [innerHTML]="'step-4.biometrics' | translate" class="biometrics"></span>
   </div>
 </div>
-<div class="row justify-content-center">
+<div class="row justify-content-center values">
   <div class="col-sm-3">
     <div class="row">
       <span [innerHTML]="'step-4.your-measures' | translate" class="your-measures"></span>
     </div>
     <div class="row">
-      <div class="col-sm-7">
+      <div class="col-7 col-sm-7">
         <mat-form-field class="input-font-color">
           <input matInput [(ngModel)]="height" ngDefaultControl placeholder="{{ 'step-4.height' | translate }}" type="number" class="example-right-align">
           <span matSuffix>cm</span>
         </mat-form-field>
       </div>
-      <div class="col-sm-5">
+      <div class="col-5 col-sm-5">
           <mat-slider thumbLabel tickInterval="1" (input)="onHeightChange($event)"
                       min="0" max="99" style="width: 100%"></mat-slider>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-7">
+      <div class="col-7 col-sm-7">
         <mat-form-field class="input-font-color">
           <input matInput [(ngModel)]="weight" ngDefaultControl placeholder="{{ 'step-4.weight' | translate }}" type="number" class="example-right-align">
           <span matSuffix>kg</span>
         </mat-form-field>
       </div>
-      <div class="col-sm-5">
+      <div class="col-5 col-sm-5">
         <mat-slider thumbLabel tickInterval="1" (input)="onWeightChange($event)"
                     min="0" max="99" style="width: 100%"></mat-slider>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-7">
+      <div class="col-7 col-sm-7">
         <mat-form-field class="input-font-color">
           <input matInput [(ngModel)]="waist" ngDefaultControl placeholder="{{ 'step-4.waist' | translate }}" type="number" class="example-right-align">
           <span matSuffix>cm</span>
         </mat-form-field>
       </div>
-      <div class="col-sm-5">
+      <div class="col-5 col-sm-5">
         <mat-slider thumbLabel tickInterval="1" (input)="onWaistChange($event)"
                     min="0" max="99" style="width: 100%"></mat-slider>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-7">
+      <div class="col-7 col-sm-7">
         <mat-form-field class="input-font-color" >
           <input matInput [(ngModel)]="hips" ngDefaultControl placeholder="{{ 'step-4.hips' | translate }}" type="number" class="example-right-align">
           <span matSuffix>cm</span>
         </mat-form-field>
       </div>
-      <div class="col-sm-5">
+      <div class="col-5 col-sm-5">
         <mat-slider thumbLabel tickInterval="1" (input)="onHipsChange($event)"
                     min="0" max="99" style="width: 100%"></mat-slider>
       </div>

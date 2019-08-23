@@ -4,33 +4,33 @@
       <span [innerHTML]="'home.title-split.first' | translate"></span>
       <span [innerHTML]="'home.title-split.second' | translate" class="font-weight-bold"></span>
     </div>
-    <div class="col-sm-1 offset-sm-2 text-right">
+    <div class="col-2 col-sm-1 offset-sm-2 text-right" style="margin-top: 3%">
       <mat-icon class="navigation-icons" [ngClass]="currentPage == 0 ? 'disabled-navigation' : ''" (click)="previousPage()">chevron_left</mat-icon>
     </div>
-    <div class="col-sm-2" *ngFor="let video of filteredVideoList">
-      <video width="200" height="130" controls controlsList="nodownload"  [poster]="video.posterUrl">
+    <div class="col-8 col-sm-2" *ngFor="let video of filteredVideoList"  style="margin-top: 3%">
+      <video width="100%" height="100%" controls controlsList="nodownload"  [poster]="video.posterUrl">
         <source [src]="video.videoUrl" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-
-
     </div>
-    <div class="col-sm-1">
+    <div class="col-2 col-sm-1"  style="margin-top: 3%">
       <mat-icon class="navigation-icons" [ngClass]="currentPage + 1 == totalPages ? 'disabled-navigation' : ''" (click)="nextPage()">chevron_right</mat-icon>
     </div>
   </div>
 
   <div class="row justify-content-center text-white" style="margin-top: 6%">
-    <span [innerHTML]="'home.welcome' | translate" class="welcome-text"></span>
+    <div class="col-12 col-sm-7">
+      <span [innerHTML]="'home.welcome' | translate" class="welcome-text"></span>
+    </div>
   </div>
 
   <div class="row justify-content-center" style="margin-top: 3%">
-    <div class="col-sm-5 language-box">
-      <div class="row justify-content-center" style="margin-top: 50px">
+    <div class="col-sm-4 language-box">
+      <div class="row justify-content-center" style="margin-top: 10%;">
         <span [innerHTML]="'home.choose-language' | translate" class="choose-language-text"></span>
       </div>
-      <div class="row justify-content-around mt-2" style="margin-bottom: 1%">
-        <div class="col-sm-2" (click)="setLanguage('en')">
+      <div class="row justify-content-center mt-2" style="margin-bottom: 5%">
+        <div class="col-sm-3" (click)="setLanguage('en')">
           <div class="row justify-content-center">
             <img class="language-image" src="assets/en.png">
           </div>
@@ -38,7 +38,7 @@
             <span [innerHTML]="'language.english' | translate" class="language"></span>
           </div>
         </div>
-        <div class="col-sm-2" (click)="setLanguage('de')">
+        <div class="col-sm-3" (click)="setLanguage('de')">
           <div class="row justify-content-center">
             <img class="language-image" src="assets/de.png">
           </div>
@@ -46,7 +46,7 @@
             <span [innerHTML]="'language.german' | translate" class="language"></span>
           </div>
         </div>
-        <div class="col-sm-2" (click)="setLanguage('hr')">
+        <div class="col-sm-3" (click)="setLanguage('hr')">
           <div class="row justify-content-center">
             <img class="language-image" src="assets/hr.png">
           </div>
@@ -58,7 +58,7 @@
     </div>
   </div>
 
-  <div class="row justify-content-center" style="margin-top: 50px">
+  <div class="row justify-content-center" style="margin-top: 2%;">
     <button mat-raised-button class="start-button" [routerLink]="'steps'">{{'home.press-to-start' | translate}}</button>
   </div>
 </div>

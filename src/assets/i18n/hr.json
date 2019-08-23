@@ -4,6 +4,7 @@
     "german": "Njmački",
     "croatian": "Hrvatski"
   },
+  "step": "Korak {{step_no}} od 6.",
   "next": "Sljedeće",
   "send": "Pošalji",
   "sex": "Spol",

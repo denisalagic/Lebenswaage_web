@@ -66,3 +66,18 @@
 .progressbar li.active + li:after {
   background-color: #f25950;
 }
+
+.progressbar-short {
+  display: none;
+}
+
+@media only screen and (max-width: 444px) {
+  .progressbar {
+    display: none;
+  }
+
+  .progressbar-short {
+    display: block;
+    font-size: 20px;
+  }
+}

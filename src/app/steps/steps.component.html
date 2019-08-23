@@ -14,6 +14,9 @@
           <li [ngClass]="activeStep >= 5 ? 'active' : ''">Step 5</li>
           <li [ngClass]="activeStep >= 6 ? 'active' : ''">Step 6</li>
         </ul>
+        <div class="progressbar-short" *ngIf="activeStep !== 7"
+             [innerHTML]="'step' | translate:{step_no: activeStep }">
+        </div>
       </div>
     </div>
   </div>
