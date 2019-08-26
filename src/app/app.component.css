@@ -8,7 +8,7 @@
 }
 
 .welcome-text {
-  font-size: 72px;
+  font-size: 60px;
   color: #ffffff;
   font-weight: 400;
 }
@@ -55,7 +55,7 @@
 
 @media only screen and (max-width: 444px) {
   .welcome-text {
-    font-size: 54px;
+    font-size: 30px;
     color: black;
   }
 }
