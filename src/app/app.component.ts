@@ -13,6 +13,7 @@ export class AppComponent {
 
   private videoList: VideoListModel[] = [];
   public filteredVideoList: VideoListModel[] = [];
+  public selectedLanguage: string;
   public currentPage = 0;
   public totalPages = 0;
 
@@ -23,6 +24,7 @@ export class AppComponent {
     translate.setDefaultLang('en');
 
     translate.use('en');
+    this.selectedLanguage = 'en';
 
 
 
@@ -44,6 +46,7 @@ export class AppComponent {
 
   public setLanguage(language: string) {
     this.translate.use(language);
+    this.selectedLanguage = language;
   }
 
   public previousPage(): void {

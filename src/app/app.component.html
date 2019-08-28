@@ -26,7 +26,7 @@
 
   <div class="row justify-content-center" style="margin-top: 3%">
     <div class="col-sm-4 language-box">
-      <div class="row justify-content-center" style="margin-top: 10%;">
+      <div class="row justify-content-center" style="margin-top: 10%; margin-bottom: 5%">
         <span [innerHTML]="'home.choose-language' | translate" class="choose-language-text"></span>
       </div>
       <div class="row justify-content-center mt-2" style="margin-bottom: 5%">
@@ -35,7 +35,8 @@
             <img class="language-image" src="assets/en.png">
           </div>
           <div class="row justify-content-center">
-            <span [innerHTML]="'language.english' | translate" class="language"></span>
+            <span [innerHTML]="'language.english' | translate" class="language"
+                  [ngClass]="selectedLanguage == 'en' ? 'selected-language': ''"></span>
           </div>
         </div>
         <div class="col-sm-3" (click)="setLanguage('de')">
@@ -43,7 +44,8 @@
             <img class="language-image" src="assets/de.png">
           </div>
           <div class="row justify-content-center">
-            <span [innerHTML]="'language.german' | translate" class="language"></span>
+            <span [innerHTML]="'language.german' | translate" class="language"
+                  [ngClass]="selectedLanguage == 'de' ? 'selected-language': ''"></span>
           </div>
         </div>
         <div class="col-sm-3" (click)="setLanguage('hr')">
@@ -51,7 +53,8 @@
             <img class="language-image" src="assets/hr.png">
           </div>
           <div class="row justify-content-center">
-            <span [innerHTML]="'language.croatian' | translate" class="language"></span>
+            <span [innerHTML]="'language.croatian' | translate" class="language"
+                  [ngClass]="selectedLanguage == 'hr' ? 'selected-language': ''"></span>
           </div>
         </div>
       </div>

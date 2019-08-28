@@ -14,21 +14,26 @@
 }
 
 .language-box {
+  background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   border: 1px solid lightgray;
   border-radius: 20px;
 }
 
 .choose-language-text {
-  font-size: 36px;
+  font-size: 27px;
   color: #333333;
   font-weight: 500;
 }
 
 .language {
-  font-size: 24px;
-  color: #2962ff;
+  font-size: 16px;
+  color: #333333;
   font-weight: 400;
+}
+
+.selected-language {
+  color: #2962ff;
 }
 
 .language-image {
