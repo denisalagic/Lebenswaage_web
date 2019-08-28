@@ -20,6 +20,11 @@
   border-radius: 20px;
 }
 
+.video-holder {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
 .choose-language-text {
   font-size: 27px;
   color: #333333;
@@ -37,14 +42,14 @@
 }
 
 .language-image {
-  height: 30px;
+  height: 50px;
 }
 
 .start-button {
   background: #f25950;
   font-size: 25px;
   color: #ffffff;
-  padding: 0.3% 6%;
+  padding: 1% 4%;
 }
 
 .navigation-icons {
