@@ -29,11 +29,7 @@
     "weight": "Težina",
     "waist": "Struk",
     "hips": "Bokovi",
-    "target": "Želje",
-    "target-1": "Gubitak tjelesne mase",
-    "target-2": "Održavanje trenutne tjelesne mase",
-    "target-3": "Povećanje tjelesne mase",
-    "target-4": "Povećanje mišićne mase"
+    "activity": "Aktivnost"
   },
   "step-5": {
     "biometrics":"Bio-metrics by LebensWaage",
@@ -45,7 +41,11 @@
     "foods-not-included-1": "Gluten",
     "foods-not-included-2": "Laktoza",
     "foods-not-included-3": "Meso",
-    "foods-not-included-4": "Orasi"
+    "foods-not-included-4": "Orasi",
+    "foods-not-included-1-en": "Gluten",
+    "foods-not-included-2-en": "Lactose",
+    "foods-not-included-3-en": "Meat",
+    "foods-not-included-4-en": "Nuts"
   },
   "step-6": {
     "gdpr-title": "GDPR i uvjeti korištenja",
