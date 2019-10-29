@@ -54,29 +54,4 @@ describe('Step2Component', () => {
     expect(component.previousPage).toHaveBeenCalled();
     expect(component.currentPage).toBe(1);
   });
-
-  it('should call markVideoSelected method', () => {
-    // tslint:disable-next-line:max-line-length
-    const videoListModel = new VideoListModel(5, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'video 5', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-
-    // tslint:disable-next-line:max-line-length
-    component.previouslySelectedVideo = new VideoListModel(5, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'video 5', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png', true);
-
-    spyOn(component, 'markVideoSelected').and.callThrough();
-    component.markVideoSelected(videoListModel);
-
-    expect(component.markVideoSelected).toHaveBeenCalled();
-    expect(videoListModel.selected).toBeTruthy();
-  });
-
-  it('should call next step function', () => {
-    // tslint:disable-next-line:max-line-length
-    component.previouslySelectedVideo = new VideoListModel(5, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'video 5', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png', true);
-
-    spyOn(component, 'nextStep').and.callThrough();
-    component.nextStep();
-
-    expect(component.nextStep).toHaveBeenCalled();
-
-  });
 });
