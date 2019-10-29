@@ -26,7 +26,7 @@ export class StepsComponent implements OnInit {
         this.activeStep = parseInt(stepActive, 10);
       }
     });
-    // this.router.navigate(['step-1'], {relativeTo: this.activatedRoute});
+    this.router.navigate(['step-1'], {relativeTo: this.activatedRoute});
   }
 
 }
