@@ -11,19 +11,19 @@
     <div class="row">
       <div class="col-7 col-sm-7">
         <mat-form-field class="input-font-color">
-          <input matInput [(ngModel)]="height" ngDefaultControl placeholder="{{ 'step-4.height' | translate }}" type="number" class="example-right-align">
+          <input matInput [(ngModel)]="height" (change)="onHeightChange($event)" ngDefaultControl placeholder="{{ 'step-4.height' | translate }}" type="number" class="example-right-align">
           <span matSuffix>cm</span>
         </mat-form-field>
       </div>
       <div class="col-5 col-sm-5">
           <mat-slider thumbLabel tickInterval="1" (input)="onHeightChange($event)"
-                      min="0" max="99" style="width: 100%"></mat-slider>
+                      min="0" max="250" style="width: 100%"></mat-slider>
       </div>
     </div>
     <div class="row">
       <div class="col-7 col-sm-7">
         <mat-form-field class="input-font-color">
-          <input matInput [(ngModel)]="weight" ngDefaultControl placeholder="{{ 'step-4.weight' | translate }}" type="number" class="example-right-align">
+          <input matInput [(ngModel)]="weight" (change)="onWeightChange($event)" ngDefaultControl placeholder="{{ 'step-4.weight' | translate }}" type="number" class="example-right-align">
           <span matSuffix>kg</span>
         </mat-form-field>
       </div>
@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-7 col-sm-7">
         <mat-form-field class="input-font-color">
-          <input matInput [(ngModel)]="waist" ngDefaultControl placeholder="{{ 'step-4.waist' | translate }}" type="number" class="example-right-align">
+          <input matInput [(ngModel)]="waist" (change)="onWaistChange($event)" ngDefaultControl placeholder="{{ 'step-4.waist' | translate }}" type="number" class="example-right-align">
           <span matSuffix>cm</span>
         </mat-form-field>
       </div>
@@ -47,7 +47,7 @@
     <div class="row">
       <div class="col-7 col-sm-7">
         <mat-form-field class="input-font-color" >
-          <input matInput [(ngModel)]="hips" ngDefaultControl placeholder="{{ 'step-4.hips' | translate }}" type="number" class="example-right-align">
+          <input matInput [(ngModel)]="hips" (change)="onHipsChange($event)" ngDefaultControl placeholder="{{ 'step-4.hips' | translate }}" type="number" class="example-right-align">
           <span matSuffix>cm</span>
         </mat-form-field>
       </div>
@@ -62,15 +62,15 @@
   </div>
   <div class="col-sm-3">
     <div class="row" id="step-4-target-label">
-      <span [innerHTML]="'step-4.target' | translate" class="your-measures"></span>
+      <span [innerHTML]="'step-4.activity' | translate" class="your-measures"></span>
     </div>
     <div class="row">
       <mat-radio-group
         aria-labelledby="step-4-target-label"
         class="step-4-target-radio-group"
-        [(ngModel)]="target" (change)="onTargetChange($event)">
-        <mat-radio-button class="step-4-target-radio-button" *ngFor="let number of [1,2,3,4]" [value]="number">
-          {{('step-4.target-' + number) | translate}}
+        [(ngModel)]="activityChecked" (change)="onActivityChange($event)">
+        <mat-radio-button class="step-4-target-radio-button" *ngFor="let activity of activities" [value]="activity.code">
+          {{activity.name}}
         </mat-radio-button>
       </mat-radio-group>
     </div>

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import {VideoListModel} from '../model/video-list.model';
-import {Observable} from 'rxjs';
-import {LebensWaageCommand} from '../model/lebens-waage.command';
 import 'rxjs-compat/add/observable/of';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +8,10 @@ import 'rxjs-compat/add/observable/of';
 export class StepsService {
 
   // tslint:disable-next-line:variable-name
-  private _goal: number = null;
+  private _goal: string = null;
 
   // tslint:disable-next-line:variable-name
-  private _selectedVideo: VideoListModel = null;
+  private _trainingType: string = null;
   // tslint:disable-next-line:variable-name
   private _selectedGender: string = null;
 
@@ -33,49 +31,50 @@ export class StepsService {
   private _hips: number = null;
 
   // tslint:disable-next-line:variable-name
-  private _target: number = null;
+  private _activity: string = null;
 
   // tslint:disable-next-line:variable-name
-  private _foodsNotIncluded: number = null;
+  private _foodsNotIncluded: string[] = [];
+
+  // tslint:disable-next-line:variable-name
+  private _bmi: number = null;
 
   // tslint:disable-next-line:variable-name
   private _gdprAgreement = false;
 
-  public sendEmail(): Observable<LebensWaageCommand> {
-    const command: LebensWaageCommand = new LebensWaageCommand(this.goal, this._selectedVideo, this.selectedGender, this.selectedAge, this.height, this.weight, this.waist, this.hips, this.target, this.foodsNotIncluded, this.gdprAgreement);
-
-    console.log('THIS IS RECEIVED COMMAND');
-    console.log(command);
-    return Observable.of(command);
-  }
+  // tslint:disable-next-line:variable-name
+  private _targetWeight: number = 0;
 
   public resetProperties(): void {
-    this._selectedVideo = null;
+    this._goal = null;
+    this._trainingType = null;
     this._selectedGender = null;
     this._selectedAge = null;
     this._height = null;
     this._weight = null;
     this._waist = null;
     this._hips = null;
-    this._target = null;
+    this._activity = null;
     this._foodsNotIncluded = null;
+    this._bmi = null;
     this._gdprAgreement = false;
+    this._targetWeight = null;
   }
 
-  get goal(): number {
+  get goal(): string {
     return this._goal;
   }
 
-  set goal(value: number) {
+  set goal(value: string) {
     this._goal = value;
   }
 
-  set selectedVideo(selectedVideo: VideoListModel) {
-    this._selectedVideo = selectedVideo;
+  set trainingType(selectedTrainingType: string) {
+    this._trainingType = selectedTrainingType;
   }
 
-  get selectedVideo(): VideoListModel {
-    return this._selectedVideo;
+  get trainingType(): string {
+    return this._trainingType;
   }
 
   set selectedGender(gender: string) {
@@ -122,20 +121,28 @@ export class StepsService {
   set hips(value: number) {
     this._hips = value;
   }
-  get target(): number {
-    return this._target;
+  get activity(): string {
+    return this._activity;
   }
 
-  set target(value: number) {
-    this._target = value;
+  set activity(value: string) {
+    this._activity = value;
   }
 
-  get foodsNotIncluded(): number {
+  get foodsNotIncluded(): string[] {
     return this._foodsNotIncluded;
   }
 
-  set foodsNotIncluded(value: number) {
+  set foodsNotIncluded(value: string[]) {
     this._foodsNotIncluded = value;
+  }
+
+  get bmi(): number {
+    return this._bmi;
+  }
+
+  set bmi(value: number) {
+    this._bmi = value;
   }
 
   get gdprAgreement(): boolean {
@@ -144,6 +151,14 @@ export class StepsService {
 
   set gdprAgreement(value: boolean) {
     this._gdprAgreement = value;
+  }
+
+  get targetWeight(): number {
+    return this._targetWeight;
+  }
+
+  set targetWeight(value: number) {
+    this._targetWeight = value;
   }
 
   constructor() { }

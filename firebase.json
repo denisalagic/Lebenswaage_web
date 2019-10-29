@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/lebens-waage",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

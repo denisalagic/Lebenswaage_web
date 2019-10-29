@@ -7,15 +7,15 @@
   <div class="col-2 col-sm-1" (click)="previousPage()">
     <mat-icon class="navigation-icons" [ngClass]="currentPage == 0 ? 'disabled-navigation' : ''">chevron_left</mat-icon>
   </div>
-  <div class="col-8 col-sm-2" [ngClass]="video.selected ? 'video-selected': ''" style="margin-bottom: 60px;"
+  <div class="col-8 col-sm-2" [ngClass]="trainingTypePicked == video.code ? 'video-selected': ''" style="margin-bottom: 60px;"
        *ngFor="let video of filteredVideoList"
-       (click)="markVideoSelected(video)">
-    <video width="100%" height="100%" controls>
-      <source [src]="video.videoUrl" type="video/mp4">
+       (click)="markVideoSelected(video.code)">
+    <video width="100%" height="100%" controls *ngIf="video.files.length > 0">
+      <source [src]="getVideoUrl(video)" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <br/>
-    <span class="video-title" [innerHTML]="video.videoTitle"></span>
+    <span class="video-title" [innerHTML]="video.name"></span>
   </div>
   <div class="col-2 col-sm-1" (click)="nextPage()">
     <mat-icon class="navigation-icons" [ngClass]="currentPage + 1 == totalPages ? 'disabled-navigation' : ''">chevron_right</mat-icon>
@@ -23,6 +23,6 @@
 </div>
 <div class="row justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">
   <div class="col-sm-2">
-    <button mat-raised-button class="next-button" [disabled]="previouslySelectedVideo == null" (click)="nextStep()">{{'next' | translate}}</button>
+    <button mat-raised-button class="next-button" [disabled]="trainingTypePicked == null" (click)="nextStep()">{{'next' | translate}}</button>
   </div>
 </div>

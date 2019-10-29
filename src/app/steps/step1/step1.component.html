@@ -4,38 +4,14 @@
   </div>
 </div>
 <div class="row justify-content-center">
-  <div class="col-10 col-sm-3" (click)="pickGoal(1)"  style="margin-bottom: 20px;">
-    <mat-card [ngClass]="goalPicked == 1 ? 'goal-selected': ''">
+  <div class="col-10 col-sm-3" (click)="pickGoal(goal.code)"  style="margin-bottom: 20px;" *ngFor="let goal of goals">
+    <mat-card [ngClass]="goalPicked == goal.code ? 'goal-selected': ''">
       <mat-card-header>
-        <mat-card-title>{{'step-1.health.title' | translate}}</mat-card-title>
+        <mat-card-title>{{goal.name}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="card-content">
-          {{'step-1.health.description' | translate}}
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="col-10 col-sm-3" (click)="pickGoal(2)" style="margin-bottom: 20px;">
-    <mat-card [ngClass]="goalPicked == 2 ? 'goal-selected': ''">
-      <mat-card-header>
-        <mat-card-title>{{'step-1.lose-weight.title' | translate}}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="card-content">
-          {{'step-1.lose-weight.description' | translate}}
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="col-10 col-sm-3" (click)="pickGoal(3)" style="margin-bottom: 20px;">
-    <mat-card [ngClass]="goalPicked == 3 ? 'goal-selected': ''">
-      <mat-card-header>
-        <mat-card-title>{{'step-1.gain-weight.title' | translate}}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="card-content">
-          {{'step-1.gain-weight.description' | translate}}
+          {{goal.notes}}
         </div>
       </mat-card-content>
     </mat-card>

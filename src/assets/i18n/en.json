@@ -44,11 +44,7 @@
     "weight": "Weight",
     "waist": "Waist",
     "hips": "Hips",
-    "target": "Target",
-    "target-1": "Reduction of body mass",
-    "target-2": "Retaining the existing body mass",
-    "target-3": "Increase body mass",
-    "target-4": "Increase muscle mass"
+    "activity": "Activity"
   },
   "step-5": {
     "biometrics":"Bio-metrics by LebensWaage",

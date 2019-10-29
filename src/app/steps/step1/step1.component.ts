@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {StepsService} from '../steps.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ApiCallsService} from '../../api-calls.service';
+import {CodebookModel} from '../../model/codebook.model';
 
 @Component({
   selector: 'app-step1',
@@ -9,17 +11,22 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class Step1Component implements OnInit {
 
-  public goalPicked: number = null;
+  public goalPicked: string = null;
+  public goals: CodebookModel[] = [];
 
   constructor(private stepsService: StepsService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private apiCalls: ApiCallsService) { }
 
 
   ngOnInit() {
+    this.apiCalls.getGoalList().subscribe(goals => {
+      this.goals = goals;
+    });
   }
 
-  public pickGoal(goal: number) {
+  public pickGoal(goal: string) {
     this.goalPicked = goal;
     this.stepsService.goal = goal;
   }

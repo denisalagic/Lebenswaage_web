@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MatRadioChange, MatSliderChange} from '@angular/material';
 import {StepsService} from '../steps.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ApiCallsService} from '../../api-calls.service';
+import {CodebookModel} from '../../model/codebook.model';
 
 @Component({
   selector: 'app-step4',
@@ -14,47 +16,68 @@ export class Step4Component implements OnInit {
   public weight = 0;
   public waist = 0;
   public hips = 0;
-  public target = null;
+  public activities: CodebookModel[] = [];
+  public activityChecked: string = null;
 
 
   constructor(private stepsService: StepsService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private apiCalls: ApiCallsService) { }
 
   ngOnInit() {
+    this.apiCalls.getAcitivityTypes().subscribe(activities => {
+      this.activities = activities;
+    });
   }
 
-  onHeightChange(event: MatSliderChange) {
-    this.height = event.value;
-    this.stepsService.height = event.value;
+  onHeightChange(event: any) {
+    if (event.value != undefined) {
+      this.height = event.value;
+    } else {
+      this.height = event.target.value;
+    }
+    this.stepsService.height = this.height;
   }
 
-  onWeightChange(event: MatSliderChange) {
-    this.weight = event.value;
-    this.stepsService.weight = event.value;
+  onWeightChange(event: any) {
+    if (event.value != undefined) {
+      this.weight = event.value;
+    } else {
+      this.weight = event.target.value;
+    }
+    this.stepsService.weight = this.weight;
   }
 
-  onWaistChange(event: MatSliderChange) {
-    this.waist = event.value;
-    this.stepsService.waist = event.value;
+  onWaistChange(event: any) {
+    if (event.value != undefined) {
+      this.waist = event.value;
+    } else {
+      this.waist = event.target.value;
+    }
+    this.stepsService.waist = this.waist;
   }
 
-  onHipsChange(event: MatSliderChange) {
-    this.hips = event.value;
-    this.stepsService.hips = event.value;
+  onHipsChange(event: any) {
+    if (event.value != undefined) {
+      this.hips = event.value;
+    } else {
+      this.hips = event.target.value;
+    }
+    this.stepsService.hips = this.hips;
   }
 
-  onTargetChange(event: MatRadioChange) {
-    this.stepsService.target = event.value;
+  onActivityChange(event: MatRadioChange) {
+    this.stepsService.activity = event.value;
   }
 
   public nextStep(): void {
-    if (this.height > 0 && this.weight > 0 && this.waist > 0 && this.hips > 0 && this.target != null) {
+    if (this.height > 0 && this.weight > 0 && this.waist > 0 && this.hips > 0 && this.activityChecked != null) {
       this.router.navigate(['../step-5'], {relativeTo: this.activatedRoute});
     }
   }
 
   public nextButtonDisabled(): boolean {
-    return this.height == 0 || this.weight == 0 || this.waist == 0 || this.hips == 0 || this.target == null;
+    return this.height == 0 || this.weight == 0 || this.waist == 0 || this.hips == 0 || this.activityChecked == null;
   }
 }

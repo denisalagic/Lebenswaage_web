@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {VideoListModel} from '../../model/video-list.model';
 import {StepsService} from '../steps.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ApiCallsService} from '../../api-calls.service';
+import {CodebookModel} from '../../model/codebook.model';
 
 @Component({
   selector: 'app-step2',
@@ -10,43 +12,30 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class Step2Component implements OnInit {
 
-  private videoList: VideoListModel[] = [];
   // tslint:disable-next-line:variable-name
-  private _previouslySelectedVideo: VideoListModel = null;
-  public filteredVideoList: VideoListModel[] = [];
+  public trainingTypePicked: string = null;
+  public filteredVideoList: CodebookModel[] = [];
   public currentPage = 0;
   public totalPages = 0;
+  public trainings: CodebookModel[] = [];
 
 
   constructor(private stepsService: StepsService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private apiCalls: ApiCallsService) { }
 
 
   ngOnInit() {
-    const video1 = new VideoListModel(1, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', 'video 1', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video2 = new VideoListModel(2, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', 'video 2', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video3 = new VideoListModel(3, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', 'video 3', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video4 = new VideoListModel(4, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', 'video 4', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video5 = new VideoListModel(5, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'video 5', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-
-
-    this.videoList.push(video1);
-    this.videoList.push(video2);
-    this.videoList.push(video3);
-    this.videoList.push(video4);
-    this.videoList.push(video5);
-
-    this.totalPages = Math.ceil(this.videoList.length / 4);
-    this.filteredVideoList = this.videoList.slice(0, 4);
+    this.apiCalls.getTrainingTypes().subscribe(trainingTypes => {
+      this.trainings = trainingTypes;
+      this.totalPages = Math.ceil(this.trainings.length / 4);
+      this.filteredVideoList = this.trainings.slice(0, 4);
+    });
   }
 
-  public markVideoSelected(video: VideoListModel): void {
-    if (this._previouslySelectedVideo != null) {
-      this._previouslySelectedVideo.selected = false;
-    }
-    video.selected = true;
-    this._previouslySelectedVideo = video;
+  public markVideoSelected(videoCode: string): void {
+    this.trainingTypePicked = videoCode;
   }
 
   public previousPage(): void {
@@ -57,7 +46,7 @@ export class Step2Component implements OnInit {
       const startElement = this.currentPage * 4;
       const endElement = startElement + 4;
 
-      this.filteredVideoList = this.videoList.slice(startElement, endElement);
+      this.filteredVideoList = this.trainings.slice(startElement, endElement);
     }
   }
 
@@ -68,20 +57,24 @@ export class Step2Component implements OnInit {
       const startElement = this.currentPage * 4;
       const endElement = startElement + 4;
 
-      this.filteredVideoList = this.videoList.slice(startElement, endElement);
+      this.filteredVideoList = this.trainings.slice(startElement, endElement);
     }
   }
 
   public nextStep(): void {
-    if (this._previouslySelectedVideo != null) {
-      this.stepsService.selectedVideo = this._previouslySelectedVideo;
+    if (this.trainingTypePicked != null) {
+      this.stepsService.trainingType = this.trainingTypePicked;
       this.router.navigate(['../step-3'], {relativeTo: this.activatedRoute});
     }
   }
 
-  // methods used only for unit tests
-  public get previouslySelectedVideo() { return this._previouslySelectedVideo; }
-
-  public set previouslySelectedVideo(previouslySelectedVideo: VideoListModel) { this._previouslySelectedVideo = previouslySelectedVideo; }
-
+  public getVideoUrl(video: CodebookModel): string {
+    let videoUrl;
+    for (let i = 0; i < video.files.length; i++) {
+      if (video.files[i].indexOf('mp4') > -1) {
+        videoUrl = video.files[i];
+      }
+    }
+    return videoUrl;
+  }
 }

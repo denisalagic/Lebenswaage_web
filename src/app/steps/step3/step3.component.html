@@ -5,11 +5,11 @@
 </div>
 <div class="row justify-content-center">
   <div class="gender-images-background" style="background: #2962ff;"
-       (click)="selectGender('male')" [ngClass]="selectedGender == 'male' ? 'gender-images-selected' : 'gender-images-not-selected'">
+       (click)="selectGender('MALE')" [ngClass]="selectedGender == 'MALE' ? 'gender-images-selected' : 'gender-images-not-selected'">
     <img src="assets/male-sign.png" class="male-image"/>
   </div>
   <div class="gender-images-background"
-       (click)="selectGender('female')" [ngClass]="selectedGender == 'female' ? 'gender-images-selected' : 'gender-images-not-selected'">
+       (click)="selectGender('FEMALE')" [ngClass]="selectedGender == 'FEMALE' ? 'gender-images-selected' : 'gender-images-not-selected'">
     <img src="assets/female-sign.png" class="female-image"/>
   </div>
 </div>

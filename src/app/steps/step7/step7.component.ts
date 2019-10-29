@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material';
-import {StepsService} from '../steps.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ApiCallsService} from '../../api-calls.service';
 
 @Component({
   selector: 'app-step7',
@@ -18,7 +18,7 @@ export class Step7Component implements OnInit {
   matcher = new MyErrorStateMatcher();
 
 
-  constructor(private stepsService: StepsService,
+  constructor(private apiCalls: ApiCallsService,
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
 
@@ -26,8 +26,7 @@ export class Step7Component implements OnInit {
   }
 
   public sendMail() {
-    this.stepsService.sendEmail().subscribe(resp => {
-      alert(JSON.stringify(resp));
+    this.apiCalls.sendEmail(this.emailFormControl.value).subscribe(resp => {
       this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
     });
   }

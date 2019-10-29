@@ -28,11 +28,11 @@ export class AppComponent {
 
 
 
-    const video1 = new VideoListModel(1, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', 'video 1', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video2 = new VideoListModel(2, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', 'video 2', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video3 = new VideoListModel(3, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', 'video 3', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video4 = new VideoListModel(4, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', 'video 4', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video5 = new VideoListModel(5, 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'video 5', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
+    const video1 = new VideoListModel(1, 'TT1',  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', 'video 1', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
+    const video2 = new VideoListModel(2, 'TT2' , 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', 'video 2', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
+    const video3 = new VideoListModel(3, 'TT3', 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', 'video 3', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
+    const video4 = new VideoListModel(4,  'TT4', 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', 'video 4', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
+    const video5 = new VideoListModel(5, 'TT5' , 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'video 5', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
 
     this.videoList.push(video1);
     this.videoList.push(video2);

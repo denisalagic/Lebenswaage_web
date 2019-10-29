@@ -1,15 +1,20 @@
 import {VideoListModel} from './video-list.model';
 
 export class LebensWaageCommand {
-  constructor(private goal: number,
-              private selectedVideo: VideoListModel,
-              private selectedGender: string,
-              private selectedAge: number,
+  constructor(private machineId: number,
+              private paymentType: string,
+              private trainingType: string,
+              private activity: string,
+              private goal: string,
+              private gender: string,
+              private age: number,
               private height: number,
               private weight: number,
-              private waist: number,
-              private hips: number,
-              private target: number,
-              private foodsNotIncluded: number,
+              private bmi: number,
+              private targetWeight: number,
+              private waistCircumference: number,
+              private hipCircumference: number,
+              private blacklistedFoodTypes: string[],
+              private email: string,
               private gdprAgreement: boolean) {}
 }
