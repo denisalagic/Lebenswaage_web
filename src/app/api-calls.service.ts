@@ -113,9 +113,6 @@ export class ApiCallsService {
       this.stepsService.mealPlanTags
     );
 
-    console.log('THIS IS RECEIVED COMMAND');
-    console.log(command);
-
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -125,7 +122,6 @@ export class ApiCallsService {
 
     return this.http.post<any>(environment.apiUrl + 'user/session', command, httpOptions)
       .pipe(map(resp => {
-        console.log(resp);
         return resp;
       }));
   }

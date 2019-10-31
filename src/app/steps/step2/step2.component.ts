@@ -39,8 +39,6 @@ export class Step2Component implements OnInit {
   }
 
   public previousPage(): void {
-    console.log('prev page clicked');
-
     if ((this.currentPage - 1) >= 0) {
       this.currentPage = this.currentPage - 1;
       const startElement = this.currentPage * 4;
@@ -51,7 +49,6 @@ export class Step2Component implements OnInit {
   }
 
   public nextPage(): void {
-    console.log('next page clicked');
     if ((this.currentPage + 1) < this.totalPages) {
       this.currentPage = this.currentPage + 1;
       const startElement = this.currentPage * 4;
