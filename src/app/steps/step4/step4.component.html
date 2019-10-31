@@ -74,6 +74,14 @@
         </mat-radio-button>
       </mat-radio-group>
     </div>
+    <div class="row">
+        <mat-select [formControl]="mealPlanTagCtrl" placeholder="Meal plan tags" [multiple]="true" #multiSelect>
+          <ngx-mat-select-search [formControl]="mealPlanTagFilterCtrl"></ngx-mat-select-search>
+          <mat-option *ngFor="let mealPlanTag of filteredMealPlanTagsMulti | async" [value]="mealPlanTag.code">
+            {{mealPlanTag.name}} - {{mealPlanTag.notes}}
+          </mat-option>
+        </mat-select>
+    </div>
   </div>
 </div>
 <div class="row justify-content-end">

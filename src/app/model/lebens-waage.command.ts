@@ -16,5 +16,6 @@ export class LebensWaageCommand {
               private hipCircumference: number,
               private blacklistedFoodTypes: string[],
               private email: string,
-              private gdprAgreement: boolean) {}
+              private gdprAgreement: boolean,
+              private mealPlanTags: string []) {}
 }

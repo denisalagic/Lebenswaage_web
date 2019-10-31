@@ -75,6 +75,21 @@ export class ApiCallsService {
       }));
   }
 
+
+  public getMealPlanTags(): Observable<CodebookModel[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': this.token
+      })
+    };
+
+    return this.http.get<CodebookModel[]>(environment.apiUrl + 'mealplantags', httpOptions)
+      .pipe(map(resp => {
+        return resp;
+      }));
+  }
+
   public sendEmail(email: string): Observable<LebensWaageCommand> {
     const machineId: number = environment.machineId;
 
@@ -94,7 +109,8 @@ export class ApiCallsService {
       this.stepsService.hips,
       this.stepsService.foodsNotIncluded,
       email,
-      this.stepsService.gdprAgreement
+      this.stepsService.gdprAgreement,
+      this.stepsService.mealPlanTags
     );
 
     console.log('THIS IS RECEIVED COMMAND');

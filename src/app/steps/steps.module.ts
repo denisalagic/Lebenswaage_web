@@ -8,7 +8,7 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatRadioModule,
+  MatRadioModule, MatSelectModule,
   MatSliderModule,
   MatStepperModule
 } from '@angular/material';
@@ -20,6 +20,7 @@ import { Step5Component } from './step5/step5.component';
 import { Step6Component } from './step6/step6.component';
 import { Step7Component } from './step7/step7.component';
 import { Step1Component } from './step1/step1.component';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 
 
 
@@ -49,7 +50,9 @@ import { Step1Component } from './step1/step1.component';
     MatInputModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    NgxMatSelectSearchModule
   ],
   bootstrap: [StepsComponent]
 
