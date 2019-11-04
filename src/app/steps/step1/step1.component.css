@@ -9,6 +9,11 @@
 }
 
 .card-content {
-  text-align: left;
+  text-align: center;
   margin-left: 18px;
+}
+
+.card-container-center{
+  text-align: center;
+  margin-top: 12px;
 }

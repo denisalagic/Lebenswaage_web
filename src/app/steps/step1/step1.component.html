@@ -3,13 +3,13 @@
     <span [innerHTML]="'step-1.goal' | translate" class="goal"></span>
   </div>
 </div>
-<div class="row justify-content-center">
+<div class="row justify-content-center" style="padding-left:66px; padding-right: 66px;">
   <div class="col-10 col-sm-3" (click)="pickGoal(goal.code)"  style="margin-bottom: 20px;" *ngFor="let goal of goals">
     <mat-card [ngClass]="goalPicked == goal.code ? 'goal-selected': ''">
       <mat-card-header>
-        <mat-card-title>{{goal.name}}</mat-card-title>
+        <mat-card-title class="card-container-center">{{goal.name}}</mat-card-title>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content *ngIf="goal.notes">
         <div class="card-content">
           {{goal.notes}}
         </div>
@@ -17,8 +17,8 @@
     </mat-card>
   </div>
 </div>
-<div class="row justify-content-end">
-  <div class="col-sm-2">
+<div class="row justify-content-end" style="padding-right: 62px;">
+  <div class="col-sm-1">
     <button mat-raised-button class="next-button" [disabled]="goalPicked == null" (click)="nextStep()">{{'next' | translate}}</button>
   </div>
 </div>

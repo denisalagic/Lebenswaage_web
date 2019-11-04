@@ -74,4 +74,14 @@ export class Step2Component implements OnInit {
     }
     return videoUrl;
   }
+
+  public getPosterUrl(video: CodebookModel): string {
+    let videoUrl;
+    for (let i = 0; i < video.files.length; i++) {
+      if (video.files[i].indexOf('jpg') > -1 || video.files[i].indexOf('jpeg') > -1) {
+        videoUrl = video.files[i];
+      }
+    }
+    return videoUrl;
+  }
 }
