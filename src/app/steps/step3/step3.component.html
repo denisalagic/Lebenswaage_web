@@ -1,10 +1,10 @@
-<div class="row justify-content-center" style="margin-top: -4%;">
+<div class="row justify-content-center" style="margin-top: -7%;">
   <div class="col-sm-3">
     <span [innerHTML]="'sex' | translate" class="title"></span>
   </div>
 </div>
 <div class="row justify-content-center">
-  <div class="gender-images-background" style="background: #2962ff;"
+  <div class="gender-images-background" style="background: #2962ff; margin-right: 200px;"
        (click)="selectGender('MALE')" [ngClass]="selectedGender == 'MALE' ? 'gender-images-selected' : 'gender-images-not-selected'">
     <img src="assets/male-sign.png" class="male-image"/>
   </div>
