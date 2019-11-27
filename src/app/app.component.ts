@@ -1,71 +1,74 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {VideoListModel} from './model/video-list.model';
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('animateStartButton', [
+      state('original', style({
+        width: '*',
+        height: '*'
+      })),
+      state('large', style({
+        width: '449px',
+        height: '162px'
+      })),
+      transition('original => large', animate('400ms ease-in-out')),
+      transition('large => original', animate('400ms ease-in-out'))
+    ])
+  ]
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit{
   title = 'lebens-waage';
 
-  private videoList: VideoListModel[] = [];
-  public filteredVideoList: VideoListModel[] = [];
+  @ViewChild('videoPlayer', {static: false}) videoplayer: ElementRef;
+
+
   public selectedLanguage: string;
-  public currentPage = 0;
-  public totalPages = 0;
+  public moneyAmount: number = 50;
+  moneyAmountAnimation: string = 'original';
+
 
   constructor(private translate: TranslateService,
               private router: Router,
               public route: ActivatedRoute) {
     translate.addLangs(['en', 'de', 'hr']);
     translate.setDefaultLang('en');
-
     translate.use('en');
     this.selectedLanguage = 'en';
+    this.moneyAmountAnimation = 'original';
 
-
-
-    const video1 = new VideoListModel(1, 'TT1',  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', 'video 1', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video2 = new VideoListModel(2, 'TT2' , 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', 'video 2', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video3 = new VideoListModel(3, 'TT3', 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', 'video 3', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video4 = new VideoListModel(4,  'TT4', 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', 'video 4', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-    const video5 = new VideoListModel(5, 'TT5' , 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'video 5', 'https://s3.eu-central-1.amazonaws.com/pipe.public.content/poster.png');
-
-    this.videoList.push(video1);
-    this.videoList.push(video2);
-    this.videoList.push(video3);
-    this.videoList.push(video4);
-    this.videoList.push(video5);
-
-    this.totalPages = Math.ceil(this.videoList.length / 2);
-    this.filteredVideoList = this.videoList.slice(0, 2);
   }
+
+  ngAfterViewInit(): void {
+    this.videoplayer.nativeElement.play();
+  }
+
+
 
   public setLanguage(language: string) {
     this.translate.use(language);
     this.selectedLanguage = language;
   }
 
-  public previousPage(): void {
-    if ((this.currentPage - 1) >= 0) {
-      this.currentPage = this.currentPage - 1;
-      const startElement = this.currentPage * 2;
-      const endElement = startElement + 2;
-
-      this.filteredVideoList = this.videoList.slice(startElement, endElement);
+  public incrementAmount() {
+    this.moneyAmount += 5;
+    if(this.moneyAmount >= 70) {
+      this.moneyAmountAnimation = 'large';
+      setTimeout(() => {
+        this.moneyAmountAnimation = 'original';
+      }, 500)
     }
   }
 
-  public nextPage(): void {
-    if ((this.currentPage + 1) < this.totalPages) {
-      this.currentPage = this.currentPage + 1;
-      const startElement = this.currentPage * 2;
-      const endElement = startElement + 2;
-
-      this.filteredVideoList = this.videoList.slice(startElement, endElement);
+  public navigateToSteps() {
+    if(this.moneyAmount >= 70) {
+      this.router.navigate(['steps']);
     }
   }
+
 }

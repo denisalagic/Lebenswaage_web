@@ -29,13 +29,9 @@ body, html {
   overflow-x: hidden;
 }
 
-@font-face {
-  font-family: popins;
-  src: url('./assets/fonts/poppins/Poppins-Regular.otf') format("opentype");
-}
-
 * {
-  font-family: 'popins', 'arial', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+
 }
 
 .html::-webkit-scrollbar { width: 0 !important }
