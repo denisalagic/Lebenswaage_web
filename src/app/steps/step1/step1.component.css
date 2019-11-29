@@ -1,19 +1,29 @@
-.goal {
-  font-size: 43px;
-  color: #333333;
-  font-weight: 400;
-}
-
 .goal-selected {
   border: 1px solid #00b7ff;
 }
 
-.card-content {
-  text-align: center;
-  margin-left: 18px;
+.goal-picker {
+  border-radius: 50px;
+  background-color: rgb(33, 150, 243);
+  box-shadow: 0px 1px 4.85px 0.15px rgba(0, 0, 0, 0.25);
+  width: 315px;
+  height: 86px;
+  margin-right: 63px;
 }
 
-.card-container-center{
+.goal-picker-text {
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  line-height: 1.9;
   text-align: center;
-  margin-top: 12px;
+  text-shadow: 0px 1px 4.85px rgba(0, 0, 0, 0.25);
+  width: 331px;
+  height: 47px;
+  top: 50%;
+  bottom: 50%;
+  position: absolute;
+  margin-top: 60px;
 }
+
+
+

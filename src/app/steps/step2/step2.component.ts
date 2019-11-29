@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {VideoListModel} from '../../model/video-list.model';
 import {StepsService} from '../steps.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -18,6 +18,8 @@ export class Step2Component implements OnInit {
   public currentPage = 0;
   public totalPages = 0;
   public trainings: CodebookModel[] = [];
+  @Output() step1Valid = new EventEmitter<any>();
+
 
 
   constructor(private stepsService: StepsService,
