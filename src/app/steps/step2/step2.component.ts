@@ -1,9 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {VideoListModel} from '../../model/video-list.model';
+import {Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {StepsService} from '../steps.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ApiCallsService} from '../../api-calls.service';
-import {CodebookModel} from '../../model/codebook.model';
 
 @Component({
   selector: 'app-step2',
@@ -12,78 +9,94 @@ import {CodebookModel} from '../../model/codebook.model';
 })
 export class Step2Component implements OnInit {
 
-  // tslint:disable-next-line:variable-name
-  public trainingTypePicked: string = null;
-  public filteredVideoList: CodebookModel[] = [];
-  public currentPage = 0;
-  public totalPages = 0;
-  public trainings: CodebookModel[] = [];
-  @Output() step1Valid = new EventEmitter<any>();
+  @Output() step2Valid = new EventEmitter<any>();
+  @ViewChild('ageSlider', {static: false}) ageSlider: ElementRef;
+  @ViewChild('ageSliderTooltip', {static: false}) ageSliderTooltip: ElementRef;
 
 
+  public selectedGender: string = null;
+  public selectedAge: number = 0;
 
   constructor(private stepsService: StepsService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private apiCalls: ApiCallsService) { }
+              private renderer: Renderer2) {
+  }
 
 
   ngOnInit() {
-    this.apiCalls.getTrainingTypes().subscribe(trainingTypes => {
-      this.trainings = trainingTypes;
-      this.totalPages = Math.ceil(this.trainings.length / 4);
-      this.filteredVideoList = this.trainings.slice(0, 4);
+    this.step2Valid.emit({
+      stepPosition: 2,
+      valid: false
     });
   }
 
-  public markVideoSelected(videoCode: string): void {
-    this.trainingTypePicked = videoCode;
-  }
+  public selectGender(gender: string): void {
+    this.selectedGender = gender;
+    this.stepsService.selectedGender = gender;
 
-  public previousPage(): void {
-    if ((this.currentPage - 1) >= 0) {
-      this.currentPage = this.currentPage - 1;
-      const startElement = this.currentPage * 4;
-      const endElement = startElement + 4;
-
-      this.filteredVideoList = this.trainings.slice(startElement, endElement);
+    if (this.selectedGender != null && this.selectedAge) {
+      this.stepsService.selectedAge = this.selectedAge;
+      this.stepsService.selectedGender = this.selectedGender;
+      this.step2Valid.emit({
+        stepPosition: 2,
+        valid: true
+      });
     }
   }
 
-  public nextPage(): void {
-    if ((this.currentPage + 1) < this.totalPages) {
-      this.currentPage = this.currentPage + 1;
-      const startElement = this.currentPage * 4;
-      const endElement = startElement + 4;
-
-      this.filteredVideoList = this.trainings.slice(startElement, endElement);
+  onInputChange(event: any) {
+    if (event.target) {
+      this.selectedAge = event.target.value;
+      this.stepsService.selectedAge = event.target.value;
+      this.positionTooltip();
     }
   }
 
-  public nextStep(): void {
-    if (this.trainingTypePicked != null) {
-      this.stepsService.trainingType = this.trainingTypePicked;
-      this.router.navigate(['../step-3'], {relativeTo: this.activatedRoute});
+  private positionTooltip() {
+    let width = this.ageSlider.nativeElement.offsetWidth;
+    let min = this.ageSlider.nativeElement.min;
+    let max = this.ageSlider.nativeElement.max;
+    let value = this.selectedAge;
+    let bubblePostion: number = 0;
+
+    let newPoint = (value - min) / (max - min);
+
+    // Prevent bubble from going beyond left or right (unsupported browsers)
+    if (newPoint <= 0) {
+      bubblePostion = 0;
+    } else if (newPoint >= 1) {
+      bubblePostion = width;
+    } else {
+      bubblePostion = width * newPoint;
+    }
+
+    this.renderer.setStyle(this.ageSliderTooltip.nativeElement, 'left', this.remapValue(bubblePostion) + 'px');
+    this.ageSliderTooltip.nativeElement.value = value;
+    if (this.selectedGender != null && this.selectedAge) {
+      this.stepsService.selectedAge = this.selectedAge;
+      this.stepsService.selectedGender = this.selectedGender;
+      this.step2Valid.emit({
+        stepPosition: 2,
+        valid: true
+      });
     }
   }
 
-  public getVideoUrl(video: CodebookModel): string {
-    let videoUrl;
-    for (let i = 0; i < video.files.length; i++) {
-      if (video.files[i].indexOf('mp4') > -1) {
-        videoUrl = video.files[i];
-      }
-    }
-    return videoUrl;
+  private remapValue(value: number) {
+    let oldPercentage = (value) / (1219);
+    return ((1196 - 13) * oldPercentage) + 13;
   }
 
-  public getPosterUrl(video: CodebookModel): string {
-    let videoUrl;
-    for (let i = 0; i < video.files.length; i++) {
-      if (video.files[i].indexOf('jpg') > -1 || video.files[i].indexOf('jpeg') > -1) {
-        videoUrl = video.files[i];
-      }
-    }
-    return videoUrl;
+  public increaseAge() {
+    this.selectedAge++;
+    this.positionTooltip();
   }
+
+  public decreaseAge() {
+    this.selectedAge--;
+    this.positionTooltip();
+  }
+
+
 }

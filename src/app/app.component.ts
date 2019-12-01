@@ -29,7 +29,7 @@ export class AppComponent implements AfterViewInit{
 
 
   public selectedLanguage: string;
-  public moneyAmount: number = 70;
+  public moneyAmount: number = 60;
   moneyAmountAnimation: string = 'original';
 
 

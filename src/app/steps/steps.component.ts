@@ -10,7 +10,7 @@ import {QuoteModel} from "../model/quote.model";
 })
 export class StepsComponent implements OnInit {
 
-  public activeStep = 1;
+  public activeStep = 2;
   public steps: number[] = [1, 2, 3, 4, 5, 6];
   public quotes: QuoteModel[] = [];
   public navigationDisabled: boolean = true;

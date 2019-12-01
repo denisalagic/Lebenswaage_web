@@ -16,7 +16,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
         'box-shadow': '*',
       })),
       state('large', style({
-        'box-shadow': '5px 10px #888888'
+        'box-shadow': '5px 10px #ffc928'
       })),
       transition('original => large', animate('400ms ease-in-out')),
       transition('large => original', animate('400ms ease-in-out'))

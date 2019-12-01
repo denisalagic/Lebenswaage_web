@@ -63,5 +63,12 @@ body {
   margin-left: 407px;
 }
 
+.navigation-position {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
 
 
