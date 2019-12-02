@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {MatRadioChange, MatSliderChange} from '@angular/material';
 import {StepsService} from '../steps.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -14,6 +14,8 @@ import {takeUntil} from 'rxjs/operators';
   styleUrls: ['./step4.component.css']
 })
 export class Step4Component implements OnInit, OnDestroy {
+  @Output() step4Valid = new EventEmitter<any>();
+
 
   public height = 0;
   public weight = 0;

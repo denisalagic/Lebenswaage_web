@@ -1,71 +1,121 @@
-.title {
-  font-size: 43px;
-  color: #333333;
-  font-weight: 400;
+.rectangles {
+  border-radius: 50px;
+  background-color: rgb(255, 201, 40);
+  opacity: 0.749;
+  width: 493px;
+  height: 358px;
 }
 
-.female-image {
-  width: 200px;
-  height: 200px;
-  margin-top: 30px;
-  margin-left: 4px;
+.rectangle-titles {
+  font-size: 33px;
+  color: rgb(0, 0, 0);
+  line-height: 1.2;
+  text-align: left;
+  width: 251px;
+  height: 28px;
+  margin-top: 25px;
+  font-weight: bold;
 }
 
-.male-image {
-  width: 200px;
-  height: 200px;
-  margin-top: 21px;
-  margin-left: 15px;
+.horizontal-line {
+  border-bottom: 1px solid white;
+  width: 100%;
+  margin-top: 20px;
+  margin-right: 26px;
 }
 
-.gender-images-background {
-  width: 250px;
-  height: 250px;
+.labels {
+  font-size: 23px;
+  color: rgb(51, 51, 51);
+  line-height: 1.2;
+  text-align: left;
+  width: 97px;
+  height: 21px;
+}
+
+.form {
+  min-width: 110px;
+  max-width: 500px;
+  width: 100%;
+}
+
+
+.example-full-width {
+  width: 100%;
+}
+
+::ng-deep .mat-form-field-suffix {
+  background: transparent !important;
+}
+
+.warning {
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  line-height: 0.529;
+  margin-left: 14px;
+}
+
+.optional {
+  color: #2196f3;
+  font-size: 23px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.selected-activity {
+  background-color: #fae6aa;
+  border-radius: 0 18px 18px 0;
+  margin-left: -35px;
+  padding-left: 19px;
+}
+
+/*radio button styles*/
+/* Hide the browser's default radio button */
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
   border-radius: 50%;
-  opacity: 0.6;
 }
 
-.gender-images-not-selected {
-  border: solid 6px #d5d5d5;
-}
-.gender-images-selected {
-  border: solid 6px #00b7ff;
-  opacity: 1.0 !important;
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
 }
 
-.gradient-scale {
-  background-image: linear-gradient(to right, #00b7ff , #f25950);
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196f3;
 }
 
-.age-text {
-  font-size: 18px;
-  color: #555555;
-  font-weight: 500;
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
 }
 
-::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-wrapper {
-  top: 18px;
-}
-::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-wrapper {
-  height: 12px;
-  border-radius: 10px
-}
-::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-background,
-::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
-  height: 100%;
-}
-::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
-  background-image: linear-gradient(to right, #00b7ff , #f25950);
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
 }
 
-::ng-deep .mat-accent .mat-slider-thumb {
-  height: 30px;
-  width: 30px;
-  background-color: white;
-  border: solid 2px gray;
-  bottom: -20px;
-  right: -20px;
-}
-::ng-deep .mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
-  background-color: white;
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
 }

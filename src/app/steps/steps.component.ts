@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
 import {StepsService} from './steps.service';
 import {QuoteModel} from "../model/quote.model";
 
@@ -10,7 +9,7 @@ import {QuoteModel} from "../model/quote.model";
 })
 export class StepsComponent implements OnInit {
 
-  public activeStep = 2;
+  public activeStep = 3;
   public steps: number[] = [1, 2, 3, 4, 5, 6];
   public quotes: QuoteModel[] = [];
   public navigationDisabled: boolean = true;
@@ -21,22 +20,17 @@ export class StepsComponent implements OnInit {
 
   ngOnInit() {
     this.stepsService.resetProperties();
-
-    // this.router.events.subscribe((val) => {
-    //   // see also
-    //   if (val instanceof NavigationEnd) {
-    //     const stepActive = val.url.split('/')[val.url.split('/').length - 1].split('-')[1];
-    //     this.activeStep = parseInt(stepActive, 10);
-    //   }
-    // });
-    // this.router.navigate(['step-1'], {relativeTo: this.activatedRoute});
   }
 
   private populateQuotesList() {
     let quote1: QuoteModel = new QuoteModel('U zdravom tijelu zdrav duh!', 'Latinska');
     let quote2: QuoteModel = new QuoteModel('Želja za zdravljem je pola zdravlja.', 'Seneka');
+    let quote3: QuoteModel = new QuoteModel('Zdravlje je najveće bogatstvo.', 'Ciceron');
+    let quote4: QuoteModel = new QuoteModel('Bez obzira koliko si dobar, uvijek možeš postati bolji i to je uzbudljiv dio.', 'T.Woods');
     this.quotes.push(quote1);
     this.quotes.push(quote2);
+    this.quotes.push(quote3);
+    this.quotes.push(quote4);
   }
 
   public activeStepUpdate(event: any) {

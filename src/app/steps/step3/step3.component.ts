@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StepsService} from '../steps.service';
-import {MatSliderChange} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
+import {CodebookModel} from "../../model/codebook.model";
+import {ApiCallsService} from "../../api-calls.service";
 
 @Component({
   selector: 'app-step3',
@@ -10,40 +11,108 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class Step3Component implements OnInit {
 
-  public selectedGender: string = null;
-  public selectedAge: number = null;
+  @Output() step3Valid = new EventEmitter<any>();
+
+
+  public height = "";
+  public weight = "";
+  public waist = "";
+  public hips = 0;
+  public activities: CodebookModel[] = [];
+  public activityChecked: string = null;
+
 
   constructor(private stepsService: StepsService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private apiCalls: ApiCallsService) {
+  }
 
   ngOnInit() {
+    this.apiCalls.getAcitivityTypes().subscribe(activities => {
+      this.activities = activities;
+      console.log(activities);
+    });
+
+    this.step3Valid.emit({
+      stepPosition: 3,
+      valid: false
+    });
+
   }
 
-  public selectGender(gender: string): void {
-    this.selectedGender = gender;
-    this.stepsService.selectedGender = gender;
-  }
-
-  onInputChange(event: MatSliderChange) {
-    this.selectedAge = event.value;
-    this.stepsService.selectedAge = event.value;
-  }
-
-  public nextStep(): void {
-    if (this.selectedGender != null && this.selectedAge) {
-      this.stepsService.selectedAge = this.selectedAge;
-      this.stepsService.selectedGender = this.selectedGender;
-      this.router.navigate(['../step-4'], {relativeTo: this.activatedRoute});
+  public incrementValue(value: any) {
+    if (value == 'height') {
+      let height = this.height != '' ? parseInt(this.height, 10) : 0;
+      this.height = (height + 1).toString();
+      this.onHeightChange();
+    } else if (value == 'weight') {
+      let weight = this.weight != '' ? parseInt(this.weight, 10) : 0;
+      this.weight = (weight + 1).toString();
+      this.onWeightChange();
+    } else if (value == 'waist') {
+      let waist = this.waist != '' ? parseInt(this.waist, 10) : 0;
+      this.waist = (waist + 1).toString();
+      this.onWaistChange();
     }
   }
 
-  formatLabel(value: number | null) {
-    if (!value) {
-      return 0;
+  public decrementValue(value: any) {
+    if (value == 'height') {
+      let height = this.height != '' ? parseInt(this.height, 10) : 0;
+      if (height > 0) {
+        this.height = (height - 1).toString();
+        this.onHeightChange();
+      }
+    } else if (value == 'weight') {
+      let weight = this.weight != '' ? parseInt(this.weight, 10) : 0;
+      if (weight > 0) {
+        this.weight = (weight - 1).toString();
+        this.onWeightChange();
+      }
+    } else if (value == 'waist') {
+      let waist = this.waist != '' ? parseInt(this.waist, 10) : 0;
+      if (waist > 0) {
+        this.waist = (waist - 1).toString();
+        this.onWaistChange();
+      }
     }
+  }
 
-    return value;
+
+  private onHeightChange() {
+    this.stepsService.height = parseInt(this.height, 10);
+    this.checkStepValidity();
+  }
+
+  onWeightChange() {
+    this.stepsService.weight = parseInt(this.weight, 10);
+    this.checkStepValidity();
+  }
+
+  onWaistChange() {
+    this.stepsService.waist = parseInt(this.waist, 10);
+    this.checkStepValidity();
+  }
+
+  onActivityChange(value: string) {
+    this.activityChecked = value;
+    this.stepsService.activity = value;
+    this.checkStepValidity();
+  }
+
+  private checkStepValidity() {
+    if (parseInt(this.height, 10) > 0 && parseInt(this.weight, 10) > 0 && parseInt(this.waist, 10) > 0 && this.activityChecked != null) {
+      this.step3Valid.emit({
+        stepPosition: 3,
+        valid: true
+      });
+    } else {
+      this.step3Valid.emit({
+        stepPosition: 3,
+        valid: false
+      });
+    }
   }
 
 }
