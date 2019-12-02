@@ -9,7 +9,7 @@ import {QuoteModel} from "../model/quote.model";
 })
 export class StepsComponent implements OnInit {
 
-  public activeStep = 3;
+  public activeStep = 5;
   public steps: number[] = [1, 2, 3, 4, 5, 6];
   public quotes: QuoteModel[] = [];
   public navigationDisabled: boolean = true;
@@ -27,10 +27,13 @@ export class StepsComponent implements OnInit {
     let quote2: QuoteModel = new QuoteModel('Želja za zdravljem je pola zdravlja.', 'Seneka');
     let quote3: QuoteModel = new QuoteModel('Zdravlje je najveće bogatstvo.', 'Ciceron');
     let quote4: QuoteModel = new QuoteModel('Bez obzira koliko si dobar, uvijek možeš postati bolji i to je uzbudljiv dio.', 'T.Woods');
+    let quote5: QuoteModel = new QuoteModel('Naša hrana bi trebala biti naš lijek i obratno.', 'Hipokrat');
+
     this.quotes.push(quote1);
     this.quotes.push(quote2);
     this.quotes.push(quote3);
     this.quotes.push(quote4);
+    this.quotes.push(quote5);
   }
 
   public activeStepUpdate(event: any) {

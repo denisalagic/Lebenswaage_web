@@ -1,91 +1,245 @@
-<div class="row justify-content-center" style="margin-top: -7%; margin-bottom: 80px;">
-  <div class="col-sm-8">
-    <span [innerHTML]="'step-4.biometrics' | translate" class="biometrics"></span>
+<div style="margin-top: 300px">
+  <div class="row justify-content-center">
+    <span class="step-title">Bio-metrics</span>
   </div>
-</div>
-<div class="row justify-content-center values">
-  <div class="col-sm-3">
-    <div class="row">
-      <span [innerHTML]="'step-4.your-measures' | translate" class="your-measures"></span>
+  <div class="row justify-content-center" style="margin-top: 100px;">
+    <div class="col-sm-2 rectangles" style="margin-right: 37px;">
+      <div style="margin-left: 20px">
+        <div class="row">
+          <span class="rectangle-titles">Izračun</span>
+        </div>
+        <div class="row">
+          <div class="horizontal-line"></div>
+        </div>
+        <div class="row" style="margin-top: 20px">
+          <div class="col-sm-3">
+            <span class="labels">BMI</span>
+          </div>
+          <div class="col-sm-5" style="margin-top: -18px;">
+            <form class="form">
+              <mat-form-field class="example-full-width">
+                <input type="text" name="bmi" matInput [(ngModel)]="bmi">
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col-sm-2">
+            <span class="labels">kg/m&#178;</span>
+          </div>
+        </div>
+        <div class="row">
+          <span class="warning">Indeks tjelesne mase</span>
+        </div>
+        <div class="row" style="margin-top: 20px">
+          <div class="col-sm-3">
+            <span class="labels">BMR</span>
+          </div>
+          <div class="col-sm-5" style="margin-top: -18px;">
+            <form class="form">
+              <mat-form-field class="example-full-width">
+                <input type="text" name="bmr" matInput [(ngModel)]="bmr">
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col-sm-2">
+            <span class="labels">kcal</span>
+          </div>
+        </div>
+        <div class="row">
+          <span class="warning">Bazalni metabolizam</span>
+        </div>
+        <div class="row" style="margin-top: 20px">
+          <div class="col-sm-3">
+            <span class="labels">TEE</span>
+          </div>
+          <div class="col-sm-5" style="margin-top: -18px;">
+            <form class="form">
+              <mat-form-field class="example-full-width">
+                <input type="text" name="tee" matInput [(ngModel)]="tee">
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col-sm-2">
+            <span class="labels">kcal</span>
+          </div>
+        </div>
+        <div class="row">
+          <span class="warning">Ukupna energetska potrošnja</span>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <div class="col-7 col-sm-7">
-        <mat-form-field class="input-font-color">
-          <input matInput [(ngModel)]="height" (change)="onHeightChange($event)" ngDefaultControl placeholder="{{ 'step-4.height' | translate }}" type="number" class="example-right-align">
-          <span matSuffix>cm</span>
-        </mat-form-field>
-      </div>
-      <div class="col-5 col-sm-5">
-          <mat-slider thumbLabel tickInterval="1" (input)="onHeightChange($event)"
-                      min="0" max="250" style="width: 100%"></mat-slider>
+    <div class="col-sm-2">
+      <img src="assets/img/bmi-pothranjeno.png" class="bmi-scale" *ngIf="bmi < 18.5"/>
+      <img src="assets/img/bmi-normalno.png" class="bmi-scale"*ngIf="bmi >= 18.5 && bmi <= 24.9"/>
+      <img src="assets/img/bmi-overweight.png" class="bmi-scale" *ngIf="bmi >= 25 && bmi <= 29.9"/>
+      <img src="assets/img/bmi-obese.png" class="bmi-scale" *ngIf="bmi >= 30 && bmi <= 39.9"/>
+      <img src="assets/img/bmi-extrem-obese.png" class="bmi-scale" *ngIf="bmi >= 40"/>
+      <div class="bmi-value-holder bmi-value">
+        {{getBmiValue()}}
       </div>
     </div>
-    <div class="row">
-      <div class="col-7 col-sm-7">
-        <mat-form-field class="input-font-color">
-          <input matInput [(ngModel)]="weight" (change)="onWeightChange($event)" ngDefaultControl placeholder="{{ 'step-4.weight' | translate }}" type="number" class="example-right-align">
-          <span matSuffix>kg</span>
-        </mat-form-field>
-      </div>
-      <div class="col-5 col-sm-5">
-        <mat-slider thumbLabel tickInterval="1" (input)="onWeightChange($event)"
-                    min="0" max="250" style="width: 100%"></mat-slider>
+    <div class="col-sm-2 rectangles" style="margin-right: 37px;">
+      <div style="margin-left: 20px">
+        <div class="row">
+          <span class="rectangle-titles">Preporuke</span>
+        </div>
+        <div class="row">
+          <div class="horizontal-line"></div>
+        </div>
+        <div class="row" style="margin-top: 20px">
+          <div class="col-sm-5">
+            <span class="labels">MASS</span>
+          </div>
+          <div class="col-sm-3" style="margin-top: -18px;">
+            <form class="form">
+              <mat-form-field class="example-full-width">
+                <input type="text" name="bmi" matInput [value]="minWeight.toFixed(2) + ' - ' + maxWeight.toFixed(2)">
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col-sm-1 offset-1">
+            <span class="labels">kg</span>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 20px">
+          <div class="col-sm-5">
+            <span class="labels">ENERGY INPUT</span>
+          </div>
+          <div class="col-sm-3" style="margin-top: -18px;">
+            <form class="form">
+              <mat-form-field class="example-full-width">
+                <input type="text" name="bmr" matInput [value]="optimalCaloriesIntake.toFixed(2)">
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col-sm-1 offset-1">
+            <span class="labels">kcal</span>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 20px">
+          <div class="col-sm-5">
+            <span class="labels">ADDITIONAL ENERGY</span>
+          </div>
+          <div class="col-sm-3" style="margin-top: -18px;">
+            <form class="form">
+              <mat-form-field class="example-full-width">
+                <input type="text" name="tee" matInput [value]="additionalCaloriesNeeded.toFixed(2)">
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col-sm-1 offset-1">
+            <span class="labels">kcal</span>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-7 col-sm-7">
-        <mat-form-field class="input-font-color">
-          <input matInput [(ngModel)]="waist" (change)="onWaistChange($event)" ngDefaultControl placeholder="{{ 'step-4.waist' | translate }}" type="number" class="example-right-align">
-          <span matSuffix>cm</span>
-        </mat-form-field>
-      </div>
-      <div class="col-5 col-sm-5">
-        <mat-slider thumbLabel tickInterval="1" (input)="onWaistChange($event)"
-                    min="0" max="99" style="width: 100%"></mat-slider>
+
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-6 info">
+      *što je bmi i bmr.-.--.--.-- bla bla text text text bla bla text text text <br/>
+      * jedna kila koliko kalorija bla bla text text text  bla bla text text text
+    </div>
+  </div>
+  <div class="row justify-content-center" style="margin-top: 50px;">
+    <div class="col-sm-6 recommendations">
+      My recomendations
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-6 horizontal-line-black"></div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-6 info">
+      Ako su vaše preporuke različite od preporuka koje daje aplikacija ovdje upišite svoje vrijednosti, u protivnom ostavite prazna polja.
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-3 labels">
+      <div class="row" style="border-right: solid 1px gray;">
+        <div class="col-sm-5">
+          ENERGY INPUT
+        </div>
+        <div class="col-sm-5" style="margin-top: -27px;;">
+          <form class="form">
+            <mat-form-field class="example-full-width">
+              <input type="text" name="bmi" matInput [(ngModel)]="optimalCaloriesIntake">
+            </mat-form-field>
+          </form>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-7 col-sm-7">
-        <mat-form-field class="input-font-color" >
-          <input matInput [(ngModel)]="hips" (change)="onHipsChange($event)" ngDefaultControl placeholder="{{ 'step-4.hips' | translate }}" type="number" class="example-right-align">
-          <span matSuffix>cm</span>
-        </mat-form-field>
-      </div>
-      <div class="col-5 col-sm-5">
-        <mat-slider thumbLabel tickInterval="1" (input)="onHipsChange($event)"
-                    min="0" max="99" style="width: 100%"></mat-slider>
+    <div class="col-sm-3 labels">
+      <div class="row">
+        <div class="col-sm-6">
+          ADDITIONAL ENERGY
+        </div>
+        <div class="col-sm-5" style="margin-top: -27px;;">
+          <form class="form">
+            <mat-form-field class="example-full-width">
+              <input type="text" name="bmi" matInput [(ngModel)]="additionalCaloriesNeeded">
+            </mat-form-field>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-2" style="height: 316px !important;">
-    <img class="language-image" src="assets/human-image.png" style="height: 91% !important;">
-  </div>
-  <div class="col-sm-3">
-    <div class="row" id="step-4-target-label">
-      <span [innerHTML]="'step-4.activity' | translate" class="your-measures"></span>
-    </div>
-    <div class="row">
-      <mat-radio-group
-        aria-labelledby="step-4-target-label"
-        class="step-4-target-radio-group"
-        [(ngModel)]="activityChecked" (change)="onActivityChange($event)">
-        <mat-radio-button class="step-4-target-radio-button" *ngFor="let activity of activities" [value]="activity.code">
-          {{activity.name}}
-        </mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div class="row">
-        <mat-select [formControl]="mealPlanTagCtrl" placeholder="Meal plan tags" [multiple]="true" #multiSelect>
-          <ngx-mat-select-search [formControl]="mealPlanTagFilterCtrl"></ngx-mat-select-search>
-          <mat-option *ngFor="let mealPlanTag of filteredMealPlanTagsMulti | async" [value]="mealPlanTag.code">
-            {{mealPlanTag.name}} - {{mealPlanTag.notes}}
-          </mat-option>
-        </mat-select>
+  <div class="row justify-content-center" style="margin-top: 75px;">
+    <div class="col-sm-6 recommendations">
+      Food you do not eat
     </div>
   </div>
-</div>
-<div class="row justify-content-end">
-  <div class="col-sm-2">
-    <button mat-raised-button class="next-button" [disabled]="nextButtonDisabled()" (click)="nextStep()">{{'next' | translate}}</button>
+  <div class="row justify-content-center">
+    <div class="col-sm-6 horizontal-line-black"></div>
   </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-6 info">
+      Molimo odaberite namirnice koje ne jedete kako bismo ih isključili iz plana prehrane.
+    </div>
+  </div>
+
+  <div class="row justify-content-center" style="margin-top: 20px;">
+    <ng-template [ngIf]="selectedLanguage == 'en'">
+      <div class="col-sm-1" (click)="pickFood('GLT')">
+        <img src="assets/img/ikona-gluten.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('GLT') ? 'food-picker-selected':''"/>
+      </div>
+      <div class="col-sm-1" (click)="pickFood('LAC')">
+        <img src="assets/img/ikona-lactose.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('LAC') ? 'food-picker-selected':''"/>
+      </div>
+      <div class="col-sm-1" (click)="pickFood('MEA')">
+        <img src="assets/img/ikona-meat.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('MEA') ? 'food-picker-selected':''"/>
+      </div>
+      <div class="col-sm-1" (click)="pickFood('NUT')">
+        <img src="assets/img/ikona-nuts.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('NUT') ? 'food-picker-selected':''"/>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="selectedLanguage == 'hr'">
+      <div class="col-sm-1" (click)="pickFood('GLT')">
+        <img src="assets/img/ikona-gluten.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('GLT') ? 'food-picker-selected':''"/>
+      </div>
+      <div class="col-sm-1" (click)="pickFood('LAC')">
+        <img src="assets/img/ikona-laktoza.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('LAC') ? 'food-picker-selected':''"/>
+      </div>
+      <div class="col-sm-1" (click)="pickFood('MEA')">
+        <img src="assets/img/ikona-meso.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('MEA') ? 'food-picker-selected':''"/>
+      </div>
+      <div class="col-sm-1" (click)="pickFood('NUT')">
+        <img src="assets/img/ikona-orasidi.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('NUT') ? 'food-picker-selected':''"/>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="selectedLanguage == 'de'">
+      <div class="col-sm-1" (click)="pickFood('GLT')">
+        <img src="assets/img/ikona-gluten.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('GLT') ? 'food-picker-selected':''"/>
+      </div>
+      <div class="col-sm-1" (click)="pickFood('LAC')">
+        <img src="assets/img/ikona-laktose.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('LAC') ? 'food-picker-selected':''"/>
+      </div>
+      <div class="col-sm-1" (click)="pickFood('MEA')">
+        <img src="assets/img/ikona-fleish.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('MEA') ? 'food-picker-selected':''"/>
+      </div>
+      <div class="col-sm-1" (click)="pickFood('NUT')">
+        <img src="assets/img/ikona-nusse.png" class="blacklisted-food-image" [ngClass]="markSelectedFood('NUT') ? 'food-picker-selected':''"/>
+      </div>
+    </ng-template>
+  </div>
+
 </div>
