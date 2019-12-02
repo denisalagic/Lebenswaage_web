@@ -10,7 +10,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
-
 /* You can add global styles to this file, and also import other style files */
 //body {
 //  background-image:url('/assets/background.png');
@@ -29,16 +28,34 @@ body, html {
   overflow-x: hidden;
 }
 
-@font-face {
-  font-family: popins;
-  src: url('./assets/fonts/poppins/Poppins-Regular.otf') format("opentype");
-}
-
 * {
-  font-family: 'popins', 'arial', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+
 }
 
-.html::-webkit-scrollbar { width: 0 !important }
+.image-logo {
+  width: 100%;
+  margin-left: 42px;
+}
+
+.content {
+  margin: 30px;
+}
+
+.step-title {
+  font-size: 78px;
+  font-family: 'Playfair Display', sans-serif;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  width: 621px;
+  height: 63px;
+}
+
+.html::-webkit-scrollbar {
+  width: 0 !important
+}
 
 
 .next-button {
@@ -58,6 +75,8 @@ body, html {
 //  color: #fff;
 //}
 
-.mat-card-header-text{
+.mat-card-header-text {
   width: 100% !important;
 }
+
+

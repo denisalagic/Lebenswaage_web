@@ -1,83 +1,74 @@
-.steps-background{
-  height: 100vh;
-  width: 100%;
-  background-image:url('../../assets/steps-background.png');
-  background-size: cover;
-  color: white;
-  z-index: -2;
+* {
+  box-sizing: border-box;
 }
 
-.child-components {
-  margin-top: 9%;
-  padding-top: 6%;
+body {
+  margin: 0;
+  font-size: 17px;
 }
 
-.progressbar {
-  counter-reset: step;
+#video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
-.progressbar li {
-  list-style-type: none;
-  width: 15%;
-  float: left;
-  font-size: 20px;
-  position: relative;
-  text-align: center;
-  color: white;
-  z-index: 1;
+
+.element {
+  display:inline-block;
+  position: fixed;
+  width: 1920px;
+  height: 1080px;
+  -webkit-clip-path: polygon(80% 0, 100% 0, 100% 100%, 0 100%, 0 45%);
+  clip-path: polygon(80% 0, 100% 0, 100% 100%, 0 100%, 0 45%);
 }
-.progressbar li:before {
-  width: 60px;
-  height: 60px;
-  content: counter(step);
-  counter-increment: step;
-  line-height: 30px;
+
+.navigation-numbers {
+  height: 57px;
+}
+
+.navigation-text {
   font-size: 30px;
-  border: 5px solid #999999;
-  display: block;
-  text-align: center;
-  margin: 0 auto 10px auto;
-  padding-top: 8px;
-  border-radius: 50%;
-  background-color: #999999;
+  color: rgb(81, 81, 81);
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-align: left;
+  width: 136px;
+  height: 25px;
 }
-.progressbar li:after {
-  width: 100%;
-  height: 2px;
-  content: '';
+
+.navigation-text-disabled {
+  color: #d7d7d7 !important;
+}
+
+.quote-text {
+  font-size: 40px;
+  font-family: 'Playfair Display', sans-serif;
+  color: rgb(153, 153, 153);
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.2;
+  width: 513px;
+  height: 78px;
+}
+
+.quote-author {
+  font-size: 25px;
+  color: rgb(153, 153, 153);
+  font-weight: bold;
+  line-height: 1.2;
+  width: 513px;
+  height: 78px;
+  margin-left: 407px;
+}
+
+.navigation-position {
   position: absolute;
-  background-color: #999999;
-  top: 30px;
-  left: -37%;
-  z-index: -1;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 100px;
 }
 
 
-.progressbar li:first-child:after {
-  content: none;
-}
-.progressbar li.active {
-  color: white;
-}
-.progressbar li.active:before {
-  border-color: #999999;
-  color: white;
-  background-color: #f25950;
-}
-.progressbar li.active + li:after {
-  background-color: #f25950;
-}
 
-.progressbar-short {
-  display: none;
-}
-
-@media only screen and (max-width: 444px) {
-  .progressbar {
-    display: none;
-  }
-
-  .progressbar-short {
-    display: block;
-    font-size: 20px;
-  }
-}

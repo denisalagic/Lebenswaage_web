@@ -1,25 +1,185 @@
-.navigation-icons {
-  margin-top: 70px;
-  color: black;
-  font-size: 50px;
+.male-circle {
+  border-width: 5px;
+  border-color: rgb(255, 255, 255);
+  border-style: solid;
+  border-radius: 50%;
+  background-color: rgb(33, 150, 243);
+  box-shadow: 0px 1px 4.85px 0.15px rgba(0, 0, 0, 0.25);
+  width: 187px;
+  height: 187px;
 }
 
-.disabled-navigation {
-  color: lightgray;
+.female-circle {
+  margin-right: 150px;
+  border-width: 5px;
+  border-color: rgb(255, 255, 255);
+  border-style: solid;
+  border-radius: 50%;
+  background-color: rgb(244, 154, 193);
+  box-shadow: 0px 1px 4.85px 0.15px rgba(0, 0, 0, 0.25);
+  width: 187px;
+  height: 187px;
 }
 
-.video-title {
-  font-size: 3vh;
+.gender-selected {
+  border-color: #ffc928;
+}
+
+.years-text {
+  font-size: 30px;
+  color: rgb(153, 153, 153);
+  line-height: 1.2;
+  text-align: left;
+  width: 43px;
+  height: 20px;
+}
+
+
+.age-text {
+  font-size: 18px;
   color: #555555;
-  font-weight: 400;
+  font-weight: 500;
 }
 
-.video-selected {
-  border: 1px solid #00b7ff;
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
 }
 
-.select-training {
-  font-size: 43px;
-  color: #333333;
-  font-weight: 400;
+/* Following classes are for slider thumb */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 3px solid #ffffff;
+  height: 36px;
+  width: 36px;
+  border-radius: 18px;
+  background: #ffc928;
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+/* END classes are for slider thumb */
+
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 36px;
+  border-radius: 18px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 36px;
+  border-radius: 18px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background-image: linear-gradient(to right, #9d29b0 , #ffc928);
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background-image: linear-gradient(to right, #9d29b0 , #ffc928);
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background-image: linear-gradient(to right, #9d29b0 , #ffc928);
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background-image: linear-gradient(to right, #9d29b0 , #ffc928);
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background-image: linear-gradient(to right, #9d29b0 , #ffc928);
+}
+input[type=range]::-ms-fill-upper {
+  background-image: linear-gradient(to right, #9d29b0 , #ffc928);
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background-image: linear-gradient(to right, #9d29b0 , #ffc928);
+}
+
+/* age input tooltip*/
+output {
+  position: absolute;
+  background: white;
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  color: black;
+  border-radius: 10px;
+  border: 1px solid black;
+  display: inline-block;
+  font: bold 15px/30px 'Source Sans Pro';
+  bottom: 175%;
+  left: 13px;
+}
+output:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid black;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -1px;
 }

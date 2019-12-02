@@ -1,71 +1,77 @@
-<div *ngIf="route.children.length == 0" class="main-background">
-  <div class="row ml-1 text-white">
-    <div class="col-sm-4" style="font-size: 40px">
-      <span [innerHTML]="'home.title-split.first' | translate"></span>
-      <span [innerHTML]="'home.title-split.second' | translate" class="font-weight-bold"></span>
-    </div>
-    <div class="col-2 col-sm-1 offset-sm-2 text-right" style="margin-top: 2%">
-      <mat-icon class="navigation-icons" [ngClass]="currentPage == 0 ? 'disabled-navigation' : ''" (click)="previousPage()">chevron_left</mat-icon>
-    </div>
-    <div class="col-8 col-sm-2" *ngFor="let video of filteredVideoList"  style="margin-top: 3%">
-      <video width="205px" height="115px" controls controlsList="nodownload"  [poster]="video.posterUrl" class="video-holder">
-        <source [src]="video.videoUrl" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="col-2 col-sm-1"  style="margin-top: 2%; margin-left: -2%;">
-      <mat-icon class="navigation-icons" [ngClass]="currentPage + 1 == totalPages ? 'disabled-navigation' : ''" (click)="nextPage()">chevron_right</mat-icon>
-    </div>
+<div *ngIf="route.children.length == 0" style="margin-top: -30px;">
+  <video autoplay="autoplay" muted loop id="video-background" #videoPlayer>
+    <source src="assets/videos/home_page.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <div class="element">
+    <img src="assets/img/home_background.jpg"/>
   </div>
 
-  <div class="row justify-content-center text-white" style="margin-top: 6%">
-    <div class="col-12 col-sm-12 text-center">
-      <span [innerHTML]="'home.welcome' | translate" class="welcome-text"></span>
-    </div>
-  </div>
-
-  <!--<div class="row justify-content-center" style="margin-top: 3%">
-    <div class="col-sm-4 language-box">
-      <div class="row justify-content-center" style="margin-top: 10%; margin-bottom: 5%">
-        <span [innerHTML]="'home.choose-language' | translate" class="choose-language-text"></span>
+  <div class="content">
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="assets/img/LW-logotip-cijeli.png" class="image-logo"/>
       </div>
-      <div class="row justify-content-center mt-2" style="margin-bottom: 5%">
-        <div class="col-sm-3" (click)="setLanguage('en')">
-          <div class="row justify-content-center">
-            <img class="language-image" src="assets/en.png">
+
+      <div class="col-sm-2 offset-6" style="margin-top: 28px; padding-right: 50px;">
+        <div class="row">
+          <div class="col-sm-4">
+            <img *ngIf="selectedLanguage == 'de'" src="assets/img/njemacki.png" class="image-country"/>
+            <img *ngIf="selectedLanguage != 'de'" src="assets/img/njemacki-neaktivan.png" class="image-country"
+                 (click)="setLanguage('de')"/>
           </div>
-          <div class="row justify-content-center">
-            <span [innerHTML]="'language.english' | translate" class="language"
-                  [ngClass]="selectedLanguage == 'en' ? 'selected-language': ''"></span>
+          <div class="col-sm-4">
+            <img *ngIf="selectedLanguage == 'en'" src="assets/img/engleski.png" class="image-country"/>
+            <img *ngIf="selectedLanguage != 'en'" src="assets/img/engleski-neaktivan.png" class="image-country"
+                 (click)="setLanguage('en')"/>
           </div>
-        </div>
-        <div class="col-sm-3" (click)="setLanguage('de')">
-          <div class="row justify-content-center">
-            <img class="language-image" src="assets/de.png">
-          </div>
-          <div class="row justify-content-center">
-            <span [innerHTML]="'language.german' | translate" class="language"
-                  [ngClass]="selectedLanguage == 'de' ? 'selected-language': ''"></span>
-          </div>
-        </div>
-        <div class="col-sm-3" (click)="setLanguage('hr')">
-          <div class="row justify-content-center">
-            <img class="language-image" src="assets/hr.png">
-          </div>
-          <div class="row justify-content-center">
-            <span [innerHTML]="'language.croatian' | translate" class="language"
-                  [ngClass]="selectedLanguage == 'hr' ? 'selected-language': ''"></span>
+          <div class="col-sm-4">
+            <img *ngIf="selectedLanguage == 'hr'" src="assets/img/hrvatski.png" class="image-country"/>
+            <img *ngIf="selectedLanguage != 'hr'" src="assets/img/hrvatski-neaktivan.png" class="image-country"
+                 (click)="setLanguage('hr')"/>
           </div>
         </div>
       </div>
     </div>
-  </div>-->
 
-  <div class="row justify-content-center" style="margin-top: 3%;">
-    <button mat-raised-button class="start-button" [routerLink]="'steps'">{{'home.press-to-start' | translate}}</button>
+    <div class="row">
+      <div class="offset-10" style="width: 272px;">
+        <div class="money-input">
+          <span class="saldo" style="margin-left: 24px;">Saldo: </span>
+          <span class="saldo" (click)="incrementAmount()"
+                [ngClass]="{'saldo-zero': moneyAmount==0, 'saldo-not-enough':(moneyAmount > 0 && moneyAmount<70), 'saldo-enough':moneyAmount>=70 }">{{moneyAmount |currency:'EUR':true}}</span>
+          <img src="assets/img/check-circle-empty.png" *ngIf="moneyAmount < 70" class="money-icon-check"/>
+          <img src="assets/img/check-circle-good.png" *ngIf="moneyAmount >= 70" class="money-icon-check"/>
+          <br/>
+          <span class="saldo-needed" style="margin-left: 24px;">Notwendigkeit: {{70 |currency:'EUR':true}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center" style="margin-top:140px">
+      <div class="welcome-rectangle">
+        <div class="welcome-text-placeholder">
+          <div class="welcome-text">Willkomen!</div>
+          <div class="welcome-subtext">Beginnen Sie die Veränderung mit uns!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center" style="margin-top: 20px;">
+      <div class="start-rectangle" [@animateStartButton]="moneyAmountAnimation">
+        <div class="start-text-placeholder">
+          <div class="start-button-text" (click)="navigateToSteps()">START</div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
 
 
 <router-outlet></router-outlet>
+
+
 

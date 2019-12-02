@@ -1,28 +1,44 @@
-<div class="steps-background">
-  <div class="row ml-1 text-white">
-    <div class="col-sm-4" style="font-size: 40px">
-      <span [innerHTML]="'home.title-split.first' | translate"></span>
-      <span [innerHTML]="'home.title-split.second' | translate" class="font-weight-bold"></span>
+<video autoplay="autoplay" muted loop id="video-background">
+  <source src="assets/videos/home_page.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+<div class="element">
+  <img src="assets/img/pozadina.jpg"/>
+</div>
+<div class="content">
+  <div class="row">
+    <div class="col-sm-1">
+      <img src="assets/img/LW-logotip.png" class="image-logo"/>
     </div>
-    <div class="offset-2 col-sm-6">
-      <div class="container">
-        <ul class="progressbar">
-          <li [ngClass]="activeStep >= 1 ? 'active' : ''">Step 1</li>
-          <li [ngClass]="activeStep >= 2 ? 'active' : ''">Step 2</li>
-          <li [ngClass]="activeStep >= 3 ? 'active' : ''">Step 3</li>
-          <li [ngClass]="activeStep >= 4 ? 'active' : ''">Step 4</li>
-          <li [ngClass]="activeStep >= 5 ? 'active' : ''">Step 5</li>
-          <li [ngClass]="activeStep >= 6 ? 'active' : ''">Step 6</li>
-        </ul>
-        <div class="progressbar-short" *ngIf="activeStep !== 7"
-             [innerHTML]="'step' | translate:{step_no: activeStep }">
-        </div>
-      </div>
+    <div class="col-sm-11">
     </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-sm-12 text-center child-components">
-      <router-outlet></router-outlet>
+  <div class="row">
+    <div class="col-sm-4 offset-8">
+      <span class="quote-text">{{quotes[activeStep-1].quoteText}}</span><br/>
+      <span class="quote-author">{{quotes[activeStep-1].quoteAuthor}}</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <app-step1 *ngIf="activeStep == 1" (step1Valid)="activeStepUpdate($event)"></app-step1>
+      <app-step2 *ngIf="activeStep == 2" (step2Valid)="activeStepUpdate($event)"></app-step2>
+    </div>
+  </div>
+  <div class="row justify-content-center navigation-position">
+    <div class="col-sm-1" *ngFor="let i of steps">
+      <img *ngIf="activeStep == i" [src]="'assets/img/ikona-' + i + '-aktivna.png'" class="navigation-numbers"/>
+      <img *ngIf="activeStep != i" [src]="'assets/img/ikona-' + i + '-neaktivna.png'" class="navigation-numbers"/>
+    </div>
+    <div class="col-sm-2" (click)="navigateNextStep()">
+      <span class="navigation-text" [ngClass]="{'navigation-text-disabled': navigationDisabled}">
+        Nächster
+      </span>
+      <img src="assets/img/strjelica-naprijed.png" style="height: 57px"/>
     </div>
   </div>
 </div>
+
+
