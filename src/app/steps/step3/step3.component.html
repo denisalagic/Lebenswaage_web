@@ -19,7 +19,8 @@
             <form class="form">
               <mat-form-field class="example-full-width">
                 <mat-icon matPrefix (click)="decrementValue('height')">keyboard_arrow_down</mat-icon>
-                <input type="text" name="height" matInput [(ngModel)]="height" [matKeyboard]="'numberLayout'" (change)="onHeightChange()">
+                <!--<input type="text" name="height" matInput [(ngModel)]="height" [matKeyboard]="'numberLayout'" (change)="onHeightChange()">-->
+                <input type="text" name="height" matInput [(ngModel)]="height" (change)="onHeightChange()">
                 <mat-icon matSuffix (click)="incrementValue('height')">keyboard_arrow_up</mat-icon>
               </mat-form-field>
             </form>
@@ -39,7 +40,8 @@
             <form class="form">
               <mat-form-field class="example-full-width">
                 <mat-icon matPrefix (click)="decrementValue('weight')">keyboard_arrow_down</mat-icon>
-                <input type="text" name="weight" matInput [(ngModel)]="weight" [matKeyboard]="'numberLayout'" (change)="onWeightChange()">
+                <!--<input type="text" name="weight" matInput [(ngModel)]="weight" [matKeyboard]="'numberLayout'" (change)="onWeightChange()">-->
+                <input type="text" name="weight" matInput [(ngModel)]="weight" (change)="onWeightChange()">
                 <mat-icon matSuffix (click)="incrementValue('weight')">keyboard_arrow_up</mat-icon>
               </mat-form-field>
             </form>
@@ -60,7 +62,8 @@
             <form class="form">
               <mat-form-field class="example-full-width">
                 <mat-icon matPrefix (click)="decrementValue('waist')">keyboard_arrow_down</mat-icon>
-                <input type="text" name="waist" matInput [(ngModel)]="waist" [matKeyboard]="'numberLayout'" (change)="onWaistChange()">
+                <!--<input type="text" name="waist" matInput [(ngModel)]="waist" [matKeyboard]="'numberLayout'" (change)="onWaistChange()">-->
+                <input type="text" name="waist" matInput [(ngModel)]="waist" (change)="onWaistChange()">
                 <mat-icon matSuffix (click)="incrementValue('waist')">keyboard_arrow_up</mat-icon>
               </mat-form-field>
             </form>
