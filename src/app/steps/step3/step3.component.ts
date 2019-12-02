@@ -89,7 +89,9 @@ export class Step3Component implements OnInit {
   }
 
   onWeightChange() {
+    console.log("Setting weight");
     this.stepsService.weight = parseInt(this.weight, 10);
+    console.log(this.stepsService.weight);
     this.checkStepValidity();
   }
 

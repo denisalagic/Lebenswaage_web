@@ -60,8 +60,7 @@
             <form class="form">
               <mat-form-field class="example-full-width">
                 <mat-icon matPrefix (click)="decrementValue('waist')">keyboard_arrow_down</mat-icon>
-                <!--<input type="text" name="waist" matInput [(ngModel)]="waist" [matKeyboard]="'numberLayout'" (change)="onWaistChange()">-->
-                <input type="text" name="waist" matInput [(ngModel)]="waist" (change)="onWaistChange()">
+                <input type="text" name="waist" matInput [(ngModel)]="waist" [matKeyboard]="'numberLayout'" (change)="onWaistChange()">
                 <mat-icon matSuffix (click)="incrementValue('waist')">keyboard_arrow_up</mat-icon>
               </mat-form-field>
             </form>
