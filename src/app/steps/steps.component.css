@@ -26,6 +26,7 @@ body {
 
 .navigation-numbers {
   height: 57px;
+  margin-top: 17px;
 }
 
 .navigation-text {
@@ -36,6 +37,7 @@ body {
   text-align: left;
   width: 136px;
   height: 25px;
+  margin-top: 17px;
 }
 
 .navigation-text-disabled {
@@ -60,14 +62,14 @@ body {
   line-height: 1.2;
   width: 513px;
   height: 78px;
-  margin-left: 407px;
 }
 
 .navigation-position {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
-  margin-bottom: 100px;
+  height: 107px;
+  background-image: url("../../assets/img/pozadina.jpg");
 }
 
 

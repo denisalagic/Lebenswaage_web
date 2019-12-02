@@ -1,52 +1,12 @@
-<div class="row justify-content-center" style="margin-top: -7%; margin-bottom: 80px;">
-  <div class="col-sm-8">
-    <span [innerHTML]="'step-5.biometrics' | translate" class="biometrics"></span>
+<div style="margin-top: 300px">
+  <div class="row justify-content-center">
+    <span class="step-title">Meal plan</span>
   </div>
-</div>
-<div class="row justify-content-center">
-  <div class="col-sm-4 box-style" style="margin-bottom: 10px;">
-    <div class="row" style="margin-left: 20px">
-      <span class="box-title" [innerHTML]="'step-5.recommendations' | translate"></span>
+  <div class="row" style="margin-top: 100px;">
+    <div class="col-sm-3" *ngFor="let number of mealTagCount; let i = index"
+         [ngClass]="i % 2 == 0 ? 'offset-3' : ''" style="margin-bottom: 20px;"
+    (click)="mealTagSelected(number)">
+      <img [src]="'assets/img/meal-plans/meal-plan-' + number + '-' + selectedLanguage + '.png'" style="width: 400px;"/>
     </div>
-    <div class="row" style="margin-bottom: 10px; margin-left: 45px">
-      <div class="col-7 col-sm-7 recommendations">
-        <span [innerHTML]="'step-5.mass' | translate" class="text-style"></span>
-      </div>
-      <div class="col-4 col-sm-4" style="background-color: #00b7ff;">
-        {{minWeight | number : '1.0-0'}} - {{maxWeight | number : '1.0-0'}} kg
-      </div>
-    </div>
-    <div class="row" style="margin-bottom: 10px; margin-left: 45px">
-      <div class="col-7 col-sm-7 recommendations">
-        <span [innerHTML]="'step-5.energy-input' | translate" class="text-style"></span>
-      </div>
-      <div class="col-4 col-sm-4" style="background-color: #61bb57;">
-        {{optimalCaloriesIntake | number : '1.0-0'}} kcal
-      </div>
-    </div>
-    <div class="row" style="margin-bottom: 10px; margin-left: 45px">
-      <div class="col-7 col-sm-7 recommendations">
-        <span [innerHTML]="'step-5.additional-energy' | translate" class="text-style"></span>
-      </div>
-      <div class="col-4 col-sm-4" style="background-color: #f1594f;">
-        {{additionalCaloriesNeeded | number : '1.0-0'}} kcal
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4 offset-sm-1 box-style" style="margin-bottom: 9px;">
-    <div class="row" style="margin-left: 20px">
-      <span class="box-title" [innerHTML]="'step-5.foods-not-included' | translate"></span>
-    </div>
-    <div class="row justify-content-center">
-      <div *ngFor="let food of blacklistedFoodTypes" class="food-picker" [ngClass]="markSelectedFood(food.code) ? 'food-picker-selected':''" (click)="pickFood(food.code)">
-        <span class="text-style"> {{food.name}}</span>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row justify-content-end">
-  <div class="col-sm-2">
-    <button mat-raised-button class="next-button" (click)="nextStep()">{{'next' | translate}}</button>
   </div>
 </div>

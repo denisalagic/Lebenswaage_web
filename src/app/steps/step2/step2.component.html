@@ -1,59 +1,35 @@
-<!--<div class="row justify-content-center" style="margin-top: -7%; margin-bottom: 80px;">-->
-<!--<div class="col-sm-6">-->
-<!--<span [innerHTML]="'step-2.select-training' | translate" class="select-training"></span>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="row justify-content-center" *ngIf="filteredVideoList.length > 0">-->
-<!--<div class="col-2 col-sm-1" (click)="previousPage()" *ngIf="totalPages > 1">-->
-<!--<mat-icon class="navigation-icons" [ngClass]="currentPage == 0 ? 'disabled-navigation' : ''">chevron_left</mat-icon>-->
-<!--</div>-->
-<!--<div class="col-8 col-sm-2" [ngClass]="trainingTypePicked == video.code ? 'video-selected': ''" style="margin-bottom: 60px;"-->
-<!--*ngFor="let video of filteredVideoList"-->
-<!--(click)="markVideoSelected(video.code)">-->
-<!--<video width="100%" height="100%" controls *ngIf="video.files.length > 0" [poster]="getPosterUrl(video)">-->
-<!--<source [src]="getVideoUrl(video)" type="video/mp4">-->
-<!--Your browser does not support the video tag.-->
-<!--</video>-->
-<!--<br/>-->
-<!--<span class="video-title" [innerHTML]="video.name"></span>-->
-<!--</div>-->
-<!--<div class="col-2 col-sm-1" (click)="nextPage()" *ngIf="totalPages > 1">-->
-<!--<mat-icon class="navigation-icons" [ngClass]="currentPage + 1 == totalPages ? 'disabled-navigation' : ''">chevron_right</mat-icon>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="row justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">-->
-<!--<div class="col-sm-2">-->
-<!--<button mat-raised-button class="next-button" [disabled]="trainingTypePicked == null" (click)="nextStep()">{{'next' | translate}}</button>-->
-<!--</div>-->
-<!--</div>-->
+<div style="margin-top:300px;">
+  <div class="row justify-content-center">
+    <span class="step-title">Sex</span>
+  </div>
+  <div class="row justify-content-center" style="margin-top: 100px;">
+    <div class="female-circle" (click)="selectGender('FEMALE')"
+         [ngClass]="selectedGender == 'FEMALE' ? 'gender-selected' : ''">
+      <img src="assets/img/icon-female.png" class="female-image" style="height: 100%"/>
+    </div>
+    <div class="male-circle" (click)="selectGender('MALE')"
+         [ngClass]="selectedGender == 'MALE' ? 'gender-selected' : ''">
+      <img src="assets/img/icon-male.png" class="male-image" style="height: 100%"/>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <span class="step-title">Age</span>
+  </div>
 
-<div class="row justify-content-center">
-  <span class="step-title">Sex</span>
-</div>
-<div class="row justify-content-center" style="margin-top: 100px;">
-  <div class="female-circle" (click)="selectGender('FEMALE')" [ngClass]="selectedGender == 'FEMALE' ? 'gender-selected' : ''">
-    <img src="assets/img/icon-female.png" class="female-image" style="height: 100%"/>
-  </div>
-  <div class="male-circle" (click)="selectGender('MALE')" [ngClass]="selectedGender == 'MALE' ? 'gender-selected' : ''">
-    <img src="assets/img/icon-male.png" class="male-image" style="height: 100%"/>
-  </div>
-</div>
-<div class="row justify-content-center">
-  <span class="step-title">Age</span>
-</div>
+  <div class="row justify-content-center" style="margin-top: 40px;">
+    <div class="col-sm-2 text-right" style="margin-top: 40px;" (click)="decreaseAge()">
+      <img src="assets/img/strjelica-nazad.png" style="height: 23px; margin-bottom: 10px; margin-right: 6px;"/>
+      <span class="years-text">0</span>
+    </div>
+    <div class="col-sm-8" style="margin-top: 50px">
+      <input type="range" min="0" max="100" [(ngModel)]="selectedAge" name="age" (change)="onInputChange($event)"
+             #ageSlider/>
+      <output for="age" onforminput="value = age.valueAsNumber;" [value]="0" #ageSliderTooltip></output>
 
-<div class="row justify-content-center" style="margin-top: 40px;">
-  <div class="col-sm-2 text-right" style="margin-top: 40px;" (click)="decreaseAge()">
-    <img src="assets/img/strjelica-nazad.png" style="height: 23px; margin-bottom: 10px; margin-right: 6px;"/>
-    <span class="years-text">0</span>
-  </div>
-  <div class="col-sm-8" style="margin-top: 50px">
-    <input type="range" min="0" max="100" [(ngModel)]="selectedAge" name="age" (change)="onInputChange($event)" #ageSlider/>
-    <output for="age" onforminput="value = age.valueAsNumber;" [value]="0" #ageSliderTooltip></output>
-
-  </div>
-  <div class="col-sm-2" style="margin-top: 40px;" (click)="increaseAge()">
-    <span class="years-text">100</span>
-    <img src="assets/img/strjelica-naprijed.png" style="height: 23px; margin-bottom: 10px; margin-left: 6px;"/>
+    </div>
+    <div class="col-sm-2" style="margin-top: 40px;" (click)="increaseAge()">
+      <span class="years-text">100</span>
+      <img src="assets/img/strjelica-naprijed.png" style="height: 23px; margin-bottom: 10px; margin-left: 6px;"/>
+    </div>
   </div>
 </div>

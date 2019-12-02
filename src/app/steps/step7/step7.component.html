@@ -1,28 +1,48 @@
-<div class="row justify-content-center" style="margin-top: -7%;">
-  <div class="col-sm-8">
-    <span [innerHTML]="'step-7.finish' | translate" class="finish-title"></span>
+<div style="margin-top: 300px" *ngIf="!showThankYouMessage">
+  <div class="row justify-content-center">
+    <span class="step-title">Finish!</span>
   </div>
-</div>
-<div class="row justify-content-center">
-  <div class="col-sm-6 box-style">
-    <div class="row">
-      <form class="email-form">
-        <mat-form-field class="email-form-full-width">
-          <input matInput placeholder="Email" [formControl]="emailFormControl"
-                 [errorStateMatcher]="matcher">
-          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </form>
+  <div class="row justify-content-center" style="margin-top: 40px;">
+    <div class="col-sm-6 note">
+      UPIŠITE E-MAIL ADRESU NA KOJU ŽELITE PRIMITI 30-ODNEVNI PERSONALIZIRANI PLAN PREHRANE I PLAN TRENINGA
     </div>
-    <div class="row justify-content-center" style="margin-bottom: 32px;">
-      <div class="col-sm-2">
-        <button mat-raised-button class="next-button" [disabled]="emailFormControl.invalid" (click)="sendMail()">{{'send' | translate}}</button>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-6 box-style">
+      <div class="row">
+        <form class="email-form">
+          <mat-form-field class="email-form-full-width">
+            <input matInput placeholder="Email" [formControl]="emailFormControl"
+                   [errorStateMatcher]="matcher">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="row justify-content-center" style="margin-top: 20px;">
+        <div class="send-rectangle">
+          <div class="send-text-placeholder">
+            <div class="send-button-text" (click)="sendMail()">Send</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<div style="margin-top: 400px" *ngIf="showThankYouMessage">
+  <div class="row justify-content-center">
+    <span class="step-title" style="font-family: 'Playfair Display', sans-serif !important;">Thank you</span>
+  </div>
+  <div class="row justify-content-center" style="margin-top: 40px;">
+    <div class="col-sm-6 note">
+      Vaš personalizirani tridesetodnevni plan prehrane i plan treninga uskoro će vam stići na mail.     </div>
+  </div>
+</div>
+
+

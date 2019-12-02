@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {StepsService} from '../steps.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {StepsService} from "../steps.service";
 
 @Component({
   selector: 'app-step6',
@@ -8,21 +7,19 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./step6.component.css']
 })
 export class Step6Component implements OnInit {
+  @Output() step6Valid = new EventEmitter<any>();
 
-  public gdprAccepted = false;
 
-  constructor(private stepsService: StepsService,
-              private router: Router,
-              private activatedRoute: ActivatedRoute) { }
-
-  ngOnInit() {
+  constructor(private stepsService: StepsService) {
   }
 
-  public nextStep(): void {
-    if (this.gdprAccepted) {
-      this.stepsService.gdprAgreement = true;
-      this.router.navigate(['../step-7'], {relativeTo: this.activatedRoute});
-    }
+  ngOnInit() {
+    this.step6Valid.emit({
+      stepPosition: 6,
+      valid: true
+    });
+
+    this.stepsService.trainingType = 'ARNBCK';
   }
 
 }
