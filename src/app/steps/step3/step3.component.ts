@@ -39,6 +39,9 @@ export class Step3Component implements OnInit {
       valid: false
     });
 
+    // TODO: remove this.
+    this.stepsService.hips = 30;
+
   }
 
   public incrementValue(value: any) {

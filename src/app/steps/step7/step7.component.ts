@@ -3,6 +3,7 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/form
 import {ErrorStateMatcher} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ApiCallsService} from '../../api-calls.service';
+import {StepsService} from "../steps.service";
 
 @Component({
   selector: 'app-step7',
@@ -10,6 +11,9 @@ import {ApiCallsService} from '../../api-calls.service';
   styleUrls: ['./step7.component.css']
 })
 export class Step7Component implements OnInit {
+
+  public showThankYouMessage: boolean = false;
+
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -20,14 +24,21 @@ export class Step7Component implements OnInit {
 
   constructor(private apiCalls: ApiCallsService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private stepService: StepsService) { }
 
   ngOnInit() {
+
+    //todo: add gdpr stuff
+    this.stepService.gdprAgreement = true;
   }
 
   public sendMail() {
     this.apiCalls.sendEmail(this.emailFormControl.value).subscribe(resp => {
-      this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
+      this.showThankYouMessage = true;
+      setTimeout(() => {
+        this.showThankYouMessage = false;
+        this.router.navigate(['../']);
+      }, 7000)
     });
   }
 

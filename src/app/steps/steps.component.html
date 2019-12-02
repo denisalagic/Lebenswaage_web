@@ -27,17 +27,22 @@
       <app-step3 *ngIf="activeStep == 3" (step3Valid)="activeStepUpdate($event)"></app-step3>
       <app-step4 *ngIf="activeStep == 4" (step4Valid)="activeStepUpdate($event)"></app-step4>
       <app-step5 *ngIf="activeStep == 5" (step5Valid)="activeStepUpdate($event)"></app-step5>
+      <app-step6 *ngIf="activeStep == 6" (step6Valid)="activeStepUpdate($event)"></app-step6>
+      <app-step7 *ngIf="activeStep == 7"></app-step7>
     </div>
   </div>
   <div style="height: 107px;"></div>
-  <div class="row justify-content-center navigation-position">
+  <div class="row justify-content-center navigation-position" *ngIf="activeStep != 7">
     <div class="col-sm-1" *ngFor="let i of steps">
       <img *ngIf="activeStep == i" [src]="'assets/img/ikona-' + i + '-aktivna.png'" class="navigation-numbers"/>
       <img *ngIf="activeStep != i" [src]="'assets/img/ikona-' + i + '-neaktivna.png'" class="navigation-numbers"/>
     </div>
     <div class="col-sm-2" (click)="navigateNextStep()" style="margin-top: 17px;">
-      <span class="navigation-text" [ngClass]="{'navigation-text-disabled': navigationDisabled}">
+      <span class="navigation-text" [ngClass]="{'navigation-text-disabled': navigationDisabled}"  *ngIf="activeStep < 6">
         Nächster
+      </span>
+      <span class="navigation-text" [ngClass]="{'navigation-text-disabled': navigationDisabled}" *ngIf="activeStep == 6">
+        Ende
       </span>
       <img src="assets/img/strjelica-naprijed.png" style="height: 57px"/>
     </div>
