@@ -83,7 +83,7 @@ export class Step3Component implements OnInit {
   }
 
 
-  private onHeightChange() {
+  onHeightChange() {
     this.stepsService.height = parseInt(this.height, 10);
     this.checkStepValidity();
   }
