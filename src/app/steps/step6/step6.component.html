@@ -2,11 +2,17 @@
   <div class="row justify-content-center">
     <span class="step-title">Training plan</span>
   </div>
-  <div class="row justify-content-center" style="margin-top: 100px;">
-    <div class="col-sm-3">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh dui, faucibus sed nulla id, suscipit rutrum justo. Donec bibendum urna dolor, et pulvinar velit vulputate ac. Praesent ullamcorper nisl vel tellus volutpat, sit amet ultrices lorem mollis. Phasellus non metus orci. Sed eu lorem venenatis, iaculis leo eget, ultricies ligula. Morbi porta vitae augue in convallis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat.
-
-      Phasellus at justo ex. Vivamus malesuada sem eget nibh tristique blandit. Aenean bibendum ante magna, quis scelerisque felis eleifend sit amet. Etiam metus nisi, ornare quis urna at, pharetra sollicitudin elit. Quisque facilisis in felis non porta. Sed venenatis mi est, sit amet ultricies leo tincidunt pretium. Phasellus accumsan ornare eleifend. Nunc porta mauris nisl, at ullamcorper felis sodales sed. Nullam ac nisl placerat, scelerisque leo nec, aliquam lorem.
+  <div class="row" style="margin-top: 100px;">
+    <div class="col-sm-3" *ngFor="let trainingType of trainingTypes; let i = index"
+         [ngClass]="[i % 2 == 0 ? 'offset-3' : '']"
+         style="margin-bottom: 20px;" (click)="trainingTypeSelected(trainingType.code)">
+      <video controls>
+        <source [src]="getVideoUrl(trainingType)" type="video/mp4" >
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="video-notes" *ngIf="selectedTrainingType == trainingType.code && trainingType.notes" >
+        {{trainingType.notes}}
+      </div>
     </div>
   </div>
 </div>

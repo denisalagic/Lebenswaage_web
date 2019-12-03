@@ -57,3 +57,12 @@
   text-shadow: 0px 1px 4.85px rgba(0, 0, 0, 0.25);
 }
 
+.gdpr-label {
+  font-size: 30px;
+  color: rgb(153, 153, 153);
+  text-decoration: underline;
+  line-height: 1.2;
+  text-align: left;
+  margin-left: 28px;
+}
+

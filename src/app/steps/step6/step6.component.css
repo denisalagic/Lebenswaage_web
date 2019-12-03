@@ -1,26 +1,23 @@
-.gdpr-title {
-  font-size: 43px;
-  color: #333333;
-  font-weight: 400;
+video{
+  width:320px;
+  -moz-border-radius:15px;
+  -webkit-border-radius:15px;
+  border-radius:15px;
+  overflow:hidden;
 }
 
-.gdpr-content {
-  font-size: 21px;
-  color: #777777;
-  font-weight: 300;
-  margin: 32px;
-  text-align: left;
+.video-notes {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 4px 6.44px 0.56px rgba(0, 0, 0, 0.08);
+  width: 320px;
+  margin-top: -20px;
+  padding: 25px 10px 10px;
+  font-size: 25.497px;
+  color: rgb(51, 51, 51);
+  line-height: 1.2;
 }
 
-.text {
-  font-size: 21px;
-  color: #777777;
-  font-weight: 300;
-}
-
-.box-style {
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  border-radius: 5px;
-  height: 200px !important;
-  overflow-y: scroll;
+.training-type-selected {
+  box-shadow: 0px 1px 0px 5.4px rgb(255, 201, 40);
+  border-radius: 50px;
 }

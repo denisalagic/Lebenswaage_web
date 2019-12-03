@@ -31,7 +31,6 @@ export class Step3Component implements OnInit {
   ngOnInit() {
     this.apiCalls.getAcitivityTypes().subscribe(activities => {
       this.activities = activities;
-      console.log(activities);
     });
 
     this.step3Valid.emit({
@@ -84,19 +83,14 @@ export class Step3Component implements OnInit {
 
 
   onHeightChange() {
-    this.stepsService.height = parseInt(this.height, 10);
     this.checkStepValidity();
   }
 
   onWeightChange() {
-    console.log("Setting weight");
-    this.stepsService.weight = parseInt(this.weight, 10);
-    console.log(this.stepsService.weight);
     this.checkStepValidity();
   }
 
   onWaistChange() {
-    this.stepsService.waist = parseInt(this.waist, 10);
     this.checkStepValidity();
   }
 
@@ -108,6 +102,10 @@ export class Step3Component implements OnInit {
 
   private checkStepValidity() {
     if (parseInt(this.height, 10) > 0 && parseInt(this.weight, 10) > 0 && parseInt(this.waist, 10) > 0 && this.activityChecked != null) {
+      this.stepsService.height = parseInt(this.height, 10);
+      this.stepsService.weight = parseInt(this.weight, 10);
+      this.stepsService.waist = parseInt(this.waist, 10);
+
       this.step3Valid.emit({
         stepPosition: 3,
         valid: true

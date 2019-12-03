@@ -1,5 +1,3 @@
-import {VideoListModel} from './video-list.model';
-
 export class LebensWaageCommand {
   constructor(private machineId: number,
               private paymentType: string,

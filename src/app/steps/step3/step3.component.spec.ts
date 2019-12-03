@@ -33,34 +33,5 @@ describe('Step3Component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call select gender method', () => {
-
-    spyOn(component, 'selectGender').and.callThrough();
-    component.selectGender('male');
-
-    expect(component.selectGender).toHaveBeenCalled();
-    expect(component.selectedGender).toBe('male');
-  });
-
-  it('should call onInputChange method', () => {
-    const event: MatSliderChange = new MatSliderChange();
-    event.value = 45;
-
-    spyOn(component, 'onInputChange').and.callThrough();
-
-    component.onInputChange(event);
-
-    expect(component.onInputChange).toHaveBeenCalled();
-    expect(component.selectedAge).toBe(45);
-
-  });
-
-  it('should call formatLabel method', () => {
-    spyOn(component, 'formatLabel').and.callThrough();
-
-    component.formatLabel(44);
-
-    expect(component.formatLabel).toHaveBeenCalled();
-  });
 
 });

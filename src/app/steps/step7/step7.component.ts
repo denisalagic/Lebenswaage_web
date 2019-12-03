@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ErrorStateMatcher, MatDialog} from '@angular/material';
+import {Router} from '@angular/router';
 import {ApiCallsService} from '../../api-calls.service';
 import {StepsService} from "../steps.service";
+import {GdprModalComponent} from "./gdpr-modal/gdpr-modal.component";
 
 @Component({
   selector: 'app-step7',
@@ -13,6 +14,7 @@ import {StepsService} from "../steps.service";
 export class Step7Component implements OnInit {
 
   public showThankYouMessage: boolean = false;
+  public gdprAccepted = false;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -24,22 +26,32 @@ export class Step7Component implements OnInit {
 
   constructor(private apiCalls: ApiCallsService,
               private router: Router,
-              private stepService: StepsService) { }
+              private stepService: StepsService,
+              public dialog: MatDialog) {
+  }
 
   ngOnInit() {
+  }
 
-    //todo: add gdpr stuff
-    this.stepService.gdprAgreement = true;
+  public showGdprModal() {
+    const dialogRef = this.dialog.open(GdprModalComponent, {
+      width: '600px'
+    });
   }
 
   public sendMail() {
-    this.apiCalls.sendEmail(this.emailFormControl.value).subscribe(resp => {
-      this.showThankYouMessage = true;
-      setTimeout(() => {
-        this.showThankYouMessage = false;
-        this.router.navigate(['../']);
-      }, 7000)
-    });
+    if (this.gdprAccepted && this.emailFormControl.value) {
+      this.stepService.gdprAgreement = true;
+      this.apiCalls.sendEmail(this.emailFormControl.value).subscribe(resp => {
+        this.showThankYouMessage = true;
+        setTimeout(() => {
+          this.showThankYouMessage = false;
+          this.router.navigate(['../']);
+        }, 7000)
+      });
+    }
+
+
   }
 
 }

@@ -4,7 +4,6 @@ import { Step2Component } from './step2.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {MatIconModule} from '@angular/material';
 import {TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
-import {VideoListModel} from '../../model/video-list.model';
 
 describe('Step2Component', () => {
   let component: Step2Component;
@@ -32,26 +31,5 @@ describe('Step2Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should call next page function', () => {
-    component.totalPages = 4;
-    component.currentPage = 1;
-
-    spyOn(component, 'nextPage').and.callThrough();
-    component.nextPage();
-
-    expect(component.nextPage).toHaveBeenCalled();
-    expect(component.currentPage).toBe(2);
-  });
-
-  it('should call previous page function', () => {
-    component.currentPage = 2;
-
-    spyOn(component, 'previousPage').and.callThrough();
-    component.previousPage();
-
-    expect(component.previousPage).toHaveBeenCalled();
-    expect(component.currentPage).toBe(1);
   });
 });

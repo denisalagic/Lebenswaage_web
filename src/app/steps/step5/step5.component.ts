@@ -3,6 +3,8 @@ import {StepsService} from '../steps.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ApiCallsService} from '../../api-calls.service';
 import {TranslateService} from "@ngx-translate/core";
+import {CodebookModel} from "../../model/codebook.model";
+import {FileModel} from "../../model/file.model";
 
 @Component({
   selector: 'app-step5',
@@ -13,7 +15,8 @@ export class Step5Component implements OnInit {
 
   @Output() step5Valid = new EventEmitter<any>();
   public selectedLanguage: string;
-  public mealTagCount: number[] = [];
+  public checkedMealPlanTags: string[] = [];
+  public mealPlanTags: CodebookModel[] = [];
 
 
   constructor(private stepsService: StepsService,
@@ -28,20 +31,50 @@ export class Step5Component implements OnInit {
       valid: false
     });
 
-    for (let i = 1; i <= 23; i++) {
-      this.mealTagCount.push(i);
-    }
+    this.apiCalls.getMealPlanTags().subscribe(mealPlanTags => {
+      this.mealPlanTags = mealPlanTags;
+      this.mealPlanTags = this.mealPlanTags.filter(mpt => mpt.files.length > 0)
+    });
 
     this.selectedLanguage = this.translate.currentLang;
   }
 
-  public mealTagSelected(index: number) {
-    console.log("Meal tag selected: ", index);
+  public mealTagSelected(mealPlanTag: string) {
+    if (this.checkedMealPlanTags.includes(mealPlanTag)) {
+      let index = this.checkedMealPlanTags.findIndex(mpt =>  mpt == mealPlanTag);
+      this.checkedMealPlanTags.splice(index, 1);
+    } else {
+      this.checkedMealPlanTags.push(mealPlanTag);
+    }
+    this.stepsService.mealPlanTags = this.checkedMealPlanTags;
 
-    this.step5Valid.emit({
-      stepPosition: 5,
-      valid: true
-    });
+    if (this.checkedMealPlanTags.length > 0) {
+      this.step5Valid.emit({
+        stepPosition: 5,
+        valid: true
+      });
+    } else {
+      this.step5Valid.emit({
+        stepPosition: 5,
+        valid: false
+      });
+    }
+  }
+
+  getMealPlanTagImage(mealPlanTag: CodebookModel): string {
+    let files = mealPlanTag.files as FileModel[];
+    let wantedFile = files.filter(file => file.name.indexOf(this.selectedLanguage) != -1)[0];
+    return wantedFile.url;
+  }
+
+  public markSelectedMealPlanTag(mealPlanTag: string): boolean {
+    let hasElement = false;
+    for(let i = 0; i < this.checkedMealPlanTags.length; i++) {
+      if (this.checkedMealPlanTags[i] == mealPlanTag) {
+        hasElement = true;
+      }
+    }
+    return hasElement;
   }
 
 }

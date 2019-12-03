@@ -24,6 +24,14 @@
           </mat-form-field>
         </form>
       </div>
+      <div class="row">
+        <div class="gdpr-label" (click)="showGdprModal()">
+          GDPR and Terms of Agreements
+        </div>
+      </div>
+      <div class="row" style="margin-left: 28px;">
+        <mat-checkbox class="text" [(ngModel)]="gdprAccepted">Pročitao sam i slažem se s navedenim uvjetima</mat-checkbox>
+      </div>
       <div class="row justify-content-center" style="margin-top: 20px;">
         <div class="send-rectangle">
           <div class="send-text-placeholder">

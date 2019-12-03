@@ -41,7 +41,6 @@ export class StepsComponent implements OnInit {
   }
 
   public activeStepUpdate(event: any) {
-    console.log(event);
     if (event.stepPosition == this.activeStep) {
       this.navigationDisabled = !event.valid;
     }
@@ -50,6 +49,12 @@ export class StepsComponent implements OnInit {
   public navigateNextStep() {
     if(!this.navigationDisabled) {
       this.activeStep = this.activeStep + 1;
+    }
+  }
+
+  public navigatePreviousStep() {
+    if(this.activeStep > 1) {
+      this.activeStep = this.activeStep - 1;
     }
   }
 }

@@ -33,6 +33,12 @@
   </div>
   <div style="height: 107px;"></div>
   <div class="row justify-content-center navigation-position" *ngIf="activeStep != 7">
+    <div class="col-sm-2" (click)="navigatePreviousStep()" style="margin-top: 17px;" *ngIf="activeStep > 1">
+      <img src="assets/img/strjelica-nazad.png" style="height: 57px"/>
+      <span class="navigation-text" >
+        Zurück
+      </span>
+    </div>
     <div class="col-sm-1" *ngFor="let i of steps">
       <img *ngIf="activeStep == i" [src]="'assets/img/ikona-' + i + '-aktivna.png'" class="navigation-numbers"/>
       <img *ngIf="activeStep != i" [src]="'assets/img/ikona-' + i + '-neaktivna.png'" class="navigation-numbers"/>

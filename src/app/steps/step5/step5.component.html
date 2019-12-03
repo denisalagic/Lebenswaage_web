@@ -3,10 +3,9 @@
     <span class="step-title">Meal plan</span>
   </div>
   <div class="row" style="margin-top: 100px;">
-    <div class="col-sm-3" *ngFor="let number of mealTagCount; let i = index"
-         [ngClass]="i % 2 == 0 ? 'offset-3' : ''" style="margin-bottom: 20px;"
-    (click)="mealTagSelected(number)">
-      <img [src]="'assets/img/meal-plans/meal-plan-' + number + '-' + selectedLanguage + '.png'" style="width: 400px;"/>
+    <div class="col-sm-3" *ngFor="let mealPlanTag of mealPlanTags; let i = index"
+         [ngClass]="i % 2 == 0 ? 'offset-3' : ''" style="margin-bottom: 20px;" (click)="mealTagSelected(mealPlanTag.code)">
+      <img [src]="getMealPlanTagImage(mealPlanTag)" style="width: 400px;" [ngClass]="markSelectedMealPlanTag(mealPlanTag.code) ? 'meal-plan-tag-selected':''"/>
     </div>
   </div>
 </div>

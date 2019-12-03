@@ -40,7 +40,6 @@ export class Step4Component implements OnInit {
   ngOnInit() {
     this.apiCalls.getBlacklistedFoodTypes().subscribe(foodTypes => {
       this.blacklistedFoodTypes = foodTypes;
-      console.log(foodTypes);
     });
     this.step4Valid.emit({
       stepPosition: 4,
@@ -92,8 +91,6 @@ export class Step4Component implements OnInit {
     const maxBmi = 25;
     const weight = this.stepsService.weight;
     const height = this.stepsService.height / 100;
-    console.log(weight);
-    console.log(height);
     this.bmi = Math.round((weight / (height * height)) * 100) / 100 ;
     this.bmi = 25.5;
     this.stepsService.bmi = this.bmi;
