@@ -34,6 +34,7 @@ export class Step5Component implements OnInit {
     this.apiCalls.getMealPlanTags().subscribe(mealPlanTags => {
       this.mealPlanTags = mealPlanTags;
       this.mealPlanTags = this.mealPlanTags.filter(mpt => mpt.files.length > 0)
+      console.log(this.mealPlanTags);
     });
 
     this.selectedLanguage = this.translate.currentLang;
@@ -61,13 +62,7 @@ export class Step5Component implements OnInit {
     }
   }
 
-  getMealPlanTagImage(mealPlanTag: CodebookModel): string {
-    let files = mealPlanTag.files as FileModel[];
-    let wantedFile = files.filter(file => file.name.indexOf(this.selectedLanguage) != -1)[0];
-    return wantedFile.url;
-  }
-
-  public markSelectedMealPlanTag(mealPlanTag: string): boolean {
+  public checkIsMealPlanSelected(mealPlanTag: string) {
     let hasElement = false;
     for(let i = 0; i < this.checkedMealPlanTags.length; i++) {
       if (this.checkedMealPlanTags[i] == mealPlanTag) {
@@ -75,6 +70,12 @@ export class Step5Component implements OnInit {
       }
     }
     return hasElement;
+  }
+
+  getMealPlanTagImage(mealPlanTag: CodebookModel): string {
+    let files = mealPlanTag.files as FileModel[];
+    let wantedFile = files.filter(file => file.name.indexOf(this.selectedLanguage) != -1)[0];
+    return wantedFile.url;
   }
 
 }
