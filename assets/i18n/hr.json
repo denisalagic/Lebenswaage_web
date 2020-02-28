@@ -1,57 +1,14 @@
 {
   "language": {
-    "english": "Engleski",
-    "german": "Njmački",
-    "croatian": "Hrvatski"
+    "english": "English",
+    "german": "German",
+    "croatian": "Croatian"
   },
-  "step": "Korak {{step_no}} od 6.",
+  "money-needed": "Potrebno",
+  "welcome": "Dobrodošli!",
+  "start-change": "Započnite promjenu s nama!",
   "next": "Sljedeće",
-  "send": "Pošalji",
-  "sex": "Spol",
-  "agree": "Prihvati",
-  "home": {
-    "title": "LebensWaage",
-    "title-split": {
-      "first": "Lebens",
-      "second": "Waage"
-    },
-    "welcome": "Dobrodošli u LebensWaage",
-    "choose-language": "Izaberite jezik",
-    "press-to-start": "Odaberite za početak"
-  },
-  "step-2": {
-    "select-training": "Izaberite trening"
-  },
-  "step-4": {
-    "biometrics":"Bio-metrics by LebensWaage",
-    "your-measures": "Vaše mjere",
-    "height": "Visina",
-    "weight": "Težina",
-    "waist": "Struk",
-    "hips": "Bokovi",
-    "activity": "Aktivnost"
-  },
-  "step-5": {
-    "biometrics":"Bio-metrics by LebensWaage",
-    "recommendations": "Preporuke",
-    "mass": "Težina",
-    "energy-input": "Unos energije",
-    "additional-energy": "Dodatna energija",
-    "foods-not-included": "Hrana koju ne jedem",
-    "foods-not-included-1": "Gluten",
-    "foods-not-included-2": "Laktoza",
-    "foods-not-included-3": "Meso",
-    "foods-not-included-4": "Orasi",
-    "foods-not-included-1-en": "Gluten",
-    "foods-not-included-2-en": "Lactose",
-    "foods-not-included-3-en": "Meat",
-    "foods-not-included-4-en": "Nuts"
-  },
-  "step-6": {
-    "gdpr-title": "GDPR i uvjeti korištenja",
-    "gdpr-content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ultrices massa a sollicitudin. Vestibulum eu quam rhoncus, eleifend magna eu, maximus tortor. Donec ultricies et arcu id aliquam. Duis ornare tempus scelerisque. Etiam convallis fringilla ex. Phasellus fringilla nunc libero. Ut iaculis, odio faucibus sollicitudin mattis, enim libero aliquam est, vel molestie lectus nunc ut ante. Maecenas convallis mi et molestie luctus. Cras maximus dolor nec ultrices pellentesque. Sed sapien massa, ultricies vitae dui ut, tristique vulputate nulla. Curabitur at pulvinar metus, nec mollis nisi. Duis ac vehicula est, in consectetur mi. Quisque est lacus, laoreet dignissim interdum eu, vehicula eleifend ex. Integer consequat diam quis aliquam molestie."
-  },
-  "step-7": {
-    "finish": "Kraj"
-  }
+  "back": "Nazad",
+  "finish": "Završi",
+  "goal": "Koji je vaš cilj?"
 }

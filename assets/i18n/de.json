@@ -4,16 +4,11 @@
     "german": "German",
     "croatian": "Croatian"
   },
-  "next": "Next",
-  "sex": "Sex",
-  "home": {
-    "title": "LebensWaage",
-    "title-split": {
-      "first": "Lebens",
-      "second": "Waage"
-    },
-    "welcome": "Welcome to LebensWaage",
-    "choose-language": "Choose language",
-    "press-to-start": "Press to start"
-  }
+  "money-needed": "Notwendigkeit",
+  "welcome": "Willkomen!",
+  "start-change": "Beginnen Sie die Veränderung mit uns!",
+  "next": "Nächster",
+  "back": "Zurück",
+  "finish": "Ende",
+  "goal": "Was ist dein Ziel?"
 }

@@ -4,65 +4,11 @@
     "german": "German",
     "croatian": "Croatian"
   },
-  "step": "Step {{step_no}} of 6.",
+  "money-needed": "Needed",
+  "welcome": "Welcome!",
+  "start-change": "Start the change with us!",
   "next": "Next",
-  "send": "Send",
-  "sex": "Sex",
-  "agree": "Agree",
-  "home": {
-    "title": "LebensWaage",
-    "title-split": {
-      "first": "Lebens",
-      "second": "Waage"
-    },
-    "welcome": "Welcome to LebensWaage",
-    "choose-language": "Choose language",
-    "press-to-start": "Press to start"
-  },
-  "step-1": {
-    "goal": "What is your goal?",
-    "health": {
-      "title": "Be healthier",
-      "description": "Eat and train for optimum health"
-    },
-    "lose-weight": {
-      "title": "Lose weight",
-      "description": "Get leaner and increase your stamina"
-    },
-    "gain-weight": {
-      "title": "Gain weight",
-      "description": "Build muscle strength"
-    }
-  },
-  "step-2": {
-    "select-training": "Select training"
-  },
-  "step-4": {
-    "biometrics":"Bio-metrics by LebensWaage",
-    "your-measures": "Your measures",
-    "height": "Height",
-    "weight": "Weight",
-    "waist": "Waist",
-    "hips": "Hips",
-    "activity": "Activity"
-  },
-  "step-5": {
-    "biometrics":"Bio-metrics by LebensWaage",
-    "recommendations": "Recommendations",
-    "mass": "Mass",
-    "energy-input": "Energy input",
-    "additional-energy": "Additional energy",
-    "foods-not-included": "What kind of food you don't eat",
-    "foods-not-included-1": "Gluten",
-    "foods-not-included-2": "Lactose",
-    "foods-not-included-3": "Meat",
-    "foods-not-included-4": "Nuts"
-  },
-  "step-6": {
-    "gdpr-title": "GDPR and Terms of Agreements",
-    "gdpr-content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ultrices massa a sollicitudin. Vestibulum eu quam rhoncus, eleifend magna eu, maximus tortor. Donec ultricies et arcu id aliquam. Duis ornare tempus scelerisque. Etiam convallis fringilla ex. Phasellus fringilla nunc libero. Ut iaculis, odio faucibus sollicitudin mattis, enim libero aliquam est, vel molestie lectus nunc ut ante. Maecenas convallis mi et molestie luctus. Cras maximus dolor nec ultrices pellentesque. Sed sapien massa, ultricies vitae dui ut, tristique vulputate nulla. Curabitur at pulvinar metus, nec mollis nisi. Duis ac vehicula est, in consectetur mi. Quisque est lacus, laoreet dignissim interdum eu, vehicula eleifend ex. Integer consequat diam quis aliquam molestie."
-  },
-  "step-7": {
-    "finish": "Finish"
-  }
+  "back": "Back",
+  "finish": "Finish",
+  "goal": "What is your goal?"
 }
