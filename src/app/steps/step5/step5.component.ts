@@ -34,7 +34,6 @@ export class Step5Component implements OnInit {
     this.apiCalls.getMealPlanTags().subscribe(mealPlanTags => {
       this.mealPlanTags = mealPlanTags;
       this.mealPlanTags = this.mealPlanTags.filter(mpt => mpt.files.length > 0)
-      console.log(this.mealPlanTags);
     });
 
     this.selectedLanguage = this.translate.currentLang;

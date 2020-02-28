@@ -40,11 +40,11 @@
         <div class="money-input">
           <span class="saldo" style="margin-left: 24px;">Saldo: </span>
           <span class="saldo" (click)="incrementAmount()"
-                [ngClass]="{'saldo-zero': moneyAmount==0, 'saldo-not-enough':(moneyAmount > 0 && moneyAmount<70), 'saldo-enough':moneyAmount>=70 }">{{moneyAmount |currency:'EUR':true}}</span>
+                [ngClass]="{'saldo-zero': moneyAmount==0, 'saldo-not-enough':(moneyAmount > 0 && moneyAmount<10), 'saldo-enough':moneyAmount>=10 }">{{moneyAmount |currency:'EUR':true}}</span>
           <img src="assets/img/check-circle-empty.png" *ngIf="moneyAmount < 70" class="money-icon-check"/>
           <img src="assets/img/check-circle-good.png" *ngIf="moneyAmount >= 70" class="money-icon-check"/>
           <br/>
-          <span class="saldo-needed" style="margin-left: 24px;">Notwendigkeit: {{70 |currency:'EUR':true}}</span>
+          <span class="saldo-needed" style="margin-left: 24px;">{{'money-needed' | translate}} {{10 |currency:'EUR':true}}</span>
         </div>
       </div>
     </div>
@@ -52,8 +52,8 @@
     <div class="row justify-content-center" style="margin-top:140px">
       <div class="welcome-rectangle">
         <div class="welcome-text-placeholder">
-          <div class="welcome-text">Willkomen!</div>
-          <div class="welcome-subtext">Beginnen Sie die Veränderung mit uns!</div>
+          <div class="welcome-text">{{'welcome' | translate}}</div>
+          <div class="welcome-subtext">{{'start-change' | translate}}</div>
         </div>
       </div>
     </div>

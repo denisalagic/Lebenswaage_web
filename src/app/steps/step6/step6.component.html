@@ -2,17 +2,14 @@
   <div class="row justify-content-center">
     <span class="step-title">Training plan</span>
   </div>
+  <div class="row justify-content-center">
+    <span class="step-subtitle">Ovo su treninzi koji vas očekuju na vašem profilu. Kliknite Next za dovršetak prijave.</span>
+  </div>
   <div class="row" style="margin-top: 100px;">
-    <div class="col-sm-3" *ngFor="let trainingType of trainingTypes; let i = index"
-         [ngClass]="[i % 2 == 0 ? 'offset-3' : '']"
-         style="margin-bottom: 20px;" (click)="trainingTypeSelected(trainingType.code)">
-      <video controls>
-        <source [src]="getVideoUrl(trainingType)" type="video/mp4" >
-        Your browser does not support HTML5 video.
-      </video>
-      <div class="video-notes" *ngIf="selectedTrainingType == trainingType.code && trainingType.notes" >
-        {{trainingType.notes}}
-      </div>
+    <div class="col-sm-3" *ngFor="let exerciseGroup of exerciseGroups; let i = index"
+         [ngClass]="i % 2 == 0 ? 'offset-3' : ''" style="margin-bottom: 20px;" (click)="exerciseGroupSelected(exerciseGroup.id)">
+      <img [src]="getExerciseGroupImage(exerciseGroup)" style="width: 400px;"/>
+      <div *ngIf="selectedExerciseGroup == exerciseGroup.id" class="exercise-group-selected"> {{exerciseGroup.description}}</div>
     </div>
   </div>
 </div>

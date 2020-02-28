@@ -32,7 +32,7 @@ export class ApiCallsService {
       }));
   }
 
-  public getTrainingTypes(): Observable<CodebookModel[]> {
+  public getExerciseGroups(): Observable<any[]> {
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -41,7 +41,7 @@ export class ApiCallsService {
       })
     };
 
-    return this.http.get<CodebookModel[]>(environment.apiUrl + 'trainingtypes', httpOptions)
+    return this.http.get<any[]>(environment.apiUrl + 'exercisegroups', httpOptions)
       .pipe(map(resp => {
         return resp;
       }));
@@ -91,10 +91,10 @@ export class ApiCallsService {
   }
 
   public sendEmail(email: string): Observable<LebensWaageCommand> {
-    const machineId: number = environment.machineId;
+    const machineCode: string = environment.machineCode;
 
-    const command: LebensWaageCommand = new LebensWaageCommand(
-      machineId,
+    const command: LebensWaageCommand = new LebensWaageCommand('SAVE',
+      machineCode,
       'CRD',
       this.stepsService.trainingType,
       this.stepsService.activity,

@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StepsService} from "../steps.service";
 import {CodebookModel} from "../../model/codebook.model";
 import {ApiCallsService} from "../../api-calls.service";
+import {FileModel} from "../../model/file.model";
 
 @Component({
   selector: 'app-step6',
@@ -11,8 +12,8 @@ import {ApiCallsService} from "../../api-calls.service";
 export class Step6Component implements OnInit {
   @Output() step6Valid = new EventEmitter<any>();
 
-  public selectedTrainingType: string;
-  public trainingTypes: CodebookModel[] = [];
+  public selectedExerciseGroup: number;
+  public exerciseGroups: any[] = [];
 
   constructor(private stepsService: StepsService,
               private apiCalls: ApiCallsService) {
@@ -21,25 +22,24 @@ export class Step6Component implements OnInit {
   ngOnInit() {
     this.step6Valid.emit({
       stepPosition: 6,
-      valid: false
-    });
-
-    this.apiCalls.getTrainingTypes().subscribe(trainingTypes => {
-      this.trainingTypes = trainingTypes;
-    });
-  }
-
-  trainingTypeSelected(trainingType: string) {
-    this.selectedTrainingType = trainingType;
-    this.stepsService.trainingType = trainingType;
-    this.step6Valid.emit({
-      stepPosition: 6,
       valid: true
     });
+
+    this.apiCalls.getExerciseGroups().subscribe(exerciseGroups => {
+      console.log(exerciseGroups);
+      this.exerciseGroups = exerciseGroups;
+      this.exerciseGroups = this.exerciseGroups.filter(mpt => mpt.files.length > 0);
+    });
   }
 
-  getVideoUrl(mealPlanTag: CodebookModel) {
-    let files = mealPlanTag.files as string[];
-    return files.find(file => file.indexOf('mp4') != -1)
+  exerciseGroupSelected(exerciseGroup: number) {
+    this.selectedExerciseGroup = this.selectedExerciseGroup == exerciseGroup ? null : exerciseGroup;
+    // this.stepsService.trainingType = exerciseGroup;
+  }
+
+  getExerciseGroupImage(exerciseGroup: any): string {
+    let files = exerciseGroup.files as FileModel[];
+    // let wantedFile = files.filter(file => file.name.indexOf(this.selectedLanguage) != -1)[0];
+    return files[0].url;
   }
 }

@@ -29,7 +29,7 @@ export class AppComponent implements AfterViewInit{
 
 
   public selectedLanguage: string;
-  public moneyAmount: number = 60;
+  public moneyAmount: number = 0;
   moneyAmountAnimation: string = 'original';
 
 
@@ -57,7 +57,7 @@ export class AppComponent implements AfterViewInit{
 
   public incrementAmount() {
     this.moneyAmount += 5;
-    if(this.moneyAmount >= 70) {
+    if(this.moneyAmount >= 10) {
       this.moneyAmountAnimation = 'large';
       setTimeout(() => {
         this.moneyAmountAnimation = 'original';
@@ -66,7 +66,7 @@ export class AppComponent implements AfterViewInit{
   }
 
   public navigateToSteps() {
-    if(this.moneyAmount >= 70) {
+    if(this.moneyAmount >= 10) {
       this.router.navigate(['steps']);
     }
   }

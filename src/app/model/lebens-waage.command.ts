@@ -1,5 +1,6 @@
 export class LebensWaageCommand {
-  constructor(private machineId: number,
+  constructor(private operation: string,
+              private machineCode: string,
               private paymentType: string,
               private trainingType: string,
               private activity: string,
