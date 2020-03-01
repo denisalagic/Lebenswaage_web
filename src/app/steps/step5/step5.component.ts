@@ -15,8 +15,9 @@ export class Step5Component implements OnInit {
 
   @Output() step5Valid = new EventEmitter<any>();
   public selectedLanguage: string;
-  public checkedMealPlanTags: string[] = [];
-  public mealPlanTags: CodebookModel[] = [];
+  // public checkedMealPlanSchedules: number[] = [];
+  public checkedMealPlanSchedules: number = null;
+  public mealPlanSchedules: CodebookModel[] = [];
 
 
   constructor(private stepsService: StepsService,
@@ -31,24 +32,31 @@ export class Step5Component implements OnInit {
       valid: false
     });
 
-    this.apiCalls.getMealPlanTags().subscribe(mealPlanTags => {
-      this.mealPlanTags = mealPlanTags;
-      this.mealPlanTags = this.mealPlanTags.filter(mpt => mpt.files.length > 0)
+    this.apiCalls.getMealPlanSchedules().subscribe(data => {
+      this.mealPlanSchedules = data.mealPlanSchedules;
+      this.mealPlanSchedules = this.mealPlanSchedules.filter(mpt => mpt.files.length > 0);
     });
 
     this.selectedLanguage = this.translate.currentLang;
   }
 
-  public mealTagSelected(mealPlanTag: string) {
-    if (this.checkedMealPlanTags.includes(mealPlanTag)) {
-      let index = this.checkedMealPlanTags.findIndex(mpt =>  mpt == mealPlanTag);
-      this.checkedMealPlanTags.splice(index, 1);
+  public mealPlanScheduleSelected(mealPlanId: number) {
+    /*if (this.checkedMealPlanSchedules.includes(mealPlanId)) {
+      let index = this.checkedMealPlanSchedules.findIndex(mpt =>  mpt == mealPlanId);
+      this.checkedMealPlanSchedules.splice(index, 1);
     } else {
-      this.checkedMealPlanTags.push(mealPlanTag);
-    }
-    this.stepsService.mealPlanTags = this.checkedMealPlanTags;
+      this.checkedMealPlanSchedules.push(mealPlanId);
+    }*/
 
-    if (this.checkedMealPlanTags.length > 0) {
+    if(this.checkedMealPlanSchedules == null || this.checkedMealPlanSchedules != mealPlanId) {
+      this.checkedMealPlanSchedules = mealPlanId;
+    } else {
+      this.checkedMealPlanSchedules = null;
+    }
+
+    this.stepsService.mealPlanScheduleId = this.checkedMealPlanSchedules;
+
+    if (this.checkedMealPlanSchedules != null) {
       this.step5Valid.emit({
         stepPosition: 5,
         valid: true
@@ -61,20 +69,21 @@ export class Step5Component implements OnInit {
     }
   }
 
-  public checkIsMealPlanSelected(mealPlanTag: string) {
-    let hasElement = false;
-    for(let i = 0; i < this.checkedMealPlanTags.length; i++) {
-      if (this.checkedMealPlanTags[i] == mealPlanTag) {
+  public checkIsMealPlanSelected(mealPlanScheduleId: number) {
+    /*let hasElement = false;
+    for(let i = 0; i < this.checkedMealPlanSchedules.length; i++) {
+      if (this.checkedMealPlanSchedules[i] == mealPlanScheduleId) {
         hasElement = true;
       }
     }
-    return hasElement;
+    return hasElement;*/
+    return this.checkedMealPlanSchedules == mealPlanScheduleId;
   }
 
-  getMealPlanTagImage(mealPlanTag: CodebookModel): string {
-    let files = mealPlanTag.files as FileModel[];
-    let wantedFile = files.filter(file => file.name.indexOf(this.selectedLanguage) != -1)[0];
-    return wantedFile.url;
+  getMealPlanScheduleImage(mealPlanSchedule: CodebookModel): string {
+    let files = mealPlanSchedule.files as any[];
+    // let wantedFile = files.filter(file => file.name.indexOf(this.selectedLanguage) != -1)[0];
+    return files[0];
   }
 
 }

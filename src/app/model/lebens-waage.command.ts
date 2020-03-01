@@ -1,20 +1,22 @@
 export class LebensWaageCommand {
-  constructor(private operation: string,
-              private machineCode: string,
-              private paymentType: string,
-              private trainingType: string,
-              private activity: string,
-              private goal: string,
-              private gender: string,
-              private age: number,
-              private height: number,
-              private weight: number,
-              private bmi: number,
-              private targetWeight: number,
-              private waistCircumference: number,
-              private hipCircumference: number,
-              private blacklistedFoodTypes: string[],
-              private email: string,
-              private gdprAgreement: boolean,
-              private mealPlanTags: string []) {}
+  public operation: string;
+  public machineCode: string;
+  public paymentType: string;
+  public trainingType: string;
+  public activity: string;
+  public goal: string;
+  public gender: string;
+  public age: number;
+  public height: number;
+  public weight: number;
+  public bmi: number;
+  public targetWeight: number;
+  public waistCircumference: number;
+  public hipCircumference: number;
+  public blacklistedFoodTypes: string[];
+  public email: string;
+  public gdprAgreement: boolean;
+  public mealPlanScheduleId: number;
+  
+  constructor() {}
 }

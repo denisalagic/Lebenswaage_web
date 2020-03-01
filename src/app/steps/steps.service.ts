@@ -46,7 +46,7 @@ export class StepsService {
   private _targetWeight: number = 0;
 
   // tslint:disable-next-line:variable-name
-  private _mealPlanTags: string[] = [];
+  private _mealPlanScheduleId: number = null;
 
   public resetProperties(): void {
     this._goal = null;
@@ -62,7 +62,7 @@ export class StepsService {
     this._bmi = null;
     this._gdprAgreement = false;
     this._targetWeight = null;
-    this._mealPlanTags = [];
+    this._mealPlanScheduleId = null;
   }
 
   get goal(): string {
@@ -165,12 +165,12 @@ export class StepsService {
     this._targetWeight = value;
   }
 
-  get mealPlanTags(): string[] {
-    return this._mealPlanTags;
+  get mealPlanScheduleId(): number {
+    return this._mealPlanScheduleId;
   }
 
-  set mealPlanTags(value: string[]) {
-    this._mealPlanTags = value;
+  set mealPlanScheduleId(value: number) {
+    this._mealPlanScheduleId = value;
   }
 
   constructor() { }

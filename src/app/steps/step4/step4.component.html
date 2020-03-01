@@ -1,19 +1,19 @@
 <div style="margin-top: 300px">
   <div class="row justify-content-center">
-    <span class="step-title">Bio-metrics</span>
+    <span class="step-title">{{'biometric' | translate}}</span>
   </div>
   <div class="row justify-content-center" style="margin-top: 100px;">
     <div class="col-sm-2 rectangles" style="margin-right: 37px;">
       <div style="margin-left: 20px">
         <div class="row">
-          <span class="rectangle-titles">Izračun</span>
+          <span class="rectangle-titles">{{'calculation' | translate}}</span>
         </div>
         <div class="row">
           <div class="horizontal-line"></div>
         </div>
         <div class="row" style="margin-top: 20px">
           <div class="col-sm-3">
-            <span class="labels">BMI</span>
+            <span class="labels">{{'bmi' | translate}}</span>
           </div>
           <div class="col-sm-5" style="margin-top: -18px;">
             <form class="form">
@@ -27,11 +27,11 @@
           </div>
         </div>
         <div class="row">
-          <span class="warning">Indeks tjelesne mase</span>
+          <span class="warning">{{'body-mass-index' | translate}}</span>
         </div>
         <div class="row" style="margin-top: 20px">
           <div class="col-sm-3">
-            <span class="labels">BMR</span>
+            <span class="labels">{{'bmr' | translate}}</span>
           </div>
           <div class="col-sm-5" style="margin-top: -18px;">
             <form class="form">
@@ -45,11 +45,11 @@
           </div>
         </div>
         <div class="row">
-          <span class="warning">Bazalni metabolizam</span>
+          <span class="warning">{{'basal-metabolic-rate' | translate}}</span>
         </div>
         <div class="row" style="margin-top: 20px">
           <div class="col-sm-3">
-            <span class="labels">TEE</span>
+            <span class="labels">{{'tee' | translate}}</span>
           </div>
           <div class="col-sm-5" style="margin-top: -18px;">
             <form class="form">
@@ -63,7 +63,7 @@
           </div>
         </div>
         <div class="row">
-          <span class="warning">Ukupna energetska potrošnja</span>
+          <span class="warning">{{'total-energy-expenditure' | translate}}</span>
         </div>
       </div>
     </div>
@@ -80,14 +80,14 @@
     <div class="col-sm-2 rectangles" style="margin-right: 37px;">
       <div style="margin-left: 20px">
         <div class="row">
-          <span class="rectangle-titles">Preporuke</span>
+          <span class="rectangle-titles">{{'recommendations' | translate}}</span>
         </div>
         <div class="row">
           <div class="horizontal-line"></div>
         </div>
         <div class="row" style="margin-top: 20px">
           <div class="col-sm-5">
-            <span class="labels">MASS</span>
+            <span class="labels">{{'mass' | translate}}</span>
           </div>
           <div class="col-sm-3" style="margin-top: -18px;">
             <form class="form">
@@ -102,7 +102,7 @@
         </div>
         <div class="row" style="margin-top: 20px">
           <div class="col-sm-5">
-            <span class="labels">ENERGY INPUT</span>
+            <span class="labels">{{'energy-input' | translate}}</span>
           </div>
           <div class="col-sm-3" style="margin-top: -18px;">
             <form class="form">
@@ -117,7 +117,7 @@
         </div>
         <div class="row" style="margin-top: 20px">
           <div class="col-sm-5">
-            <span class="labels">ADDITIONAL ENERGY</span>
+            <span class="labels">{{'additional-energy' | translate}}</span>
           </div>
           <div class="col-sm-3" style="margin-top: -18px;">
             <form class="form">
@@ -135,14 +135,12 @@
 
   </div>
   <div class="row justify-content-center" style="margin-top: 8px;">
-    <div class="col-sm-6 info">
-      *što je bmi i bmr.-.--.--.-- bla bla text text text bla bla text text text <br/>
-      * jedna kila koliko kalorija bla bla text text text  bla bla text text text
+    <div class="col-sm-6 info" [innerHTML]="'what-is-bmi' | translate">
     </div>
   </div>
   <div class="row justify-content-center" style="margin-top: 50px;">
     <div class="col-sm-6 recommendations">
-      My recomendations
+      {{'my-recommendations' | translate}}
     </div>
   </div>
   <div class="row justify-content-center">
@@ -150,14 +148,14 @@
   </div>
   <div class="row justify-content-center" style="margin-top: 8px;">
     <div class="col-sm-6 info">
-      Ako su vaše preporuke različite od preporuka koje daje aplikacija ovdje upišite svoje vrijednosti, u protivnom ostavite prazna polja.
+      {{'my-recommendations-description' | translate}}
     </div>
   </div>
   <div class="row justify-content-center" style="margin-top: 8px;">
     <div class="col-sm-3 labels">
       <div class="row" style="border-right: solid 1px gray;">
         <div class="col-sm-5">
-          ENERGY INPUT
+          {{'energy-input' | translate}}
         </div>
         <div class="col-sm-5" style="margin-top: -27px;;">
           <form class="form">
@@ -171,7 +169,7 @@
     <div class="col-sm-3 labels">
       <div class="row">
         <div class="col-sm-6">
-          ADDITIONAL ENERGY
+          {{'additiona-energy' | translate}}
         </div>
         <div class="col-sm-5" style="margin-top: -27px;;">
           <form class="form">
@@ -185,7 +183,7 @@
   </div>
   <div class="row justify-content-center" style="margin-top: 75px;">
     <div class="col-sm-6 recommendations">
-      Food you do not eat
+      {{'food-you-do-not-eat' | translate}}
     </div>
   </div>
   <div class="row justify-content-center">
@@ -193,7 +191,7 @@
   </div>
   <div class="row justify-content-center" style="margin-top: 8px;">
     <div class="col-sm-6 info">
-      Molimo odaberite namirnice koje ne jedete kako bismo ih isključili iz plana prehrane.
+      {{'food-you-do-not-eat-description' | translate}}
     </div>
   </div>
 

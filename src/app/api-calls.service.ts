@@ -76,7 +76,27 @@ export class ApiCallsService {
   }
 
 
-  public getMealPlanTags(): Observable<CodebookModel[]> {
+  public getMealPlanSchedules(): Observable<any> {
+    const machineCode: string = environment.machineCode;
+
+    const command: LebensWaageCommand = new LebensWaageCommand();
+    command.operation = 'FIND';
+    command.machineCode = machineCode;
+    command.paymentType = 'CRD';
+    command.trainingType = this.stepsService.trainingType;
+    command.activity = this.stepsService.activity;
+    command.goal = this.stepsService.goal;
+    command.gender = this.stepsService.selectedGender;
+    command.age = this.stepsService.selectedAge;
+    command.height = this.stepsService.height;
+    command.weight = this.stepsService.weight;
+    command.bmi = this.stepsService.bmi;
+    command.targetWeight = this.stepsService.targetWeight;
+    command.waistCircumference = this.stepsService.waist;
+    command.hipCircumference = this.stepsService.hips;
+    command.blacklistedFoodTypes = this.stepsService.foodsNotIncluded;
+    command.gdprAgreement = this.stepsService.gdprAgreement;
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -84,7 +104,7 @@ export class ApiCallsService {
       })
     };
 
-    return this.http.get<CodebookModel[]>(environment.apiUrl + 'mealplantags', httpOptions)
+    return this.http.post<any>(environment.apiUrl + 'user/session', command, httpOptions)
       .pipe(map(resp => {
         return resp;
       }));
@@ -93,25 +113,25 @@ export class ApiCallsService {
   public sendEmail(email: string): Observable<LebensWaageCommand> {
     const machineCode: string = environment.machineCode;
 
-    const command: LebensWaageCommand = new LebensWaageCommand('SAVE',
-      machineCode,
-      'CRD',
-      this.stepsService.trainingType,
-      this.stepsService.activity,
-      this.stepsService.goal,
-      this.stepsService.selectedGender,
-      this.stepsService.selectedAge,
-      this.stepsService.height,
-      this.stepsService.weight,
-      this.stepsService.bmi,
-      this.stepsService.targetWeight,
-      this.stepsService.waist,
-      this.stepsService.hips,
-      this.stepsService.foodsNotIncluded,
-      email,
-      this.stepsService.gdprAgreement,
-      this.stepsService.mealPlanTags
-    );
+    const command: LebensWaageCommand = new LebensWaageCommand();
+    command.operation = 'SAVE';
+    command.machineCode = machineCode;
+    command.paymentType = 'CRD';
+    command.trainingType = this.stepsService.trainingType;
+    command.activity = this.stepsService.activity;
+    command.goal = this.stepsService.goal;
+    command.gender = this.stepsService.selectedGender;
+    command.age = this.stepsService.selectedAge;
+    command.height = this.stepsService.height;
+    command.weight = this.stepsService.weight;
+    command.bmi = this.stepsService.bmi;
+    command.targetWeight = this.stepsService.targetWeight;
+    command.waistCircumference = this.stepsService.waist;
+    command.hipCircumference = this.stepsService.hips;
+    command.blacklistedFoodTypes = this.stepsService.foodsNotIncluded;
+    command.gdprAgreement = this.stepsService.gdprAgreement;
+    command.email = email;
+    command.mealPlanScheduleId = this.stepsService.mealPlanScheduleId;
 
     const httpOptions = {
       headers: new HttpHeaders({

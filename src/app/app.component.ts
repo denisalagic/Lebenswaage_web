@@ -22,11 +22,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
     ])
   ]
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent{
   title = 'lebens-waage';
-
-  @ViewChild('videoPlayer', {static: false}) videoplayer: ElementRef;
-
 
   public selectedLanguage: string;
   public moneyAmount: number = 0;
@@ -43,11 +40,6 @@ export class AppComponent implements AfterViewInit{
     this.moneyAmountAnimation = 'original';
 
   }
-
-  ngAfterViewInit(): void {
-    this.videoplayer.nativeElement.play();
-  }
-
 
 
   public setLanguage(language: string) {
@@ -67,7 +59,7 @@ export class AppComponent implements AfterViewInit{
 
   public navigateToSteps() {
     if(this.moneyAmount >= 10) {
-      this.router.navigate(['steps']);
+      this.router.navigate(['steps']).then(_ => { this.moneyAmount = 0; });
     }
   }
 

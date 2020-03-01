@@ -26,7 +26,6 @@ export class Step6Component implements OnInit {
     });
 
     this.apiCalls.getExerciseGroups().subscribe(exerciseGroups => {
-      console.log(exerciseGroups);
       this.exerciseGroups = exerciseGroups;
       this.exerciseGroups = this.exerciseGroups.filter(mpt => mpt.files.length > 0);
     });

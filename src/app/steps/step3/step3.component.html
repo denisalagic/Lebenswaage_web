@@ -1,19 +1,19 @@
 <div style="margin-top: 300px">
   <div class="row justify-content-center">
-    <span class="step-title">Bio-metrics</span>
+    <span class="step-title">{{'biometric' | translate}}</span>
   </div>
   <div class="row justify-content-center" style="margin-top: 100px;">
     <div class="col-sm-2 rectangles" style="margin-right: 37px;">
       <div style="margin-left: 20px">
         <div class="row">
-          <span class="rectangle-titles">Your measures</span>
+          <span class="rectangle-titles">{{'your-measures' | translate}}</span>
         </div>
         <div class="row">
           <div class="horizontal-line"></div>
         </div>
         <div class="row" style="margin-top: 20px">
           <div class="col-sm-3" style="margin-left: -6px;">
-            <span class="labels">HEIGHT</span>
+            <span class="labels">{{'height' | translate}}</span>
           </div>
           <div class="col-sm-6" style="margin-left: 6px; margin-top: -18px;">
             <form class="form">
@@ -29,11 +29,11 @@
           </div>
         </div>
         <div class="row">
-          <span class="warning">Tolerancija zbog obuće</span>
+          <span class="warning">{{'tolerance-footwear' | translate}}</span>
         </div>
         <div class="row" style="margin-top: 20px">
           <div class="col-sm-3" style="margin-left: -6px;">
-            <span class="labels">WEIGHT</span>
+            <span class="labels">{{'weight' | translate}}</span>
           </div>
           <div class="col-sm-6" style="margin-left: 6px; margin-top: -18px;">
             <form class="form">
@@ -49,11 +49,11 @@
           </div>
         </div>
         <div class="row">
-          <span class="warning">Tolerancija zbog odjeće</span>
+          <span class="warning">{{'tolerance-clothing' | translate}}</span>
         </div>
         <div class="row" style="margin-top: 20px">
           <div class="col-sm-3" style="margin-left: -6px;">
-            <span class="labels">WAIST</span>
+            <span class="labels">{{'waist' | translate}}</span>
             <span class="optional">*</span>
           </div>
           <div class="col-sm-6" style="margin-left: 6px; margin-top: -18px;">
@@ -71,8 +71,7 @@
         </div>
         <div class="row">
           <span class="optional" style="margin-right: -12px;">*</span>
-          <span class="warning">ENTER OPTIONALLY <br/><br/>
-            YOU CAN MEASURE WAIST WITH OUR BUILT-IN METER
+          <span class="warning" [innerHTML]="'enter-optionally' | translate">
         </span>
         </div>
       </div>
@@ -83,7 +82,7 @@
     <div class="col-sm-2 rectangles">
       <div style="margin-left: 20px">
         <div class="row">
-          <span class="rectangle-titles">Activity</span>
+          <span class="rectangle-titles">{{'activity' | translate}}</span>
         </div>
         <div class="row">
           <div class="horizontal-line"></div>
