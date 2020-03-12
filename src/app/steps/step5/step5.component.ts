@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ApiCallsService} from '../../api-calls.service';
 import {TranslateService} from "@ngx-translate/core";
 import {CodebookModel} from "../../model/codebook.model";
-import {FileModel} from "../../model/file.model";
 
 @Component({
   selector: 'app-step5',
@@ -15,7 +14,6 @@ export class Step5Component implements OnInit {
 
   @Output() step5Valid = new EventEmitter<any>();
   public selectedLanguage: string;
-  // public checkedMealPlanSchedules: number[] = [];
   public checkedMealPlanSchedules: number = null;
   public mealPlanSchedules: CodebookModel[] = [];
 
@@ -24,7 +22,8 @@ export class Step5Component implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private apiCalls: ApiCallsService,
-              private translate: TranslateService) { }
+              private translate: TranslateService) {
+  }
 
   ngOnInit() {
     this.step5Valid.emit({
@@ -41,14 +40,7 @@ export class Step5Component implements OnInit {
   }
 
   public mealPlanScheduleSelected(mealPlanId: number) {
-    /*if (this.checkedMealPlanSchedules.includes(mealPlanId)) {
-      let index = this.checkedMealPlanSchedules.findIndex(mpt =>  mpt == mealPlanId);
-      this.checkedMealPlanSchedules.splice(index, 1);
-    } else {
-      this.checkedMealPlanSchedules.push(mealPlanId);
-    }*/
-
-    if(this.checkedMealPlanSchedules == null || this.checkedMealPlanSchedules != mealPlanId) {
+    if (this.checkedMealPlanSchedules == null || this.checkedMealPlanSchedules != mealPlanId) {
       this.checkedMealPlanSchedules = mealPlanId;
     } else {
       this.checkedMealPlanSchedules = null;
@@ -70,20 +62,22 @@ export class Step5Component implements OnInit {
   }
 
   public checkIsMealPlanSelected(mealPlanScheduleId: number) {
-    /*let hasElement = false;
-    for(let i = 0; i < this.checkedMealPlanSchedules.length; i++) {
-      if (this.checkedMealPlanSchedules[i] == mealPlanScheduleId) {
-        hasElement = true;
-      }
-    }
-    return hasElement;*/
     return this.checkedMealPlanSchedules == mealPlanScheduleId;
   }
 
   getMealPlanScheduleImage(mealPlanSchedule: CodebookModel): string {
     let files = mealPlanSchedule.files as any[];
-    // let wantedFile = files.filter(file => file.name.indexOf(this.selectedLanguage) != -1)[0];
     return files[0];
+  }
+
+  public getMealPlanScheduleNotesTranslation(mealPlanSchedule: CodebookModel): string {
+    if (this.selectedLanguage == 'de') {
+      return mealPlanSchedule.notesDE;
+    } else if (this.selectedLanguage == 'hr') {
+      return mealPlanSchedule.notesHR;
+    } else {
+      return mealPlanSchedule.notes;
+    }
   }
 
 }

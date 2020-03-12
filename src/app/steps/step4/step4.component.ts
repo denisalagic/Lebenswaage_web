@@ -126,7 +126,7 @@ export class Step4Component implements OnInit {
       this.optimalCaloriesIntake = this.bmr * 1.9;
     }
 
-    this.optimalCaloriesIntake.toFixed(2);
+    this.optimalCaloriesIntake = parseInt(this.optimalCaloriesIntake.toFixed(2), 10);
 
 
     this.calculateAdditionalCaloriesNeeded();
@@ -169,6 +169,6 @@ export class Step4Component implements OnInit {
     } else if (goal == 'GAINWGH') {
       this.additionalCaloriesNeeded = 0.2 * this.optimalCaloriesIntake;
     }
-    this.additionalCaloriesNeeded.toFixed(2);
+    this.additionalCaloriesNeeded = parseInt(this.additionalCaloriesNeeded.toFixed(2), 10);
   }
 }

@@ -6,7 +6,7 @@
     <div class="col-sm-3" *ngFor="let mealPlanSchedule of mealPlanSchedules; let i = index"
          [ngClass]="i % 2 == 0 ? 'offset-3' : ''" style="margin-bottom: 20px;" (click)="mealPlanScheduleSelected(mealPlanSchedule.id)">
       <img [src]="getMealPlanScheduleImage(mealPlanSchedule)" style="width: 400px;"/>
-      <div *ngIf="checkIsMealPlanSelected(mealPlanSchedule.id)" class="meal-plan-tag-selected"> {{mealPlanSchedule.notes}}</div>
+      <div class="meal-plan-tag-selected"> {{getMealPlanScheduleNotesTranslation(mealPlanSchedule)}}</div>
     </div>
   </div>
 </div>

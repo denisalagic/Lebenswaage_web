@@ -6,6 +6,8 @@ export class CodebookModel {
               public nameDE: string,
               public nameHR: string,
               public notes: string,
+              public notesDE: string,
+              public notesHR: string,
               public files: any[]) {}
 }
 

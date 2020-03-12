@@ -22,12 +22,14 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
     ])
   ]
 })
-export class AppComponent{
+export class AppComponent implements AfterViewInit{
   title = 'lebens-waage';
 
   public selectedLanguage: string;
   public moneyAmount: number = 0;
   moneyAmountAnimation: string = 'original';
+  @ViewChild('videoPlayer', {static: false}) videoplayer: ElementRef;
+
 
 
   constructor(private translate: TranslateService,
@@ -39,6 +41,10 @@ export class AppComponent{
     this.selectedLanguage = 'en';
     this.moneyAmountAnimation = 'original';
 
+  }
+
+  ngAfterViewInit(): void {
+    this.videoplayer.nativeElement.play();
   }
 
 

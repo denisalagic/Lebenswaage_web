@@ -89,7 +89,7 @@
         </div>
         <div class="row" *ngFor="let activity of activities" [ngClass]="activity.code === activityChecked ? 'selected-activity': ''" style="margin-top:20px;">
           <div class="col-sm-10">
-            <span class="labels">{{activity.name}}</span>
+            <span class="labels">{{getActivityTranslation(activity)}}</span>
           </div>
           <div class="col-sm-2">
             <label class="container"> &nbsp;
@@ -98,7 +98,7 @@
             </label>
           </div>
           <div class="col-sm-12" *ngIf="activity.code == activityChecked">
-            {{activity.notes}}
+            {{getActivityNotesTranslation(activity)}}
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import {StepsService} from '../steps.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CodebookModel} from "../../model/codebook.model";
 import {ApiCallsService} from "../../api-calls.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-step3',
@@ -20,15 +21,20 @@ export class Step3Component implements OnInit {
   public hips = 0;
   public activities: CodebookModel[] = [];
   public activityChecked: string = null;
+  private selectedLanguage: string;
 
 
   constructor(private stepsService: StepsService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private apiCalls: ApiCallsService) {
+              private apiCalls: ApiCallsService,
+              private translate: TranslateService) {
   }
 
   ngOnInit() {
+    this.selectedLanguage = this.translate.currentLang;
+
+
     this.apiCalls.getAcitivityTypes().subscribe(activities => {
       this.activities = activities;
     });
@@ -38,7 +44,7 @@ export class Step3Component implements OnInit {
       valid: false
     });
 
-    // TODO: remove this.
+    // // TODO: remove this.
     this.stepsService.hips = 30;
 
   }
@@ -98,6 +104,26 @@ export class Step3Component implements OnInit {
     this.activityChecked = value;
     this.stepsService.activity = value;
     this.checkStepValidity();
+  }
+
+  public getActivityTranslation(activity: CodebookModel): string {
+    if (this.selectedLanguage == 'de') {
+      return activity.nameDE;
+    } else if (this.selectedLanguage == 'hr') {
+      return activity.nameHR;
+    } else {
+      return activity.name;
+    }
+  }
+
+  public getActivityNotesTranslation(activity: CodebookModel): string {
+    if (this.selectedLanguage == 'de') {
+      return activity.notesDE;
+    } else if (this.selectedLanguage == 'hr') {
+      return activity.notesHR;
+    } else {
+      return activity.notes;
+    }
   }
 
   private checkStepValidity() {
