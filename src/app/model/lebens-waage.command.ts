@@ -12,7 +12,6 @@ export class LebensWaageCommand {
   public bmi: number;
   public targetWeight: number;
   public waistCircumference: number;
-  public hipCircumference: number;
   public blacklistedFoodTypes: string[];
   public email: string;
   public gdprAgreement: boolean;

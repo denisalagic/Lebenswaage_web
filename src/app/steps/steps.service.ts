@@ -28,9 +28,6 @@ export class StepsService {
   private _waist: number = null;
 
   // tslint:disable-next-line:variable-name
-  private _hips: number = null;
-
-  // tslint:disable-next-line:variable-name
   private _activity: string = null;
 
   // tslint:disable-next-line:variable-name
@@ -56,7 +53,6 @@ export class StepsService {
     this._height = null;
     this._weight = null;
     this._waist = null;
-    this._hips = null;
     this._activity = null;
     this._foodsNotIncluded = [];
     this._bmi = null;
@@ -118,13 +114,7 @@ export class StepsService {
   set waist(value: number) {
     this._waist = value;
   }
-  get hips(): number {
-    return this._hips;
-  }
 
-  set hips(value: number) {
-    this._hips = value;
-  }
   get activity(): string {
     return this._activity;
   }

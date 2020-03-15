@@ -3,9 +3,12 @@
     <span class="step-title">{{'training-plan' | translate}}</span>
   </div>
   <div class="row justify-content-center">
-    <span class="step-subtitle">Ovo su treninzi koji vas očekuju na vašem profilu. Kliknite Next za dovršetak prijave.</span>
+    <div class="col-sm-1">
+      <img src="assets/img/18-years.png" class="step-subtitle-icon">
+    </div>
+    <div class="col-6 step-subtitle" [innerHTML]="'training-plan-warning' | translate"></div>
   </div>
-  <div class="row" style="margin-top: 100px;">
+  <div class="row" style="margin-top: 220px;">
     <div class="col-sm-3" *ngFor="let exerciseGroup of exerciseGroups; let i = index"
          [ngClass]="i % 2 == 0 ? 'offset-3' : ''" style="margin-bottom: 20px;" (click)="exerciseGroupSelected(exerciseGroup.id)">
       <img [src]="getExerciseGroupImage(exerciseGroup)" style="width: 400px;"/>

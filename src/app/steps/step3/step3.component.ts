@@ -18,7 +18,6 @@ export class Step3Component implements OnInit {
   public height = "";
   public weight = "";
   public waist = "";
-  public hips = 0;
   public activities: CodebookModel[] = [];
   public activityChecked: string = null;
   private selectedLanguage: string;
@@ -43,9 +42,6 @@ export class Step3Component implements OnInit {
       stepPosition: 3,
       valid: false
     });
-
-    // // TODO: remove this.
-    this.stepsService.hips = 30;
 
   }
 

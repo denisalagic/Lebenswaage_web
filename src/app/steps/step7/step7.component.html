@@ -4,7 +4,7 @@
   </div>
   <div class="row justify-content-center" style="margin-top: 40px;">
     <div class="col-sm-6 note">
-      UPIŠITE E-MAIL ADRESU NA KOJU ŽELITE PRIMITI 30-ODNEVNI PERSONALIZIRANI PLAN PREHRANE I PLAN TRENINGA
+      {{'enter-email' | translate}}
     </div>
   </div>
 
@@ -26,11 +26,11 @@
       </div>
       <div class="row">
         <div class="gdpr-label" (click)="showGdprModal()">
-          GDPR and Terms of Agreements
+          {{'gdpr' | translate}}
         </div>
       </div>
       <div class="row" style="margin-left: 28px;margin-top: 8px;">
-        <mat-checkbox class="text" [(ngModel)]="gdprAccepted">Pročitao sam i slažem se s navedenim uvjetima</mat-checkbox>
+        <mat-checkbox class="text" [(ngModel)]="gdprAccepted">{{'gdpr-accept' | translate}}</mat-checkbox>
       </div>
       <div class="row justify-content-center" style="margin-top: 20px;">
         <div class="send-rectangle">
@@ -48,8 +48,7 @@
     <span class="step-title" style="font-family: 'Playfair Display', sans-serif !important;">Thank you</span>
   </div>
   <div class="row justify-content-center" style="margin-top: 40px;">
-    <div class="col-sm-6 note">
-      Vaš personalizirani tridesetodnevni plan prehrane i plan treninga uskoro će vam stići na mail.     </div>
+    <div class="col-sm-6 note">{{'personalised-meal-plan' | translate}}</div>
   </div>
 </div>
 

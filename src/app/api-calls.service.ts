@@ -93,7 +93,6 @@ export class ApiCallsService {
     command.bmi = this.stepsService.bmi;
     command.targetWeight = this.stepsService.targetWeight;
     command.waistCircumference = this.stepsService.waist;
-    command.hipCircumference = this.stepsService.hips;
     command.blacklistedFoodTypes = this.stepsService.foodsNotIncluded;
     command.gdprAgreement = this.stepsService.gdprAgreement;
 
@@ -127,7 +126,6 @@ export class ApiCallsService {
     command.bmi = this.stepsService.bmi;
     command.targetWeight = this.stepsService.targetWeight;
     command.waistCircumference = this.stepsService.waist;
-    command.hipCircumference = this.stepsService.hips;
     command.blacklistedFoodTypes = this.stepsService.foodsNotIncluded;
     command.gdprAgreement = this.stepsService.gdprAgreement;
     command.email = email;

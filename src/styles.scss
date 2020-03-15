@@ -53,14 +53,18 @@ body, html {
 .step-subtitle {
   font-size: 20px;
   margin-top: 47px;
-  margin-bottom: -85px;
   font-family: "Playfair Display", sans-serif;
   color: #626262;
   font-weight: bold;
-  text-transform: uppercase;
   line-height: 1.2;
-  text-align: center;
+  text-align: left;
   height: 63px;
+}
+
+.step-subtitle-icon {
+  margin-top: 47px;
+  height: 40px;
+  float: right;
 }
 
 .html::-webkit-scrollbar {
