@@ -40,5 +40,11 @@
   "food-you-do-not-eat-description": "Please select foods that you do not eat to exclude them from your diet plan",
   "meal-plan": "Meal plan",
   "training-plan": "Training plan",
-  "training-plan-description": "THESE ARE THE TRAININGS THAT ARE WAITING FOR YOU IN YOUR PROFILE. CLICK NEXT TO COMPLETE PROCESS"
+  "training-plan-description": "THESE ARE THE TRAININGS THAT ARE WAITING FOR YOU IN YOUR PROFILE. CLICK NEXT TO COMPLETE PROCESS",
+  "training-plan-warning": "The use of weights and large additional burdens on adolescence at puberty (<16 years) has a very negative effect on proper growth and development, causing some negative effects that may cause later disabilities in sports and daily life.<br/><br/>Recommendation: self-weight strength exercises (squats, joints, pushups, tummy tucks), stretching exercises and perfect adoption of all the exercises that will later be the basis for upgrading with external loads.",
+  "meal-plan-warning": "Persons under 18 should not use a menu smaller than 1500 kcal for girls and 1700 kcal for boys because of the energy needed for growth and development. Persons under the age of 18 should consult a doctor and use the menu with the supervision of their parents. <br/> <br/> This menu does not guarantee instant success, but if you follow all the instructions given correctly, the results should not be missing. You run the menu at your own risk!",
+  "enter-email": "Enter the E-mail address that you want to receive on the 30-day personalized diet plan and training plan",
+  "gdpr": "GDPR and Terms of Agreements",
+  "gdpr-accept": "I have read and agree to the above terms",
+  "personalised-meal-plan": "Your personalized 30-day diet plan and workout plan will arrive in the mail shortly."
 }

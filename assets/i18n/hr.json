@@ -40,5 +40,11 @@
   "food-you-do-not-eat-description": "Molimo odaberite namirnice koje ne jedete kako bismo ih isključili iz plana prehrane.",
   "meal-plan": "Plan obroka",
   "training-plan": "Plan treninga",
-  "training-plan-description": "OVO SU TRENINZI KOJI VAS OČEKUJU NA VAŠEM PROFILU. KLIKNITE NEXT ZA DOVRŠETAK PRIJAVE"
+  "training-plan-description": "OVO SU TRENINZI KOJI VAS OČEKUJU NA VAŠEM PROFILU. KLIKNITE NEXT ZA DOVRŠETAK PRIJAVE",
+  "training-plan-warning": "Korištenje utega i velikih dodatnih opterećenja mladih u pubertet (< 16 godina) izuzetno negativno utječe na pravilan rast i razvoj, izaziva nekakve negativne učinke zbog kojih bi osoba mogla imati kasnije smetnje u sportskom, ali i svakodnevnom životu.<br/><br/>Preporuka: vježbe snage s vlastitom težinom (čučnjevi, zgibovi, sklekovi, trbušnjaci), vježbe istezanja te savršeno usvajanje tehnika svih vježbi koja će kasnije biti baza za nadogradnju s vanjskim opterećenjem.",
+  "meal-plan-warning": "Osobe mlađe od 18 ne bi trebale koristiti jelovnik manji od 1500 kcal za djevojke i 1700 kcal za dečke zbog energije potrebne za rast i razvoj. Osobe mlađe od 18 godina trebaju se posavjetovati sa liječnikom i uz nadzor roditelja koristiti jelovnik. <br/><br/> Ovim jelovnikom ne jamčimo instant uspjeh, no ukoliko se pravilno pridržavate svih danih uputa, rezultati ne bi trebali izostati. Jelovnik provodite na vlastitu odgovornost!",
+  "enter-email": "UPIŠITE E-MAIL ADRESU NA KOJU ŽELITE PRIMITI 30-ODNEVNI PERSONALIZIRANI PLAN PREHRANE I PLAN TRENINGA",
+  "gdpr": "GDPR i uvjeti ugovora",
+  "gdpr-accept": "Pročitao sam i slažem se s navedenim uvjetima",
+  "personalised-meal-plan": "Vaš personalizirani tridesetodnevni plan prehrane i plan treninga uskoro će vam stići na mail."
 }
