@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {ApiCallsService} from '../../api-calls.service';
 import {StepsService} from "../steps.service";
 import {GdprModalComponent} from "./gdpr-modal/gdpr-modal.component";
+import {LocalApiCallsService} from "../../local-api-calls.service";
 
 @Component({
   selector: 'app-step7',
@@ -27,7 +28,8 @@ export class Step7Component implements OnInit {
   constructor(private apiCalls: ApiCallsService,
               private router: Router,
               private stepService: StepsService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private localApiCallsService: LocalApiCallsService) {
   }
 
   ngOnInit() {
@@ -44,10 +46,18 @@ export class Step7Component implements OnInit {
       this.stepService.gdprAgreement = true;
       this.apiCalls.sendEmail(this.emailFormControl.value).subscribe(resp => {
         this.showThankYouMessage = true;
-        setTimeout(() => {
-          this.showThankYouMessage = false;
-          this.router.navigate(['../']);
-        }, 7000)
+
+        this.localApiCallsService.returnOverflowMoney().subscribe(resp => {
+          this.localApiCallsService.closeSession().subscribe(respCloseSession => {
+            setTimeout(() => {
+              this.showThankYouMessage = false;
+              this.router.navigate(['../']);
+            }, 7000)
+          });
+
+        });
+
+
       });
     }
 

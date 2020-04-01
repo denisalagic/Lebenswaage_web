@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CodebookModel} from "../../model/codebook.model";
 import {ApiCallsService} from "../../api-calls.service";
 import {TranslateService} from "@ngx-translate/core";
+import {LocalApiCallsService} from "../../local-api-calls.service";
 
 @Component({
   selector: 'app-step3',
@@ -27,7 +28,8 @@ export class Step3Component implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private apiCalls: ApiCallsService,
-              private translate: TranslateService) {
+              private translate: TranslateService,
+              private localApiCallsService: LocalApiCallsService) {
   }
 
   ngOnInit() {
@@ -41,6 +43,13 @@ export class Step3Component implements OnInit {
     this.step3Valid.emit({
       stepPosition: 3,
       valid: false
+    });
+
+    this.localApiCallsService.getMeasurments().subscribe(resp => {
+      this.height = resp[0].value;
+      this.onHeightChange();
+      this.weight = resp[1].value;
+      this.onWeightChange();
     });
 
   }

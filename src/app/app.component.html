@@ -40,10 +40,10 @@
       <div class="offset-10" style="width: 272px;">
         <div class="money-input">
           <span class="saldo" style="margin-left: 24px;">Saldo: </span>
-          <span class="saldo" (click)="incrementAmount()"
-                [ngClass]="{'saldo-zero': moneyAmount==0, 'saldo-not-enough':(moneyAmount > 0 && moneyAmount<10), 'saldo-enough':moneyAmount>=10 }">{{moneyAmount |currency:'EUR':true}}</span>
-          <img src="assets/img/check-circle-empty.png" *ngIf="moneyAmount < 70" class="money-icon-check"/>
-          <img src="assets/img/check-circle-good.png" *ngIf="moneyAmount >= 70" class="money-icon-check"/>
+          <span class="saldo"
+                [ngClass]="{'saldo-zero': moneyAmount==-1, 'saldo-not-enough':(moneyAmount >= 0 && moneyAmount<10), 'saldo-enough':moneyAmount>=10 }">{{getCurrentMoneyAmount() |currency:'EUR':true}}</span>
+          <img src="assets/img/check-circle-empty.png" *ngIf="moneyAmount < 10" class="money-icon-check"/>
+          <img src="assets/img/check-circle-good.png" *ngIf="moneyAmount >= 10" class="money-icon-check"/>
           <br/>
           <span class="saldo-needed" style="margin-left: 24px;">{{'money-needed' | translate}} {{10 |currency:'EUR':true}}</span>
         </div>
@@ -59,10 +59,26 @@
       </div>
     </div>
 
-    <div class="row justify-content-center" style="margin-top: 20px;">
+    <div class="row justify-content-center" style="margin-top: 20px;" *ngIf="moneyAmount >= 10">
       <div class="start-rectangle" [@animateStartButton]="moneyAmountAnimation">
         <div class="start-text-placeholder">
           <div class="start-button-text" (click)="navigateToSteps()">START</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center" style="margin-top: 20px;" *ngIf="moneyAmount<10">
+      <div class="start-rectangle">
+        <div class="start-text-placeholder">
+          <div class="start-button-text" (click)="addMoney()">{{'add-money' | translate}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center" style="margin-top: 20px;" *ngIf="showCancelButton">
+      <div class="cancel-rectangle">
+        <div class="start-text-placeholder">
+          <div class="start-button-text" (click)="returnMoney()">{{'cancel' | translate}}</div>
         </div>
       </div>
     </div>
