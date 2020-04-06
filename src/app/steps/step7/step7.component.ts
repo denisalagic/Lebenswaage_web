@@ -47,17 +47,10 @@ export class Step7Component implements OnInit {
       this.apiCalls.sendEmail(this.emailFormControl.value).subscribe(resp => {
         this.showThankYouMessage = true;
 
-        this.localApiCallsService.returnOverflowMoney().subscribe(resp => {
-          this.localApiCallsService.closeSession().subscribe(respCloseSession => {
-            setTimeout(() => {
-              this.showThankYouMessage = false;
-              this.router.navigate(['../']);
-            }, 7000)
-          });
-
-        });
-
-
+        setTimeout(() => {
+          this.showThankYouMessage = false;
+          this.router.navigate(['../']);
+        }, 7000);
       });
     }
 

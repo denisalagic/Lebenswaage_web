@@ -3,6 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {LocalApiCallsService} from "./local-api-calls.service";
+import {AutoLogoutService} from "./auto-logout.service";
 
 @Component({
   selector: 'app-root',
@@ -31,14 +32,14 @@ export class AppComponent implements AfterViewInit {
   public showCancelButton: boolean = false;
   moneyAmountAnimation: string = 'original';
   private currentlyAddingMoney: boolean = false;
-  private firstCall: boolean = true;
   @ViewChild('videoPlayer', {static: false}) videoplayer: ElementRef;
 
 
   constructor(private translate: TranslateService,
               private router: Router,
               public route: ActivatedRoute,
-              private localApiCallsService: LocalApiCallsService) {
+              private localApiCallsService: LocalApiCallsService,
+              private autoLogoutService: AutoLogoutService) {
     translate.addLangs(['en', 'de', 'hr']);
     translate.setDefaultLang('en');
     translate.use('en');
@@ -59,39 +60,26 @@ export class AppComponent implements AfterViewInit {
     this.selectedLanguage = language;
   }
 
-  // public incrementAmount() {
-  //   this.moneyAmount += 5;
-  //   if(this.moneyAmount >= 10) {
-  //     this.moneyAmountAnimation = 'large';
-  //     setTimeout(() => {
-  //       this.moneyAmountAnimation = 'original';
-  //     }, 500)
-  //   }
-  // }
+  public startMoneySession() {
+    this.showCancelButton = true;
+    if (this.moneyAmount == -1) {
+      this.localApiCallsService.startMoneySession().subscribe(resp => {
+        this.addMoney();
+      });
+    }
+  }
 
-  public addMoney() {
-    if (this.firstCall) {
-      this.showCancelButton = true;
-      if (this.moneyAmount == -1) {
-        this.localApiCallsService.startMoneySession().subscribe(resp => {
-          if (!this.currentlyAddingMoney) {
-            this.currentlyAddingMoney = true;
-            this.localApiCallsService.acceptMoney().subscribe(resp => {
-              this.moneyAmount = resp.value;
-              this.currentlyAddingMoney = false;
-            });
-          }
-        });
-      }
-      this.firstCall = false;
-    } else {
-      if (!this.currentlyAddingMoney) {
-        this.currentlyAddingMoney = true;
-        this.localApiCallsService.acceptMoney().subscribe(resp => {
+  private addMoney() {
+    this.autoLogoutService.init();
+    if (!this.currentlyAddingMoney && this.moneyAmount < 10) {
+      this.currentlyAddingMoney = true;
+      this.localApiCallsService.acceptMoney().subscribe(resp => {
+        if(resp.success) {
           this.moneyAmount = resp.value;
           this.currentlyAddingMoney = false;
-        });
-      }
+        }
+        this.addMoney();
+      });
     }
   }
 
@@ -100,7 +88,6 @@ export class AppComponent implements AfterViewInit {
       console.log(resp);
       this.moneyAmount = -1;
       this.showCancelButton = false;
-      this.firstCall = true;
       this.localApiCallsService.closeSession().subscribe(resp => {
         console.log("close session resp,", resp);
       })
@@ -112,7 +99,13 @@ export class AppComponent implements AfterViewInit {
       this.router.navigate(['steps']).then(_ => {
         this.moneyAmount = -1;
         this.showCancelButton = false;
-        this.firstCall = true;
+        this.localApiCallsService.returnOverflowMoney().subscribe(resp => {
+          console.log("returning surplus of money");
+          this.localApiCallsService.closeSession().subscribe(respCloseSession => {
+            console.log("closing session");
+          });
+
+        });
       });
     }
   }
