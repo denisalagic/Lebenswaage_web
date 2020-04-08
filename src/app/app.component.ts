@@ -30,6 +30,7 @@ export class AppComponent implements AfterViewInit {
   public selectedLanguage: string;
   public moneyAmount: number = -1;
   public showCancelButton: boolean = false;
+  public showAddMoneyButton: boolean = true;
   moneyAmountAnimation: string = 'original';
   private currentlyAddingMoney: boolean = false;
   @ViewChild('videoPlayer', {static: false}) videoplayer: ElementRef;
@@ -61,6 +62,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   public startMoneySession() {
+    this.autoLogoutService.init();
+    this.showAddMoneyButton = false;
     this.showCancelButton = true;
     if (this.moneyAmount == -1) {
       this.localApiCallsService.startMoneySession().subscribe(resp => {
@@ -70,14 +73,13 @@ export class AppComponent implements AfterViewInit {
   }
 
   private addMoney() {
-    this.autoLogoutService.init();
     if (!this.currentlyAddingMoney && this.moneyAmount < 10) {
       this.currentlyAddingMoney = true;
       this.localApiCallsService.acceptMoney().subscribe(resp => {
         if(resp.success) {
           this.moneyAmount = resp.value;
-          this.currentlyAddingMoney = false;
         }
+        this.currentlyAddingMoney = false;
         this.addMoney();
       });
     }
@@ -88,6 +90,7 @@ export class AppComponent implements AfterViewInit {
       console.log(resp);
       this.moneyAmount = -1;
       this.showCancelButton = false;
+      this.showAddMoneyButton = true;
       this.localApiCallsService.closeSession().subscribe(resp => {
         console.log("close session resp,", resp);
       })
@@ -99,6 +102,7 @@ export class AppComponent implements AfterViewInit {
       this.router.navigate(['steps']).then(_ => {
         this.moneyAmount = -1;
         this.showCancelButton = false;
+        this.showAddMoneyButton = true;
         this.localApiCallsService.returnOverflowMoney().subscribe(resp => {
           console.log("returning surplus of money");
           this.localApiCallsService.closeSession().subscribe(respCloseSession => {
