@@ -66,6 +66,7 @@ export class AppComponent implements AfterViewInit {
     this.showAddMoneyButton = false;
     this.showCancelButton = true;
     if (this.moneyAmount == -1) {
+      this.moneyAmount = 0;
       this.localApiCallsService.startMoneySession().subscribe(resp => {
         this.addMoney();
       });
