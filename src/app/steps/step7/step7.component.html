@@ -13,7 +13,7 @@
       <div class="row">
         <form class="email-form">
           <mat-form-field class="email-form-full-width">
-            <input matInput placeholder="Email" [formControl]="emailFormControl"
+            <input matInput [matKeyboard]="" placeholder="Email" [formControl]="emailFormControl"
                    [errorStateMatcher]="matcher">
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
               Please enter a valid email address

@@ -50,9 +50,9 @@ const customLayouts: IKeyboardLayouts = {
         ['9']
       ],
       [
-        [''],
+        [' '],
         ['0'],
-        ['']
+        ['Backspace']
       ]
     ],
     'lang': ['en-UK']

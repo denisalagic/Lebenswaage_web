@@ -49,7 +49,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.videoplayer.nativeElement.play();
+    //this.videoplayer.nativeElement.play();
   }
 
   public getCurrentMoneyAmount(): number {
