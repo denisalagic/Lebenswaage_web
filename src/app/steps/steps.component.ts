@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {StepsService} from './steps.service';
 import {QuoteModel} from "../model/quote.model";
 import {TranslateService} from "@ngx-translate/core";
+import {LocalApiCallsService} from "../local-api-calls.service";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-steps',
@@ -20,7 +22,10 @@ export class StepsComponent implements OnInit {
   public selectedLanguage = 'en';
 
   constructor(private stepsService: StepsService,
-              private translate: TranslateService) {
+              private translate: TranslateService,
+              private router: Router,
+              public route: ActivatedRoute,
+              private localApiCallsService: LocalApiCallsService) {
     this.selectedLanguage = translate.currentLang;
     this.populateQuotesList();
     this.populateQuotesListEn();
@@ -101,5 +106,15 @@ export class StepsComponent implements OnInit {
     if(this.activeStep > 1) {
       this.activeStep = this.activeStep - 1;
     }
+  }
+
+  public returnMoney() {
+    this.localApiCallsService.returnAllMoney().subscribe(resp => {
+      console.log(resp);
+      this.localApiCallsService.closeSession().subscribe(resp => {
+        console.log("close session resp,", resp);
+        this.router.navigate(['*']).then(_ => {});
+      })
+    });
   }
 }
