@@ -120,3 +120,40 @@ input[type="radio"] {
   border-radius: 50%;
   background: white;
 }
+.repeat-rectangle {
+  border-radius: 120px;
+  background-color: rgb(255, 101, 93);
+  box-shadow: 0 1px 4.85px 0.15px rgba(0, 0, 0, 0.25);
+  width: 165px;
+  height: 110px;
+  position: relative;
+}
+.repeat-rectangle-disabled {
+  border-radius: 120px;
+  background-color: darkgrey;
+  box-shadow: 0 1px 4.85px 0.15px rgba(0, 0, 0, 0.25);
+  width: 165px;
+  height: 110px;
+  position: relative;
+}
+
+.start-text-placeholder {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+}
+.start-button-text {
+  font-size: 24px;
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 1px 4.85px rgba(0, 0, 0, 0.25);
+}
+.start-button-sub-text {
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 1px 4.85px rgba(0, 0, 0, 0.25);
+}

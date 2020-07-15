@@ -33,7 +33,7 @@
         <mat-checkbox class="text" [(ngModel)]="gdprAccepted">{{'gdpr-accept' | translate}}</mat-checkbox>
       </div>
       <div class="row justify-content-center" style="margin-top: 20px;">
-        <div class="send-rectangle">
+        <div [ngClass]="gdprAccepted ? 'send-rectangle' : 'send-rectangle-disabled'">
           <div class="send-text-placeholder">
             <div class="send-button-text" (click)="sendMail()">Send</div>
           </div>

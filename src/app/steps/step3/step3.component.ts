@@ -22,7 +22,7 @@ export class Step3Component implements OnInit {
   public activities: CodebookModel[] = [];
   public activityChecked: string = null;
   private selectedLanguage: string;
-
+  availableTries = 3;
 
   constructor(private stepsService: StepsService,
               private router: Router,
@@ -148,5 +148,19 @@ export class Step3Component implements OnInit {
       });
     }
   }
-
+  public resetMeasures(): void {
+    this.availableTries--;
+    if(this.availableTries > 0) {
+      console.log("trying");
+      this.height = "";
+      this.weight = "";
+      this.waist = "";
+      this.localApiCallsService.getMeasurments().subscribe(resp => {
+        this.height = resp[0].value;
+        this.onHeightChange();
+        this.weight = resp[1].value;
+        this.onWeightChange();
+      });
+    }
+  }
 }

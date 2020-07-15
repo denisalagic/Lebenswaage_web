@@ -49,5 +49,7 @@
   "gdpr": "DSGVO und Vertragsbedingungen",
   "gdpr-accept": "Ich habe die obigen Bedingungen gelesen und bin damit einverstanden",
   "personalised-meal-plan": "Ihr persönlicher 30-Tage-Diätplan und Trainingsplan werden in Kürze per Post eingehen.",
-  "press": "Drücken"
+  "press": "Drücken",
+  "reset": "Wiederholen die Messung",
+  "tries": "Versuch"
 }

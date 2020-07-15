@@ -26,7 +26,7 @@ export class Step4Component implements OnInit {
   public additionalCaloriesNeeded: number = 0;
   public selectedLanguage: string;
 
-  public bmi:number = 0;
+  public bmi: number = 0;
   public bmr: number = 0;
   public tee: number = 0;
 
@@ -92,7 +92,6 @@ export class Step4Component implements OnInit {
     const weight = this.stepsService.weight;
     const height = this.stepsService.height / 100;
     this.bmi = Math.round((weight / (height * height)) * 100) / 100 ;
-    this.bmi = 25.5;
     this.stepsService.bmi = this.bmi;
 
     this.minWeight = minBmi * height * height;

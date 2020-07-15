@@ -20,7 +20,7 @@ export class StepsComponent implements OnInit {
   public navigationDisabled: boolean = true;
 
   public selectedLanguage = 'en';
-
+  disableCancelButton = false;
   constructor(private stepsService: StepsService,
               private translate: TranslateService,
               private router: Router,
@@ -109,12 +109,15 @@ export class StepsComponent implements OnInit {
   }
 
   public returnMoney() {
-    this.localApiCallsService.returnAllMoney().subscribe(resp => {
-      console.log(resp);
-      this.localApiCallsService.closeSession().subscribe(resp => {
-        console.log("close session resp,", resp);
-        this.router.navigate(['*']).then(_ => {});
-      })
-    });
+    if (!this.disableCancelButton) {
+      this.disableCancelButton = true;
+      this.localApiCallsService.returnAllMoney().subscribe(resp => {
+        console.log(resp);
+        this.localApiCallsService.closeSession().subscribe(resp => {
+          console.log("close session resp,", resp);
+          this.router.navigate(['*']).then(_ => {});
+        })
+      });
+    }
   }
 }

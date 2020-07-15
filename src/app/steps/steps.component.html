@@ -59,7 +59,7 @@
     </div>
   </div>
   <div class="row justify-content-center" style="position: fixed; bottom: 25px; right: 20px">
-    <div class="cancel-rectangle">
+    <div [ngClass]="!disableCancelButton ? 'cancel-rectangle' : 'cancel-rectangle-disabled'">
       <div class="start-text-placeholder">
         <div class="start-button-text" (click)="returnMoney()">{{'cancel' | translate}}</div>
       </div>
