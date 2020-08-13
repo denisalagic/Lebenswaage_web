@@ -1,6 +1,6 @@
 <img [src]="'assets/img/step' + activeStep + '_background.jpg'" id="image-background">
 
-<div class="element">
+<div class="element" scroll [scrollValue]="currentPosition" (newValue)="setScrollValue($event)">
   <img src="assets/img/pozadina.jpg"/>
 </div>
 <div class="content">
@@ -9,17 +9,19 @@
       <div class="col-sm-1">
         <img src="assets/img/LW-logotip.png" class="image-logo"/>
       </div>
-      <div class="col-sm-3 offset-8 text-right" *ngIf="selectedLanguage == 'hr'">
-        <span class="quote-text">{{quotes[activeStep-1].quoteText}}</span><br/>
-        <span class="quote-author">{{quotes[activeStep-1].quoteAuthor}}</span>
-      </div>
-      <div class="col-sm-3 offset-8 text-right" *ngIf="selectedLanguage == 'en'">
-        <span class="quote-text">{{quotesEn[activeStep-1].quoteText}}</span><br/>
-        <span class="quote-author">{{quotesEn[activeStep-1].quoteAuthor}}</span>
-      </div>
-      <div class="col-sm-3 offset-8 text-right" *ngIf="selectedLanguage == 'de'">
-        <span class="quote-text">{{quotesDe[activeStep-1].quoteText}}</span><br/>
-        <span class="quote-author">{{quotesDe[activeStep-1].quoteAuthor}}</span>
+      <div class="col-sm-3 offset-8 text-center">
+        <span *ngIf="selectedLanguage == 'hr'">
+          <span class="quote-text">{{quotes[activeStep-1].quoteText}}</span><br/>
+          <span class="quote-author">{{quotes[activeStep-1].quoteAuthor}}</span>
+        </span>
+        <span *ngIf="selectedLanguage == 'en'">
+          <span class="quote-text">{{quotesEn[activeStep-1].quoteText}}</span><br/>
+          <span class="quote-author">{{quotesEn[activeStep-1].quoteAuthor}}</span>
+        </span>
+        <span *ngIf="selectedLanguage == 'de'">
+          <span class="quote-text">{{quotesDe[activeStep-1].quoteText}}</span><br/>
+          <span class="quote-author">{{quotesDe[activeStep-1].quoteAuthor}}</span>
+        </span>
       </div>
     </div>
   </div>
@@ -58,7 +60,7 @@
       <img src="assets/img/strjelica-naprijed.png" style="height: 57px"/>
     </div>
   </div>
-  <div class="row justify-content-center" style="position: fixed; bottom: 25px; right: 20px">
+  <div class="row justify-content-center" style="position: fixed; bottom: 25px; right: 20px" *ngIf="!stepsService.cancelButton">
     <div [ngClass]="!disableCancelButton ? 'cancel-rectangle' : 'cancel-rectangle-disabled'">
       <div class="start-text-placeholder">
         <div class="start-button-text" (click)="returnMoney()">{{'cancel' | translate}}</div>

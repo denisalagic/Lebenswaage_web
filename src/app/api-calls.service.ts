@@ -75,6 +75,20 @@ export class ApiCallsService {
       }));
   }
 
+  public getMealTags(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': this.token
+      })
+    };
+
+    return this.http.get<any>(environment.apiUrl + 'mealplantags', httpOptions)
+      .pipe(map(resp => {
+        return resp;
+      }));
+  }
+
 
   public getMealPlanSchedules(): Observable<any> {
     const machineCode: string = environment.machineCode;

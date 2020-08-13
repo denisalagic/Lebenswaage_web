@@ -26,6 +26,15 @@ body {
   clip-path: polygon(80% 0, 100% 0, 100% 100%, 0 100%, 0 45%);
 }
 
+.elementScroll {
+  display:inline-block;
+  position: fixed;
+  width: 1920px;
+  height: 1080px;
+  -webkit-clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 45%);
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 45%);
+}
+
 .navigation-numbers {
   height: 57px;
   margin-top: 17px;
@@ -45,7 +54,12 @@ body {
 .navigation-text-disabled {
   color: #d7d7d7 !important;
 }
-
+.quote {
+  opacity: 0.7;
+  background-color: #000;
+  color: #fff;
+  border-radius: 80px;
+}
 .quote-text {
   font-size: 40px;
   font-family: 'Playfair Display', sans-serif;

@@ -12,7 +12,7 @@
   <div class="content">
     <div class="row">
       <div class="col-sm-4">
-        <img src="assets/img/LW-logotip-cijeli.png" class="image-logo"/>
+        <img src="assets/img/logo.png" class="image-logo"/>
       </div>
 
       <div class="col-sm-2 offset-6" style="margin-top: 28px; padding-right: 50px;">
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div class="row justify-content-center" style="margin-top: 20px;" *ngIf="moneyAmount >= 10">
+    <div class="row justify-content-center" style="margin-top: 20px;" *ngIf="moneyAmount != 10">
       <div class="start-rectangle" [@animateStartButton]="moneyAmountAnimation">
         <div class="start-text-placeholder">
           <div class="start-button-text" (click)="navigateToSteps()">START</div>

@@ -6,6 +6,7 @@ import 'rxjs-compat/add/observable/of';
   providedIn: 'root'
 })
 export class StepsService {
+  private _disableCancelButton = false;
 
   // tslint:disable-next-line:variable-name
   private _goal: string = null;
@@ -161,6 +162,14 @@ export class StepsService {
 
   set mealPlanScheduleId(value: number) {
     this._mealPlanScheduleId = value;
+  }
+
+  get cancelButton(): boolean {
+    return this._disableCancelButton;
+  }
+
+  set cancelButton(value: boolean) {
+    this._disableCancelButton = value;
   }
 
   constructor() { }

@@ -99,7 +99,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   public navigateToSteps() {
-    if (this.moneyAmount >= 10) {
+    if (this.moneyAmount != 10) {
       this.router.navigate(['steps']).then(_ => {
         this.moneyAmount = -1;
         this.showCancelButton = false;

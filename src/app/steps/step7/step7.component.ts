@@ -43,6 +43,7 @@ export class Step7Component implements OnInit {
 
   public sendMail() {
     if (this.gdprAccepted && this.emailFormControl.value) {
+      this.stepService.cancelButton = true;
       this.stepService.gdprAgreement = true;
       this.apiCalls.sendEmail(this.emailFormControl.value).subscribe(resp => {
         this.showThankYouMessage = true;

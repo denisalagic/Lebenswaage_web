@@ -1,11 +1,23 @@
 .meal-plan-tag-selected {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 4px 6.44px 0.56px rgba(0, 0, 0, 0.08);
-  width: 400px;
+  width: 500px;
   margin-top: -17px;
   padding: 25px 8px 8px 16px;
-  font-size: 25.497px;
+  font-size: 16px;
   color: rgb(51, 51, 51);
   line-height: 1.2;
-
+  text-align: justify;
+  text-justify: inter-word;
+}
+.coming_soon {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 4px 6.44px 0.56px rgba(0, 0, 0, 0.08);
+  width: 500px;
+  padding: 16px 8px 8px 16px;
+  font-size: 20px;
+  color: rgb(51, 51, 51);
+  line-height: 1.2;
+  text-align: center;
+  text-justify: inter-word;
 }

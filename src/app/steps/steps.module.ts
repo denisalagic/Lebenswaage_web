@@ -28,6 +28,7 @@ import {Step1Component} from './step1/step1.component';
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 import {IKeyboardLayouts, keyboardLayouts, MAT_KEYBOARD_LAYOUTS, MatKeyboardModule} from '@ngx-material-keyboard/core';
 import {GdprModalComponent} from './step7/gdpr-modal/gdpr-modal.component';
+import {ScrollDirective} from "../scroll.directive";
 
 const customLayouts: IKeyboardLayouts = {
   ...keyboardLayouts,
@@ -72,6 +73,7 @@ const customLayouts: IKeyboardLayouts = {
     Step7Component,
     Step1Component,
     GdprModalComponent,
+    ScrollDirective
   ],
   imports: [
     CommonModule,

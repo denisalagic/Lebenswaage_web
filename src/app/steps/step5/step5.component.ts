@@ -16,6 +16,7 @@ export class Step5Component implements OnInit {
   public selectedLanguage: string;
   public checkedMealPlanSchedules: number = null;
   public mealPlanSchedules: CodebookModel[] = [];
+  public comingSoonMealPlanSchedules: CodebookModel[] = [];
 
 
   constructor(private stepsService: StepsService,
@@ -31,11 +32,20 @@ export class Step5Component implements OnInit {
       valid: false
     });
 
-    this.apiCalls.getMealPlanSchedules().subscribe(data => {
-      this.mealPlanSchedules = data.mealPlanSchedules;
-      this.mealPlanSchedules = this.mealPlanSchedules.filter(mpt => mpt.files.length > 0);
-    });
+    this.apiCalls.getMealTags().subscribe(data => {
+      this.mealPlanSchedules = data;
+      this.mealPlanSchedules = this.mealPlanSchedules.filter(mpt => mpt.status === 'ENABLED' && mpt.files.length > 0);
+      this.comingSoonMealPlanSchedules = data.filter(mpt => mpt.status === 'COMING_SOON');
+      console.log(this.mealPlanSchedules);
+      console.log(this.comingSoonMealPlanSchedules);
+    })
 
+    //this.apiCalls.getMealPlanSchedules().subscribe(data => {
+      //this.mealPlanSchedules = data.mealPlanSchedules;
+      //this.comingSoonMealPlanSchedules = data.mealPlanSchedules.filter(mpt => mpt.status === 'COMING_SOON');
+      //this.mealPlanSchedules = this.mealPlanSchedules.filter(mpt => mpt.status === 'ENABLED' && mpt.files.length > 0);
+
+    //});
     this.selectedLanguage = this.translate.currentLang;
   }
 
@@ -67,7 +77,12 @@ export class Step5Component implements OnInit {
 
   getMealPlanScheduleImage(mealPlanSchedule: CodebookModel): string {
     let files = mealPlanSchedule.files as any[];
-    return files[0];
+    if (files.length > 1 && files.length < 3) {
+      files.filter((f) => {
+        if (f.tag == this.selectedLanguage) return f.url;
+      });
+    }
+    return files[0].url;
   }
 
   public getMealPlanScheduleNotesTranslation(mealPlanSchedule: CodebookModel): string {
@@ -77,6 +92,16 @@ export class Step5Component implements OnInit {
       return mealPlanSchedule.notesHR;
     } else {
       return mealPlanSchedule.notes;
+    }
+  }
+
+  public getComingSoonMealPlanSchedulesTranslation(mealPlanSchedule: CodebookModel): string {
+    if (this.selectedLanguage == 'de') {
+      return mealPlanSchedule.nameDE;
+    } else if (this.selectedLanguage == 'hr') {
+      return mealPlanSchedule.nameHR;
+    } else {
+      return mealPlanSchedule.name;
     }
   }
 

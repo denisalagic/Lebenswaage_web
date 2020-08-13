@@ -40,7 +40,7 @@
   "my-recommendations-description": "Wenn sich Ihre Empfehlungen von den Empfehlungen der Anwendung unterscheiden, geben Sie hier Ihre Werte ein, andernfalls lassen Sie das Feld leer.",
   "food-you-do-not-eat": "Essen, das Sie nicht essen",
   "food-you-do-not-eat-description": "Bitte wählen Sie Lebensmittel aus, die Sie nicht essen, um sie von Ihrem Diätplan auszuschließen",
-  "meal-plan": "Speiseplan",
+  "meal-plan": "Ernährungsplan",
   "training-plan": "Trainingsplan",
   "training-plan-description": "DAS SIND DIE AUSBILDUNGEN, DIE IN IHREM PROFIL AUF SIE WARTEN. KLICKEN SIE WEITER, UM DIE ANWENDUNG ABZUSCHLIESSEN",
   "training-plan-warning": "Die Verwendung von Gewichten und großen zusätzlichen Belastungen für die Adoleszenz in der Pubertät (<16 Jahre) wirkt sich äußerst negativ auf das ordnungsgemäße Wachstum und die Entwicklung aus und führt zu einigen negativen Auswirkungen, die dazu führen können, dass eine Person im Sport und im täglichen Leben später behindert wird.<br/><br/>Empfehlung: Kraftübungen zur Selbstkraft (Kniebeugen, Gelenke, Liegestütze, Bauchdeckenstraffungen), Dehnübungen und die perfekte Übernahme aller Übungen, die später die Grundlage für das Upgrade mit externen Belastungen bilden.",
@@ -51,5 +51,6 @@
   "personalised-meal-plan": "Ihr persönlicher 30-Tage-Diätplan und Trainingsplan werden in Kürze per Post eingehen.",
   "press": "Drücken",
   "reset": "Wiederholen die Messung",
-  "tries": "Versuch"
+  "tries": "Versuch",
+  "comingSoon": "Bald"
 }

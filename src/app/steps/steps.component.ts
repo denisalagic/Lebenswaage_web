@@ -18,7 +18,7 @@ export class StepsComponent implements OnInit {
   public quotesEn: QuoteModel[] = [];
   public quotesDe: QuoteModel[] = [];
   public navigationDisabled: boolean = true;
-
+  public currentPosition = 0;
   public selectedLanguage = 'en';
   disableCancelButton = false;
   constructor(private stepsService: StepsService,
@@ -106,6 +106,10 @@ export class StepsComponent implements OnInit {
     if(this.activeStep > 1) {
       this.activeStep = this.activeStep - 1;
     }
+  }
+
+  public setScrollValue(value): void {
+    this.currentPosition = value;
   }
 
   public returnMoney() {

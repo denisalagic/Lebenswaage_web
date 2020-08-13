@@ -8,6 +8,8 @@ export class CodebookModel {
               public notes: string,
               public notesDE: string,
               public notesHR: string,
+              public status: string,
+              public tags: any[],
               public files: any[]) {}
 }
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 import {LocalApiCallsService} from "./local-api-calls.service";
 
-const MINUTES_UNTIL_AUTO_LOGOUT = 2; // in minutes
+const MINUTES_UNTIL_AUTO_LOGOUT = 3; // in minutes
 const CHECK_INTERVAL = 15000; // in ms
 const STORE_KEY = 'lastAction';
 
@@ -69,6 +69,7 @@ export class AutoLogoutService {
       localStorage.clear();
       this.router.navigate(['/']).then(_ => {
         this.destroyListener();
+        this.localApiService.returnAllMoney();
         this.localApiService.closeSession();
       });
     }

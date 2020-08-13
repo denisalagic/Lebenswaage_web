@@ -33,7 +33,7 @@ export class Step6Component implements OnInit {
 
   exerciseGroupSelected(exerciseGroup: number) {
     this.selectedExerciseGroup = this.selectedExerciseGroup == exerciseGroup ? null : exerciseGroup;
-    // this.stepsService.trainingType = exerciseGroup;
+    this.stepsService.trainingType = exerciseGroup.toString();
   }
 
   getExerciseGroupImage(exerciseGroup: any): string {
