@@ -130,6 +130,8 @@ export class ApiCallsService {
     command.operation = 'SAVE';
     command.machineCode = machineCode;
     command.paymentType = 'CRD';
+    command.additionalEnergyIntake = this.stepsService.additionalEnergy;
+    command.recommendedEnergyIntake = this.stepsService.energyInput;
     command.trainingType = this.stepsService.trainingType;
     command.activity = this.stepsService.activity;
     command.goal = this.stepsService.goal;

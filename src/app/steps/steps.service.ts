@@ -46,6 +46,9 @@ export class StepsService {
   // tslint:disable-next-line:variable-name
   private _mealPlanScheduleId: number = null;
 
+  private _energyInput: number = 0;
+  private _additionalEnergy: number = 0;
+
   public resetProperties(): void {
     this._goal = null;
     this._trainingType = null;
@@ -60,6 +63,9 @@ export class StepsService {
     this._gdprAgreement = false;
     this._targetWeight = null;
     this._mealPlanScheduleId = null;
+    this._disableCancelButton = false;
+    this._energyInput = null;
+    this._additionalEnergy = 0;
   }
 
   get goal(): string {
@@ -170,6 +176,22 @@ export class StepsService {
 
   set cancelButton(value: boolean) {
     this._disableCancelButton = value;
+  }
+
+  get energyInput(): number {
+    return this._energyInput;
+  }
+
+  set energyInput(value) {
+    this._energyInput = value;
+  }
+
+  get additionalEnergy(): number {
+    return this._additionalEnergy;
+  }
+
+  set additionalEnergy(value: number) {
+    this._additionalEnergy = value;
   }
 
   constructor() { }

@@ -124,7 +124,7 @@ input[type="radio"] {
   border-radius: 120px;
   background-color: rgb(255, 101, 93);
   box-shadow: 0 1px 4.85px 0.15px rgba(0, 0, 0, 0.25);
-  width: 165px;
+  width: 195px;
   height: 110px;
   position: relative;
 }
@@ -132,7 +132,7 @@ input[type="radio"] {
   border-radius: 120px;
   background-color: darkgrey;
   box-shadow: 0 1px 4.85px 0.15px rgba(0, 0, 0, 0.25);
-  width: 165px;
+  width: 195px;
   height: 110px;
   position: relative;
 }

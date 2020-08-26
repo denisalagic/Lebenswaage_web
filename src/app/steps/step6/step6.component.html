@@ -11,7 +11,7 @@
   <div class="row" style="margin-top: 220px;">
     <div class="col-sm-3" *ngFor="let exerciseGroup of exerciseGroups; let i = index"
          [ngClass]="i % 2 == 0 ? 'offset-3' : ''" style="margin-bottom: 20px;" (click)="exerciseGroupSelected(exerciseGroup.id)">
-      <img [src]="getExerciseGroupImage(exerciseGroup)" style="width: 400px;"/>
+      <img [src]="getCurrentlySelectedLanguageImage(exerciseGroup.files)" style="width: 400px;"/>
       <div *ngIf="selectedExerciseGroup == exerciseGroup.id" class="exercise-group-selected"> {{exerciseGroup.description}}</div>
     </div>
   </div>

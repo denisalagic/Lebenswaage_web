@@ -21,7 +21,7 @@ export class StepsComponent implements OnInit {
   public currentPosition = 0;
   public selectedLanguage = 'en';
   disableCancelButton = false;
-  constructor(private stepsService: StepsService,
+  constructor(public stepsService: StepsService,
               private translate: TranslateService,
               private router: Router,
               public route: ActivatedRoute,

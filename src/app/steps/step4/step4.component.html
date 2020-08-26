@@ -122,7 +122,7 @@
           <div class="col-sm-3" style="margin-top: -18px;">
             <form class="form">
               <mat-form-field class="example-full-width">
-                <input type="text" name="tee" matInput [value]="additionalCaloriesNeeded.toFixed(2)">
+                <input type="number" name="tee" matInput [matKeyboard]="'numberLayout'" [value]="additionalCaloriesNeeded">
               </mat-form-field>
             </form>
           </div>
@@ -169,12 +169,12 @@
     <div class="col-sm-3 labels">
       <div class="row">
         <div class="col-sm-6">
-          {{'additiona-energy' | translate}}
+          {{'additional-energy' | translate}}
         </div>
         <div class="col-sm-5" style="margin-top: -27px;;">
           <form class="form">
             <mat-form-field class="example-full-width">
-              <input type="text" name="bmi" matInput [(ngModel)]="additionalCaloriesNeeded">
+              <input type="number" name="bmi" matInput [matKeyboard]="'numberLayout'" [(ngModel)]="additionalCaloriesNeeded" (ngModelChange)="setAdditionalCals()">
             </mat-form-field>
           </form>
         </div>

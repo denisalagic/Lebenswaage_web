@@ -7,6 +7,8 @@ export class LebensWaageCommand {
   public goal: string;
   public gender: string;
   public age: number;
+  public additionalEnergyIntake: number;
+  public recommendedEnergyIntake: number;
   public height: number;
   public weight: number;
   public bmi: number;
@@ -16,6 +18,6 @@ export class LebensWaageCommand {
   public email: string;
   public gdprAgreement: boolean;
   public mealPlanScheduleId: number;
-  
+
   constructor() {}
 }

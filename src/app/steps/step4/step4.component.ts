@@ -163,11 +163,16 @@ export class Step4Component implements OnInit {
     const goal = this.stepsService.goal;
     if (goal == 'LOSEWGH') {
       this.additionalCaloriesNeeded = 0.2 * this.optimalCaloriesIntake * (-1);
+      this.additionalCaloriesNeeded = parseInt(this.additionalCaloriesNeeded.toFixed(2), 10);
     } else if (goal == 'BEHALT' || goal == 'WGHMNT') {
       this.additionalCaloriesNeeded = 0;
     } else if (goal == 'GAINWGH') {
       this.additionalCaloriesNeeded = 0.2 * this.optimalCaloriesIntake;
+      this.additionalCaloriesNeeded = parseInt(this.additionalCaloriesNeeded.toFixed(2), 10);
     }
-    this.additionalCaloriesNeeded = parseInt(this.additionalCaloriesNeeded.toFixed(2), 10);
+    this.stepsService.energyInput = this.optimalCaloriesIntake;
+  }
+  public setAdditionalCals() {
+    this.stepsService.additionalEnergy = this.additionalCaloriesNeeded;
   }
 }
