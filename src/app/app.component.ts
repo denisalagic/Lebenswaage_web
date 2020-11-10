@@ -42,9 +42,9 @@ export class AppComponent implements AfterViewInit {
               private localApiCallsService: LocalApiCallsService,
               private autoLogoutService: AutoLogoutService) {
     translate.addLangs(['en', 'de', 'hr']);
-    translate.setDefaultLang('en');
-    translate.use('en');
-    this.selectedLanguage = 'en';
+    translate.setDefaultLang('de');
+    translate.use('de');
+    this.selectedLanguage = 'de';
     this.moneyAmountAnimation = 'original';
   }
 
@@ -99,7 +99,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   public navigateToSteps() {
-    if (this.moneyAmount >= 10) {
+    if (this.moneyAmount != 10) {
       this.router.navigate(['steps']).then(_ => {
         this.moneyAmount = -1;
         this.showCancelButton = false;

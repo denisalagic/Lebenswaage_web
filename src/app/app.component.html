@@ -5,9 +5,9 @@
   </video>-->
   <!--<img src="assets/img/home_background_1.jpg" id="video-background">-->
 
-  <div class="element">
-    <img src="assets/img/home_background.png"/>
-  </div>
+  <video autoplay muted loop id="myVideo">
+    <source src="assets/videos/0-02-05.mp4" type="video/mp4">
+  </video>
 
   <div class="content">
     <div class="row">
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div class="row justify-content-center" style="margin-top: 20px;" *ngIf="moneyAmount >= 10">
+    <div class="row justify-content-center" style="margin-top: 20px;" *ngIf="moneyAmount != 10">
       <div class="start-rectangle" [@animateStartButton]="moneyAmountAnimation">
         <div class="start-text-placeholder">
           <div class="start-button-text" (click)="navigateToSteps()">START</div>
